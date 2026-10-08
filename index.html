@@ -4,8 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/naguilian-icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#6aae7a" />
-    <title>betternaguilianlu</title>
+    <meta name="theme-color" content="#1b4332" />
+    <meta name="description" content="Verified municipal service information for Naguilian, La Union, organized around the task you need to complete." />
+    <title>Better Naguilian, La Union</title>
+    <script>
+      try {
+        var t = localStorage.getItem('bn-theme')
+        if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
