@@ -172,6 +172,7 @@ export const leadership = [
 
 export const contact = {
   phone: "+63 (072) 619 4917",
+  phoneDialable: "+63726194917",
   emails: ["munnaguilian@yahoo.com", "naguilianmlo@gmail.com"],
   address: "Naguilian National Highway, Ortiz, Naguilian, La Union 2511, Philippines",
 }
@@ -194,6 +195,7 @@ export type QuizQuestion = {
   options: string[]
   answer: number
   explanation: string
+  source: string
 }
 
 export const quiz: QuizQuestion[] = [
@@ -202,29 +204,34 @@ export const quiz: QuizQuestion[] = [
     options: ["Nag-ili an dagiti gan-ganaet", "Two rivers meet", "Royal town of La Union"],
     answer: 0,
     explanation: "The official history links the name to “Nag-ili an dagiti gan-ganaet.”",
+    source: links.history,
   },
   {
     question: "Which town was Naguilian originally part of?",
     options: ["San Fernando", "Bauang", "Bacnotan"],
     answer: 1,
     explanation: "Naguilian was originally part of Bauang.",
+    source: links.history,
   },
   {
     question: "In what year did Naguilian separate from Bauang?",
     options: ["1850", "1902", "1839"],
     answer: 2,
     explanation: "The official history dates the separation to 1839.",
+    source: links.history,
   },
   {
     question: "How many barangays does Naguilian have?",
     options: ["37", "29", "42"],
     answer: 0,
     explanation: "Naguilian has 37 barangays.",
+    source: links.demographics,
   },
   {
     question: "What is Naguilian’s municipal income classification?",
     options: ["Third Class", "First Class", "Fifth Class"],
     answer: 1,
     explanation: "Naguilian is a First Class municipality.",
+    source: links.demographics,
   },
 ]

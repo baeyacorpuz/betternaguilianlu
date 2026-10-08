@@ -141,15 +141,31 @@ export function Logo({ className }: { className?: string }) {
 
 function LanguageToggle() {
   return (
-    <ToggleGroup type="single" value="en" variant="outline" size="sm" aria-label="Language">
-      <ToggleGroupItem value="en" aria-label="English" className="px-2.5 text-xs font-semibold">
+    <ToggleGroup
+      type="single"
+      value="en"
+      variant="outline"
+      size="sm"
+      aria-label="Language"
+      className="gap-1 rounded-lg p-1 data-[variant=outline]:shadow-none"
+    >
+      <ToggleGroupItem
+        value="en"
+        aria-label="English"
+        className="w-10 flex-none rounded-md data-[variant=outline]:border-l px-0 text-xs font-semibold data-[state=on]:border-primary data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+      >
         EN
       </ToggleGroupItem>
       <Tooltip>
         <TooltipTrigger asChild>
           {/* span keeps the tooltip working while the item is disabled */}
-          <span tabIndex={0} className="inline-flex">
-            <ToggleGroupItem value="il" aria-label="Ilocano" disabled className="rounded-l-none px-2.5 text-xs font-semibold">
+          <span tabIndex={0} aria-label="Ilocano translation coming soon" className="inline-flex rounded-md focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50">
+            <ToggleGroupItem
+              value="il"
+              aria-label="Ilocano"
+              disabled
+              className="w-10 flex-none rounded-md data-[variant=outline]:border-l px-0 text-xs font-semibold"
+            >
               IL
             </ToggleGroupItem>
           </span>
@@ -183,7 +199,7 @@ export function SiteHeader() {
       <Container className="flex h-16 items-center justify-between gap-4">
         <Logo />
 
-        <NavigationMenu viewport={false} className="hidden lg:flex">
+        <NavigationMenu viewport={false} className="hidden xl:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
@@ -239,7 +255,7 @@ export function SiteHeader() {
 
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon-sm" className="lg:hidden" aria-label="Open menu">
+              <Button variant="ghost" size="icon-sm" className="xl:hidden" aria-label="Open menu">
                 <ListIcon />
               </Button>
             </SheetTrigger>

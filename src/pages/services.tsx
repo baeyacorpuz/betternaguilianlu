@@ -44,8 +44,8 @@ export function ServicesPage() {
 
       <Section className="pt-8 sm:pt-10">
         <Container className="space-y-6">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div className="relative w-full lg:max-w-sm">
+          <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+            <div className="relative w-full xl:max-w-sm">
               <MagnifyingGlassIcon className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 value={query}
@@ -61,12 +61,21 @@ export function ServicesPage() {
               size="sm"
               value={category ?? "all"}
               onValueChange={(v) => v && setSearch({ category: v === "all" ? undefined : (v as ServiceCategoryId) })}
-              className="flex-wrap bg-card"
+              className="h-auto max-w-full flex-wrap gap-2 bg-transparent data-[variant=outline]:shadow-none"
               aria-label="Filter by category"
             >
-              <ToggleGroupItem value="all" className="px-3">All</ToggleGroupItem>
+              <ToggleGroupItem
+                value="all"
+                className="h-10 flex-none rounded-md data-[variant=outline]:border-l px-3 data-[state=on]:border-primary data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+              >
+                All
+              </ToggleGroupItem>
               {serviceCategories.map((c) => (
-                <ToggleGroupItem key={c.id} value={c.id} className="gap-1.5 px-3">
+                <ToggleGroupItem
+                  key={c.id}
+                  value={c.id}
+                  className="h-10 flex-none gap-2 rounded-md data-[variant=outline]:border-l px-3 data-[state=on]:border-primary data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                >
                   <c.icon />
                   {c.name}
                 </ToggleGroupItem>

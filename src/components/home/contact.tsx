@@ -22,7 +22,7 @@ export function Contact() {
               <CardTitle>Phone</CardTitle>
             </CardHeader>
             <CardContent>
-              <a href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`} className="text-sm font-semibold text-primary hover:underline">
+              <a href={`tel:${contact.phoneDialable}`} className="text-sm font-semibold text-primary hover:underline">
                 {contact.phone}
               </a>
             </CardContent>

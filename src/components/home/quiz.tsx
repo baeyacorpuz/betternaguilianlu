@@ -16,7 +16,7 @@ import { Label } from "@/components/ui/label"
 import { Progress } from "@/components/ui/progress"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Container, Section, SectionHeading, SourceLink } from "@/components/site/section"
-import { links, quiz } from "@/data/site"
+import { quiz } from "@/data/site"
 
 export function Quiz() {
   const [index, setIndex] = React.useState(0)
@@ -136,7 +136,7 @@ export function Quiz() {
                 )}
               </CardContent>
               <CardFooter className="justify-between border-t [.border-t]:pt-4">
-                <SourceLink href={links.history} label="Question source" />
+                <SourceLink href={q.source} label="Question source" />
                 {checked ? (
                   <Button onClick={next}>
                     {index === quiz.length - 1 ? "See results" : "Next question"}
