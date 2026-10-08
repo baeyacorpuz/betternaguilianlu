@@ -141,31 +141,15 @@ export function Logo({ className }: { className?: string }) {
 
 function LanguageToggle() {
   return (
-    <ToggleGroup
-      type="single"
-      value="en"
-      variant="outline"
-      size="sm"
-      aria-label="Language"
-      className="gap-1 rounded-lg p-1 data-[variant=outline]:shadow-none"
-    >
-      <ToggleGroupItem
-        value="en"
-        aria-label="English"
-        className="w-10 flex-none rounded-md data-[variant=outline]:border-l px-0 text-xs font-semibold data-[state=on]:border-primary data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-      >
+    <ToggleGroup type="single" value="en" variant="outline" size="sm" aria-label="Language">
+      <ToggleGroupItem value="en" aria-label="English" className="px-2.5 text-xs font-semibold">
         EN
       </ToggleGroupItem>
       <Tooltip>
         <TooltipTrigger asChild>
           {/* span keeps the tooltip working while the item is disabled */}
-          <span tabIndex={0} aria-label="Ilocano translation coming soon" className="inline-flex rounded-md focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50">
-            <ToggleGroupItem
-              value="il"
-              aria-label="Ilocano"
-              disabled
-              className="w-10 flex-none rounded-md data-[variant=outline]:border-l px-0 text-xs font-semibold"
-            >
+          <span tabIndex={0} aria-label="Ilocano translation coming soon" className="inline-flex rounded-r-md focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50">
+            <ToggleGroupItem value="il" aria-label="Ilocano" disabled className="px-2.5 text-xs font-semibold first:rounded-l-none data-[variant=outline]:first:border-l-0">
               IL
             </ToggleGroupItem>
           </span>
@@ -201,13 +185,6 @@ export function SiteHeader() {
 
         <NavigationMenu viewport={false} className="hidden xl:flex">
           <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link to="/" activeOptions={{ exact: true, includeHash: false }} activeProps={{ "data-active": true }}>
-                  Home
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
             {navGroups.map((group) => (
               <NavigationMenuItem key={group.title}>
                 <NavigationMenuTrigger>{group.title}</NavigationMenuTrigger>
@@ -266,11 +243,6 @@ export function SiteHeader() {
               </SheetHeader>
               <nav className="flex flex-col gap-6 px-4 pb-8">
                 <div className="flex gap-2">
-                  <SheetClose asChild>
-                    <Button asChild variant="secondary" size="sm" className="flex-1">
-                      <Link to="/">Home</Link>
-                    </Button>
-                  </SheetClose>
                   <SheetClose asChild>
                     <Button asChild variant="secondary" size="sm" className="flex-1">
                       <Link to="/" hash="contact">Contact</Link>

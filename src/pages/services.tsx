@@ -44,8 +44,8 @@ export function ServicesPage() {
 
       <Section className="pt-8 sm:pt-10">
         <Container className="space-y-6">
-          <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-            <div className="relative w-full xl:max-w-sm">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="relative w-full lg:max-w-sm">
               <MagnifyingGlassIcon className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 value={query}
@@ -55,32 +55,26 @@ export function ServicesPage() {
                 aria-label="Search services"
               />
             </div>
-            <ToggleGroup
-              type="single"
-              variant="outline"
-              size="sm"
-              value={category ?? "all"}
-              onValueChange={(v) => v && setSearch({ category: v === "all" ? undefined : (v as ServiceCategoryId) })}
-              className="h-auto max-w-full flex-wrap gap-2 bg-transparent data-[variant=outline]:shadow-none"
-              aria-label="Filter by category"
-            >
-              <ToggleGroupItem
-                value="all"
-                className="h-10 flex-none rounded-md data-[variant=outline]:border-l px-3 data-[state=on]:border-primary data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+            {/* one row that scrolls sideways on narrow screens instead of wrapping */}
+            <div className="-mx-4 min-w-0 overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden">
+              <ToggleGroup
+                type="single"
+                variant="outline"
+                size="sm"
+                value={category ?? "all"}
+                onValueChange={(v) => v && setSearch({ category: v === "all" ? undefined : (v as ServiceCategoryId) })}
+                className="w-max bg-card"
+                aria-label="Filter by category"
               >
-                All
-              </ToggleGroupItem>
-              {serviceCategories.map((c) => (
-                <ToggleGroupItem
-                  key={c.id}
-                  value={c.id}
-                  className="h-10 flex-none gap-2 rounded-md data-[variant=outline]:border-l px-3 data-[state=on]:border-primary data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-                >
-                  <c.icon />
-                  {c.name}
-                </ToggleGroupItem>
-              ))}
-            </ToggleGroup>
+                <ToggleGroupItem value="all" className="flex-none px-4">All</ToggleGroupItem>
+                {serviceCategories.map((c) => (
+                  <ToggleGroupItem key={c.id} value={c.id} className="flex-none gap-1.5 px-3">
+                    <c.icon />
+                    {c.name}
+                  </ToggleGroupItem>
+                ))}
+              </ToggleGroup>
+            </div>
           </div>
 
           <p className="text-sm text-muted-foreground" aria-live="polite">
