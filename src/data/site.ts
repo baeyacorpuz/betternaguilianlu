@@ -87,22 +87,22 @@ export type Service = {
 }
 
 export const services: Service[] = [
-  { name: "New business permit", category: "business", office: "BPLO", keywords: ["mayor's permit", "registration"] },
-  { name: "Business permit renewal", category: "business", office: "BPLO", keywords: ["renew"] },
-  { name: "Business closure / retirement", category: "business", office: "BPLO" },
-  { name: "Birth certificate", category: "certificates", office: "Municipal Civil Registrar", keywords: ["psa", "civil registry"] },
-  { name: "Marriage certificate", category: "certificates", office: "Municipal Civil Registrar" },
-  { name: "Death certificate", category: "certificates", office: "Municipal Civil Registrar" },
-  { name: "Community tax certificate (cedula)", category: "tax", office: "Municipal Treasurer", keywords: ["ctc", "cedula"] },
-  { name: "Real property tax payment", category: "tax", office: "Municipal Treasurer", keywords: ["rpt", "amilyar", "land tax"] },
-  { name: "Tax clearance", category: "tax", office: "Municipal Treasurer" },
-  { name: "Health certificate", category: "health", office: "Rural Health Unit", keywords: ["health card"] },
-  { name: "Sanitary permit", category: "health", office: "Rural Health Unit" },
-  { name: "Medical consultation", category: "health", office: "Rural Health Unit", keywords: ["checkup", "doctor"] },
-  { name: "Senior citizen ID", category: "social", office: "MSWDO", keywords: ["osca"] },
-  { name: "PWD ID", category: "social", office: "MSWDO", keywords: ["disability"] },
-  { name: "Solo parent ID", category: "social", office: "MSWDO" },
-  { name: "Assistance to individuals in crisis", category: "social", office: "MSWDO", keywords: ["aics", "financial", "burial", "medical assistance"] },
+  { name: "New business permit", category: "business", office: "BPLO", keywords: ["mayor's permit", "registration", "license", "start a business", "permit to operate", "negosyo"] },
+  { name: "Business permit renewal", category: "business", office: "BPLO", keywords: ["renew", "renewal", "annual", "mayor's permit", "license"] },
+  { name: "Business closure / retirement", category: "business", office: "BPLO", keywords: ["close", "closing", "retire", "cessation", "stop business"] },
+  { name: "Birth certificate", category: "certificates", office: "Municipal Civil Registrar", keywords: ["psa", "civil registry", "birth record", "live birth"] },
+  { name: "Marriage certificate", category: "certificates", office: "Municipal Civil Registrar", keywords: ["marriage contract", "wedding", "kasal", "civil registry"] },
+  { name: "Death certificate", category: "certificates", office: "Municipal Civil Registrar", keywords: ["death record", "burial", "civil registry"] },
+  { name: "Community tax certificate (cedula)", category: "tax", office: "Municipal Treasurer", keywords: ["ctc", "cedula", "sedula", "residence certificate"] },
+  { name: "Real property tax payment", category: "tax", office: "Municipal Treasurer", keywords: ["rpt", "amilyar", "land tax", "property tax", "house tax"] },
+  { name: "Tax clearance", category: "tax", office: "Municipal Treasurer", keywords: ["clearance", "no tax due"] },
+  { name: "Health certificate", category: "health", office: "Rural Health Unit", keywords: ["health card", "food handler", "medical certificate"] },
+  { name: "Sanitary permit", category: "health", office: "Rural Health Unit", keywords: ["sanitation", "establishment", "food business"] },
+  { name: "Medical consultation", category: "health", office: "Rural Health Unit", keywords: ["checkup", "check-up", "doctor", "nurse", "sick", "clinic"] },
+  { name: "Senior citizen ID", category: "social", office: "MSWDO", keywords: ["osca", "senior", "elderly", "lolo", "lola"] },
+  { name: "PWD ID", category: "social", office: "MSWDO", keywords: ["disability", "person with disability", "handicapped"] },
+  { name: "Solo parent ID", category: "social", office: "MSWDO", keywords: ["single parent", "single mother", "single father"] },
+  { name: "Assistance to individuals in crisis", category: "social", office: "MSWDO", keywords: ["aics", "financial", "burial", "medical assistance", "hospital bill", "ayuda", "tulong"] },
 ]
 
 export const popularSearches = [

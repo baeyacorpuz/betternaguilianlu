@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Container, Section, SourceLink } from "@/components/site/section"
 import { links, serviceCategories, services, type ServiceCategoryId } from "@/data/site"
+import { searchServices } from "@/lib/service-search"
 
 const route = getRouteApi("/services")
 
@@ -19,13 +20,8 @@ export function ServicesPage() {
   const setSearch = (next: { category?: ServiceCategoryId; q?: string }) =>
     void navigate({ search: (prev) => ({ ...prev, ...next }), replace: true })
 
-  const needle = query.trim().toLowerCase()
-  const results = services.filter((s) => {
-    if (category && s.category !== category) return false
-    if (!needle) return true
-    const cat = serviceCategories.find((c) => c.id === s.category)!
-    return [s.name, s.office, cat.name, ...(s.keywords ?? [])].join(" ").toLowerCase().includes(needle)
-  })
+  const needle = query.trim()
+  const results = searchServices(query, category ? services.filter((s) => s.category === category) : services)
 
   return (
     <>
@@ -80,7 +76,7 @@ export function ServicesPage() {
           <p className="text-sm text-muted-foreground" aria-live="polite">
             {results.length} {results.length === 1 ? "service" : "services"}
             {category && ` in ${serviceCategories.find((c) => c.id === category)?.name}`}
-            {needle && ` matching “${query.trim()}”`}
+            {needle && ` matching “${needle}”`}
           </p>
 
           {results.length === 0 ? (
