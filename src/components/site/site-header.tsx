@@ -68,7 +68,6 @@ const navGroups: NavGroup[] = [
     items: [
       { title: "Citizen’s Charter", description: "Published service steps, fees, and timelines.", href: links.citizensCharter },
       { title: "Official website", description: "The municipality’s own website.", href: links.officialSite },
-      { title: "About Better Naguilian", description: "Who builds this portal and where its information comes from.", to: "/about" },
     ],
   },
   {
@@ -209,6 +208,11 @@ export function SiteHeader() {
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                <Link to="/about">About</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
 
@@ -247,6 +251,11 @@ export function SiteHeader() {
                   <SheetClose asChild>
                     <Button asChild variant="secondary" size="sm" className="flex-1">
                       <Link to="/" hash="contact">Contact</Link>
+                    </Button>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Button asChild variant="secondary" size="sm" className="flex-1">
+                      <Link to="/about">About</Link>
                     </Button>
                   </SheetClose>
                 </div>

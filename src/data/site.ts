@@ -7,14 +7,22 @@ import {
   FirstAidKitIcon,
   FlagIcon,
   HandHeartIcon,
+  HouseLineIcon,
   LinkSimpleIcon,
   LockKeyIcon,
+  MapTrifoldIcon,
+  MotorcycleIcon,
   PersonArmsSpreadIcon,
+  PlantIcon,
   ReceiptIcon,
+  RecycleIcon,
   ScalesIcon,
   SealCheckIcon,
+  StampIcon,
   UsersThreeIcon,
 } from "@phosphor-icons/react"
+
+export type { Service } from "@/data/charter"
 
 export const volunteerEmail = "volunteer@betternaguilian.org"
 
@@ -26,8 +34,8 @@ const mailto = (subject: string, body: string) =>
  * once they are confirmed; every "Source" link on the page reads from here.
  */
 export const links = {
-  officialSite: "#",
-  citizensCharter: "#",
+  officialSite: "https://naguilianlu.gov.ph/",
+  citizensCharter: "https://naguilianlu.gov.ph/citizenscharter",
   history: "#",
   demographics: "#",
   officials: "#",
@@ -55,6 +63,12 @@ export type ServiceCategoryId =
   | "tax"
   | "health"
   | "social"
+  | "agriculture"
+  | "building"
+  | "transport"
+  | "records"
+  | "environment"
+  | "facilities"
 
 export type ServiceCategory = {
   id: ServiceCategoryId
@@ -62,67 +76,91 @@ export type ServiceCategory = {
   description: string
   icon: Icon
   featured?: { label: string; href: string }
+  /** Shown as a card in the homepage Popular Services grid. */
+  highlight?: true
 }
 
 export const serviceCategories: ServiceCategory[] = [
   {
     id: "business",
-    name: "Business",
-    description: "Permits and registrations for starting and operating a business.",
+    name: "Business & Livelihood",
+    description: "Business permits, market stalls and fees, and weights and measures.",
     icon: BriefcaseIcon,
     featured: { label: "Business Permit Application", href: links.businessPermit },
+    highlight: true,
   },
   {
     id: "certificates",
-    name: "Certificates",
-    description: "Official certifications, clearances, and civil documents for residents.",
+    name: "Civil Registry",
+    description: "Birth, marriage and death registration, marriage licenses, and record corrections.",
     icon: CertificateIcon,
+    highlight: true,
   },
   {
     id: "tax",
-    name: "Tax Payments",
-    description: "Pay municipal taxes and other assessed local charges.",
+    name: "Taxes & Property",
+    description: "Real property tax, community tax certificates, assessments, and property records.",
     icon: ReceiptIcon,
+    highlight: true,
   },
   {
     id: "health",
     name: "Health",
-    description: "Health certificates, permits, consultations, and related public health services.",
+    description: "Sanitary permits, health certificates, consultations, and other public health services.",
     icon: FirstAidKitIcon,
+    highlight: true,
   },
   {
     id: "social",
     name: "Social Services",
-    description: "Municipal assistance, identification, and social welfare support.",
+    description: "Financial assistance, social case studies and referrals, and municipal IDs.",
     icon: HandHeartIcon,
+    highlight: true,
+  },
+  {
+    id: "building",
+    name: "Building & Zoning",
+    description: "Building, occupancy and fencing permits, inspections, and locational clearances.",
+    icon: HouseLineIcon,
+    highlight: true,
+  },
+  {
+    id: "agriculture",
+    name: "Agriculture",
+    description: "Farmer and fisherfolk registration, farm inputs, soil analysis, and animal health.",
+    icon: PlantIcon,
+  },
+  {
+    id: "transport",
+    name: "Transport",
+    description: "Tricycle franchises and working permits for tricycle drivers and operators.",
+    icon: MotorcycleIcon,
+  },
+  {
+    id: "records",
+    name: "Clearances & Records",
+    description: "Mayor’s clearances and certifications, and certified copies of municipal records.",
+    icon: StampIcon,
+  },
+  {
+    id: "environment",
+    name: "Environment",
+    description: "Garbage hauling, vermicompost, environmental certificates, and inspections.",
+    icon: RecycleIcon,
+  },
+  {
+    id: "facilities",
+    name: "Facilities & Tourism",
+    description: "Rental of government facilities and tourism information.",
+    icon: MapTrifoldIcon,
   },
 ]
 
-export type Service = {
-  name: string
-  category: ServiceCategoryId
-  office: string
-  keywords?: string[]
+/** Copy shown while the service records are still loading. */
+export const serviceLoading = {
+  search: "Loading services…",
+  count: "Browse services",
 }
-
-export const services: Service[] = [
-  { name: "New business permit", category: "business", office: "BPLO", keywords: ["mayor's permit", "registration", "license", "start a business", "permit to operate", "negosyo"] },
-  { name: "Business permit renewal", category: "business", office: "BPLO", keywords: ["renew", "renewal", "annual", "mayor's permit", "license"] },
-  { name: "Business closure / retirement", category: "business", office: "BPLO", keywords: ["close", "closing", "retire", "cessation", "stop business"] },
-  { name: "Birth certificate", category: "certificates", office: "Municipal Civil Registrar", keywords: ["psa", "civil registry", "birth record", "live birth"] },
-  { name: "Marriage certificate", category: "certificates", office: "Municipal Civil Registrar", keywords: ["marriage contract", "wedding", "kasal", "civil registry"] },
-  { name: "Death certificate", category: "certificates", office: "Municipal Civil Registrar", keywords: ["death record", "burial", "civil registry"] },
-  { name: "Community tax certificate (cedula)", category: "tax", office: "Municipal Treasurer", keywords: ["ctc", "cedula", "sedula", "residence certificate"] },
-  { name: "Real property tax payment", category: "tax", office: "Municipal Treasurer", keywords: ["rpt", "amilyar", "land tax", "property tax", "house tax"] },
-  { name: "Tax clearance", category: "tax", office: "Municipal Treasurer", keywords: ["clearance", "no tax due"] },
-  { name: "Health certificate", category: "health", office: "Rural Health Unit", keywords: ["health card", "food handler", "medical certificate"] },
-  { name: "Sanitary permit", category: "health", office: "Rural Health Unit", keywords: ["sanitation", "establishment", "food business"] },
-  { name: "Medical consultation", category: "health", office: "Rural Health Unit", keywords: ["checkup", "check-up", "doctor", "nurse", "sick", "clinic"] },
-  { name: "Senior citizen ID", category: "social", office: "MSWDO", keywords: ["osca", "senior", "elderly", "lolo", "lola"] },
-  { name: "PWD ID", category: "social", office: "MSWDO", keywords: ["disability", "person with disability", "handicapped"] },
-  { name: "Solo parent ID", category: "social", office: "MSWDO", keywords: ["single parent", "single mother", "single father"] },
-  { name: "Assistance to individuals in crisis", category: "social", office: "MSWDO", keywords: ["aics", "financial", "burial", "medical assistance", "hospital bill", "ayuda", "tulong"] },
-]
 
 export const popularSearches = [
   { label: "Business permit", query: "business permit" },
@@ -343,4 +381,64 @@ export const about = {
       },
     ],
   },
+}
+
+/** Copy for the service detail page and the /services standards section. */
+export const serviceDetail = {
+  back: "All services",
+  sidebarLabel: "Service summary and contact",
+  facts: {
+    classification: "Classification",
+    transactionTypes: "Type of transaction",
+    whoMayAvail: "Who may avail",
+    totalTime: "Total processing time",
+  },
+  requirements: {
+    title: "Requirements",
+    description: "What to bring, and where to get each item.",
+    whereToSecure: "Where to secure",
+    empty: "No requirements listed in the charter for this service.",
+  },
+  steps: {
+    title: "Steps to follow",
+    description: "In charter order. Each step lists what the office does, with its fee, time and person responsible.",
+    empty: "The charter lists no steps for this service.",
+    fee: "Fee",
+    time: "Processing time",
+    responsible: "Person responsible",
+  },
+  notes: { title: "Notes from the charter" },
+  summary: {
+    title: "At a glance",
+    totalTime: "Total time",
+    totalFees: "Total fees",
+    office: "Office",
+    notStated: "Not stated in the charter",
+  },
+  contact: { title: "Office contact", phone: "Phone", email: "Email", location: "Location" },
+  source: {
+    title: "Verify in the charter",
+    description: "Details are copied from the 2023 Citizen’s Charter. Check the printed page before you go.",
+    linkPrefix: "Citizen’s Charter, p.",
+  },
+  feedback: {
+    title: "Feedback and complaints",
+    linkLabel: "Citizen’s Charter feedback page",
+  },
+  notFound: {
+    title: "Service not found",
+    description: "We couldn’t find a service with that address. It may have been renamed or removed.",
+    action: "Browse all services",
+  },
+}
+
+export const serviceStandards = {
+  eyebrow: "Service standards",
+  title: "Our pledge and your feedback",
+  description: "What the Municipal Government of Naguilian pledges, and how to give feedback.",
+  pledgeTitle: "Performance pledge",
+  pledgeSource: "Citizen’s Charter, performance pledge",
+  feedbackTitle: "Complaints, grievances and feedback",
+  slipLabel: "A feedback slip asks for",
+  feedbackSource: "Citizen’s Charter, feedback mechanism",
 }

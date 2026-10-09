@@ -3,9 +3,12 @@ import { ArrowRightIcon, ArrowUpRightIcon, SquaresFourIcon } from "@phosphor-ico
 
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Container, Section, SectionHeading, SourceLink } from "@/components/site/section"
-import { links, serviceCategories, services } from "@/data/site"
+import { charterMeta } from "@/data/charter"
+import { links, serviceCategories, serviceLoading } from "@/data/site"
+import { useServices } from "@/hooks/use-services"
 
 export function PopularServices() {
+  const services = useServices()
   return (
     <Section id="services">
       <Container>
@@ -15,8 +18,8 @@ export function PopularServices() {
           description="Open a filtered Services view for published records from Naguilian’s Citizen’s Charter."
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {serviceCategories.map((category) => {
-            const count = services.filter((s) => s.category === category.id).length
+          {serviceCategories.filter((c) => c.highlight).map((category) => {
+            const count = services?.filter((s) => s.category === category.id).length
             return (
               <Card key={category.id} className="group relative gap-4 transition-all hover:-translate-y-0.5 hover:border-ring/50 hover:shadow-md">
                 <CardHeader>
@@ -39,7 +42,7 @@ export function PopularServices() {
                 </CardHeader>
                 <CardContent className="mt-auto space-y-2 text-sm">
                   <p className="inline-flex items-center gap-1 font-semibold text-primary">
-                    {count} services <ArrowRightIcon className="size-3.5" />
+                    {count === undefined ? serviceLoading.count : `${count} services`} <ArrowRightIcon className="size-3.5" />
                   </p>
                   {category.featured && (
                     <a
@@ -79,7 +82,7 @@ export function PopularServices() {
             </CardContent>
           </Card>
         </div>
-        <p className="mt-4 text-right text-xs text-muted-foreground">Category source: Naguilian 2025 Citizen’s Charter</p>
+        <p className="mt-4 text-right text-xs text-muted-foreground">Category source: Naguilian {charterMeta.edition} Citizen’s Charter</p>
       </Container>
     </Section>
   )
