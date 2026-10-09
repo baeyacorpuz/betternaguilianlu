@@ -68,6 +68,7 @@ const navGroups: NavGroup[] = [
     items: [
       { title: "Citizen’s Charter", description: "Published service steps, fees, and timelines.", href: links.citizensCharter },
       { title: "Official website", description: "The municipality’s own website.", href: links.officialSite },
+      { title: "About Better Naguilian", description: "Who builds this portal and where its information comes from.", to: "/about" },
     ],
   },
   {

@@ -4,6 +4,7 @@ import {
   createRouter,
 } from '@tanstack/react-router'
 import { serviceCategories, type ServiceCategoryId } from '@/data/site'
+import { AboutPage } from '@/pages/about'
 import { HomePage } from '@/pages/home'
 import { ServicesPage } from '@/pages/services'
 import RootLayout from './root-layout'
@@ -32,7 +33,13 @@ const servicesRoute = createRoute({
   component: ServicesPage,
 })
 
-const routeTree = rootRoute.addChildren([indexRoute, servicesRoute])
+const aboutRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/about',
+  component: AboutPage,
+})
+
+const routeTree = rootRoute.addChildren([indexRoute, servicesRoute, aboutRoute])
 
 export const router = createRouter({ routeTree })
 

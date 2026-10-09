@@ -2,10 +2,24 @@ import type { Icon } from "@phosphor-icons/react"
 import {
   BriefcaseIcon,
   CertificateIcon,
+  DeviceMobileIcon,
+  FilesIcon,
   FirstAidKitIcon,
+  FlagIcon,
   HandHeartIcon,
+  LinkSimpleIcon,
+  LockKeyIcon,
+  PersonArmsSpreadIcon,
   ReceiptIcon,
+  ScalesIcon,
+  SealCheckIcon,
+  UsersThreeIcon,
 } from "@phosphor-icons/react"
+
+export const volunteerEmail = "volunteer@betternaguilian.org"
+
+const mailto = (subject: string, body: string) =>
+  `mailto:${volunteerEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 
 /**
  * External destinations. Replace the `#` placeholders with the official URLs
@@ -21,6 +35,11 @@ export const links = {
   businessPermit: "#",
   legislativeRequest: "#",
   climate: "#",
+  feedback: mailto(
+    "Report: wrong information on Better Naguilian",
+    "Page or service:\n\nWhat's wrong:\n\nCorrect information and source (if known):\n"
+  ),
+  contribute: "https://github.com/baeyacorpuz/betternaguilianlu",
 } as const
 
 export const municipality = {
@@ -235,3 +254,93 @@ export const quiz: QuizQuestion[] = [
     source: links.demographics,
   },
 ]
+
+export const about = {
+  intro: {
+    eyebrow: "About",
+    title: "About Better Naguilian",
+    mission:
+      "Better Naguilian is a community-built guide to municipal services in Naguilian, La Union. It gathers published service steps, offices, and basic facts in one place so residents can find what they need before visiting the Municipal Hall.",
+    primaryLabel: "Browse services",
+    secondaryLabel: "How to help",
+  },
+  independence: {
+    title: "Independent and volunteer-built",
+    tagline: "Not an official government website",
+    body: "Better Naguilian is built by independent volunteers. It is not affiliated with or endorsed by the Municipal Government of Naguilian. For official transactions and announcements, use the municipality’s own channels.",
+    officialLabel: "Visit the official municipal website",
+  },
+  sources: {
+    eyebrow: "Sources",
+    title: "Where our information comes from",
+    description: "Every factual item on this portal points back to an official municipal source.",
+    steps: [
+      {
+        icon: FilesIcon,
+        title: "Gathered from official sources",
+        description:
+          "Service steps, offices, and requirements come from the published Citizen’s Charter. Population, history, and leadership come from the official municipal website.",
+        sources: [
+          { label: "Citizen’s Charter", href: links.citizensCharter },
+          { label: "Official website", href: links.officialSite },
+        ],
+      },
+      {
+        icon: LinkSimpleIcon,
+        title: "Every fact is cited",
+        description: "Factual content carries a Source link, so you can open the original and check it yourself.",
+      },
+      {
+        icon: ScalesIcon,
+        title: "Official sources win",
+        description: "If anything here disagrees with an official source, the official source takes precedence.",
+      },
+    ],
+  },
+  principles: {
+    eyebrow: "Principles",
+    title: "What we commit to",
+    items: [
+      {
+        icon: SealCheckIcon,
+        title: "Cite official sources",
+        description: "Every fact links back to the municipal source it came from.",
+      },
+      {
+        icon: PersonArmsSpreadIcon,
+        title: "Accessible to everyone",
+        description: "Keyboard navigation, readable contrast, and support for screen readers in light and dark mode.",
+      },
+      {
+        icon: DeviceMobileIcon,
+        title: "Works on any phone",
+        description: "Built for small screens and installable as an app that keeps working on a weak connection.",
+      },
+      {
+        icon: LockKeyIcon,
+        title: "No accounts, no tracking",
+        description: "You never need to sign in, and the portal does not collect personal data.",
+      },
+    ],
+  },
+  involve: {
+    eyebrow: "Get involved",
+    title: "Help keep it accurate",
+    description: "Better Naguilian is only as good as its information. Flag what’s wrong, or lend a hand.",
+    emailNote: "Reporting opens your email app. You can also write to us directly at",
+    actions: [
+      {
+        icon: FlagIcon,
+        title: "Report an issue",
+        description: "Spotted outdated or wrong information? Tell us what to fix.",
+        href: links.feedback,
+      },
+      {
+        icon: UsersThreeIcon,
+        title: "Contribute",
+        description: "Volunteers who want to write, check, or build the portal can start on GitHub.",
+        href: links.contribute,
+      },
+    ],
+  },
+}
