@@ -1,9 +1,12 @@
 import type { Icon } from "@phosphor-icons/react"
 import {
   BookOpenTextIcon,
+  BugIcon,
   BriefcaseIcon,
   CertificateIcon,
   DeviceMobileIcon,
+  EnvelopeSimpleIcon,
+  GitBranchIcon,
   FilesIcon,
   FirstAidKitIcon,
   FlagIcon,
@@ -53,6 +56,8 @@ export const links = {
     "Page or service:\n\nWhat's wrong:\n\nCorrect information and source (if known):\n"
   ),
   contribute: "https://github.com/baeyacorpuz/betternaguilianlu",
+  issues: "https://github.com/baeyacorpuz/betternaguilianlu/issues",
+  email: mailto("Hello from a Better Naguilian visitor", ""),
 } as const
 
 export const municipality = {
@@ -606,6 +611,89 @@ export const about = {
         href: links.contribute,
       },
     ],
+  },
+}
+
+/** Copy for the /contact page. */
+export const contactPage = {
+  intro: {
+    eyebrow: "Contact",
+    title: "Get in touch",
+    body: "Better Naguilian is a community-built project. It’s made and maintained by volunteers from and for Naguilian, not by the municipal government. Write to us about anything: a mistake, an idea, or a question about the project.",
+  },
+  municipalHall: {
+    title: "Looking for the Municipal Hall?",
+    body: "We can’t process permits, payments or requests. For official transactions, contact the municipality directly.",
+    linkLabel: "Municipal Hall contacts",
+  },
+  ways: {
+    eyebrow: "Reach the team",
+    title: "How to reach us",
+    description: "Email works for everything. If you use GitHub, you can file issues or send changes there too.",
+    items: [
+      {
+        icon: EnvelopeSimpleIcon,
+        title: "Email us",
+        description: "Questions, ideas, partnerships, or anything else. We read every message.",
+        cta: volunteerEmail,
+        href: links.email,
+      },
+      {
+        icon: FlagIcon,
+        title: "Report an issue",
+        description: "Wrong fee, outdated step, broken link? Tell us the page and what to fix.",
+        cta: "Send a report",
+        href: links.feedback,
+      },
+      {
+        icon: BugIcon,
+        title: "Open a GitHub issue",
+        description: "Track bugs and feature requests in public, where anyone can follow along.",
+        cta: "View issues",
+        href: links.issues,
+      },
+      {
+        icon: GitBranchIcon,
+        title: "Contribute",
+        description: "The code is open source. Write, check sources, design or build. Every skill helps.",
+        cta: "Start on GitHub",
+        href: links.contribute,
+      },
+    ],
+  },
+  community: {
+    eyebrow: "Community-built",
+    title: "Other community-built government sites",
+    description: "Better Naguilian is part of a wider volunteer movement, started by BetterGov.ph, to make government information easier to use.",
+    sites: [
+      {
+        name: "BetterGov.ph",
+        place: "Philippines",
+        description: "The national volunteer-built portal for government services and information that inspired this project.",
+        href: "https://bettergov.ph",
+      },
+      {
+        name: "Better Los Baños",
+        place: "Los Baños, Laguna",
+        description: "An LGU-focused fork of BetterGov.ph for the municipality of Los Baños.",
+        href: "https://betterlb.org",
+      },
+      {
+        name: "BetterKabankalan",
+        place: "Kabankalan City, Negros Occidental",
+        description: "A citizen-driven portal for Kabankalan City, inspired by BetterGov.ph.",
+        href: "https://betterkabankalan.org",
+      },
+      {
+        name: "Better GenSan",
+        place: "General Santos City, South Cotabato",
+        description: "A community-powered portal for city services, news and government information.",
+        href: "https://bettergensan.org",
+      },
+    ],
+    suggest: "Know another community-built LGU site?",
+    suggestLabel: "Let us know",
+    suggestHref: mailto("Community site suggestion", "Site name:\n\nLink:\n\nLGU it covers:\n"),
   },
 }
 
