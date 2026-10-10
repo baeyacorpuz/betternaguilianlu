@@ -1,5 +1,6 @@
 import type { Icon } from "@phosphor-icons/react"
 import {
+  BookOpenTextIcon,
   BriefcaseIcon,
   CertificateIcon,
   DeviceMobileIcon,
@@ -8,7 +9,6 @@ import {
   FlagIcon,
   HandHeartIcon,
   HouseLineIcon,
-  LinkSimpleIcon,
   LockKeyIcon,
   MapTrifoldIcon,
   MotorcycleIcon,
@@ -21,6 +21,8 @@ import {
   StampIcon,
   UsersThreeIcon,
 } from "@phosphor-icons/react"
+
+import { executive } from "@/data/government"
 
 export type { Service } from "@/data/charter"
 
@@ -365,9 +367,66 @@ export const history = [
 ]
 
 export const leadership = [
-  { role: "Mayor", name: "Hon. Nieri T. Flores", title: "Municipal Mayor" },
-  { role: "Vice Mayor", name: "Hon. Reynaldo J. Flores", title: "Municipal Vice Mayor" },
+  { role: "Mayor", person: executive.mayor },
+  { role: "Vice Mayor", person: executive.viceMayor },
 ]
+
+export const government = {
+  eyebrow: "Government",
+  nav: {
+    label: "Government",
+    items: [
+      { to: "/government/leadership", label: "Leadership" },
+      { to: "/government/history", label: "History" },
+      { to: "/government/officials", label: "Officials directory" },
+    ],
+  },
+  currency: {
+    title: "As printed in the 2023 Citizen’s Charter",
+    body: "This listing comes from the charter’s organizational structure and Office Order No. 2023-1-B. Officials may have changed since then.",
+    linkLabel: "Check the official officials listing",
+  },
+  leadership: {
+    title: "Municipal Leadership",
+    description:
+      "The elected officials who lead Naguilian’s executive and legislative branches, as listed in the 2023 Citizen’s Charter.",
+    executive: "Mayor and Vice Mayor",
+    sb: {
+      eyebrow: "Legislative",
+      title: "Sangguniang Bayan",
+      description: "The municipal council. The Vice Mayor presides over its sessions.",
+      exOfficio: "Ex-officio members",
+    },
+    messages: {
+      eyebrow: "In their words",
+      title: "Messages from the Mayor and Vice Mayor",
+      description: "Printed at the front of the 2023 Citizen’s Charter.",
+    },
+  },
+  history: {
+    title: "Brief History",
+    description: "Key moments in Naguilian’s history, from the municipality’s official history account.",
+    timeline: "Timeline",
+    visionMission: {
+      eyebrow: "Direction",
+      title: "Vision and mission",
+      vision: "Vision",
+      mission: "Mission",
+    },
+  },
+  officials: {
+    title: "Officials Directory",
+    description:
+      "Who heads each municipal office and unit, who signs in their absence, and how to reach the office.",
+    oic: "Officer-in-charge in the head’s absence",
+    services: "Services from this office",
+    contact: "Office contact",
+  },
+  teasers: {
+    leadership: "Meet the full leadership",
+    history: "Read the full history",
+  },
+}
 
 export const contact = {
   phone: "+63 (072) 619 4917",
@@ -453,22 +512,18 @@ export const about = {
   sources: {
     eyebrow: "Sources",
     title: "Where our information comes from",
-    description: "Factual items link back to the official municipal source they came from. A few source links are still being confirmed and will be added as they are.",
+    description: "Everything here comes from published official municipal sources. Confirm with the municipality before you transact.",
     steps: [
       {
         icon: FilesIcon,
         title: "Gathered from official sources",
         description:
           "Service steps, offices, and requirements come from the published Citizen’s Charter. Population, history, and leadership come from the official municipal website.",
-        sources: [
-          { label: "Citizen’s Charter", href: links.citizensCharter },
-          { label: "Official website", href: links.officialSite },
-        ],
       },
       {
-        icon: LinkSimpleIcon,
-        title: "Facts are cited",
-        description: "Factual content carries a Source link, so you can open the original and check it yourself.",
+        icon: BookOpenTextIcon,
+        title: "Sources are named",
+        description: "Each section says where its information comes from, such as the 2023 Citizen’s Charter or the official municipal website, so you know where to check.",
       },
       {
         icon: ScalesIcon,
@@ -483,8 +538,8 @@ export const about = {
     items: [
       {
         icon: SealCheckIcon,
-        title: "Cite official sources",
-        description: "Facts link back to the municipal source they came from, and we add missing links as sources are confirmed.",
+        title: "Stick to official sources",
+        description: "We publish only what official municipal sources have published, and say where it comes from.",
       },
       {
         icon: PersonArmsSpreadIcon,
@@ -559,14 +614,8 @@ export const serviceDetail = {
     notStated: "Not stated in the charter",
   },
   contact: { title: "Office contact", phone: "Phone", email: "Email", location: "Location" },
-  source: {
-    title: "Verify in the charter",
-    description: "Details are copied from the 2023 Citizen’s Charter. Check the printed page before you go.",
-    linkPrefix: "Citizen’s Charter, p.",
-  },
   feedback: {
     title: "Feedback and complaints",
-    linkLabel: "Citizen’s Charter feedback page",
   },
   notFound: {
     title: "Service not found",
@@ -580,8 +629,6 @@ export const serviceStandards = {
   title: "Our pledge and your feedback",
   description: "What the Municipal Government of Naguilian pledges, and how to give feedback.",
   pledgeTitle: "Performance pledge",
-  pledgeSource: "Citizen’s Charter, performance pledge",
   feedbackTitle: "Complaints, grievances and feedback",
   slipLabel: "A feedback slip asks for",
-  feedbackSource: "Citizen’s Charter, feedback mechanism",
 }

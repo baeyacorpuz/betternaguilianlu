@@ -4,7 +4,7 @@ import { ArrowDownIcon, ArrowRightIcon, ArrowUpRightIcon, EnvelopeSimpleIcon, Ha
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Container, Section, SectionHeading, SourceLink } from "@/components/site/section"
+import { Container, Section, SectionHeading } from "@/components/site/section"
 import { about, links, volunteerEmail } from "@/data/site"
 
 export function AboutPage() {
@@ -85,13 +85,6 @@ export function AboutPage() {
                     </CardTitle>
                     <CardDescription className="leading-relaxed">{step.description}</CardDescription>
                   </CardHeader>
-                  {step.sources && (
-                    <CardFooter className="mt-auto flex-wrap gap-x-4 gap-y-2 border-t [.border-t]:pt-4">
-                      {step.sources.map((source) => (
-                        <SourceLink key={source.label} href={source.href} label={source.label} />
-                      ))}
-                    </CardFooter>
-                  )}
                 </Card>
               </li>
             ))}

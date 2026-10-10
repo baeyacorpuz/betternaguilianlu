@@ -3,10 +3,15 @@ import {
   createRoute,
   createRouter,
   notFound,
+  redirect,
 } from '@tanstack/react-router'
 import { loadServices } from '@/data/charter'
 import { serviceCategories, type ServiceCategoryId } from '@/data/site'
 import { AboutPage } from '@/pages/about'
+import { HistoryPage } from '@/pages/government/history'
+import { GovernmentLayout } from '@/pages/government/layout'
+import { LeadershipPage } from '@/pages/government/leadership'
+import { OfficialsPage } from '@/pages/government/officials'
 import { HomePage } from '@/pages/home'
 import { ServiceDetailPage, ServiceNotFound } from '@/pages/service-detail'
 import { ServicesPage } from '@/pages/services'
@@ -56,11 +61,44 @@ const aboutRoute = createRoute({
   component: AboutPage,
 })
 
+const governmentRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/government',
+  component: GovernmentLayout,
+})
+
+const governmentIndexRoute = createRoute({
+  getParentRoute: () => governmentRoute,
+  path: '/',
+  beforeLoad: () => {
+    throw redirect({ to: '/government/leadership', replace: true })
+  },
+})
+
+const leadershipRoute = createRoute({
+  getParentRoute: () => governmentRoute,
+  path: '/leadership',
+  component: LeadershipPage,
+})
+
+const historyRoute = createRoute({
+  getParentRoute: () => governmentRoute,
+  path: '/history',
+  component: HistoryPage,
+})
+
+const officialsRoute = createRoute({
+  getParentRoute: () => governmentRoute,
+  path: '/officials',
+  component: OfficialsPage,
+})
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   servicesRoute,
   serviceRoute,
   aboutRoute,
+  governmentRoute.addChildren([governmentIndexRoute, leadershipRoute, historyRoute, officialsRoute]),
 ])
 
 export const router = createRouter({ routeTree })
