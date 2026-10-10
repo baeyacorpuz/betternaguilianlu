@@ -49,6 +49,19 @@ export default defineConfig({
         navigateFallbackAllowlist: [/^\/.*$/],
         // let /docs (the charter PDF) load from the network instead of the SPA shell
         navigateFallbackDenylist: [/^\/docs\//, /\.pdf$/],
+        // keep the last forecast available offline, but never serve it for long
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/api\.open-meteo\.com\/.*/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'weather-forecast',
+              networkTimeoutSeconds: 5,
+              expiration: { maxEntries: 4, maxAgeSeconds: 3 * 60 * 60 },
+              cacheableResponse: { statuses: [200] },
+            },
+          },
+        ],
       },
     }),
   ],
