@@ -29,7 +29,7 @@ import { executive } from "@/data/government"
 
 export type { Service } from "@/data/charter"
 
-export const volunteerEmail = "volunteer@betternaguilian.org"
+export const volunteerEmail = "volunteer@betternaguilianlu.org"
 
 const mailto = (subject: string, body: string) =>
   `mailto:${volunteerEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
