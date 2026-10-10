@@ -1,18 +1,20 @@
-import { getRouteApi } from "@tanstack/react-router"
-import { ArrowUpRightIcon, BuildingOfficeIcon, MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react"
+import { getRouteApi, Link } from "@tanstack/react-router"
+import { ArrowRightIcon, BuildingOfficeIcon, ChatCenteredTextIcon, HandshakeIcon, MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { Container, Section, SourceLink } from "@/components/site/section"
-import { links, serviceCategories, services, type ServiceCategoryId } from "@/data/site"
+import { Container, Section, SectionHeading, SourceLink } from "@/components/site/section"
+import { charterPage, feedbackMechanism, pledge } from "@/data/charter"
+import { serviceCategories, serviceStandards, type ServiceCategoryId } from "@/data/site"
 import { searchServices } from "@/lib/service-search"
 
 const route = getRouteApi("/services")
 
 export function ServicesPage() {
+  const services = route.useLoaderData()
   const { category, q = "" } = route.useSearch()
   const navigate = route.useNavigate()
   const query = q
@@ -21,7 +23,7 @@ export function ServicesPage() {
     void navigate({ search: (prev) => ({ ...prev, ...next }), replace: true })
 
   const needle = query.trim()
-  const results = searchServices(query, category ? services.filter((s) => s.category === category) : services)
+  const results = searchServices(query, services).filter((s) => !category || s.category === category)
 
   return (
     <>
@@ -96,29 +98,93 @@ export function ServicesPage() {
               {results.map((s) => {
                 const cat = serviceCategories.find((c) => c.id === s.category)!
                 return (
-                  <Card key={s.name} className="gap-4">
+                  <Card key={s.id} className="group relative gap-4 transition-all hover:-translate-y-0.5 hover:border-ring/50 hover:shadow-md">
                     <CardHeader>
                       <Badge variant="secondary" className="mb-1 gap-1">
                         <cat.icon />
                         {cat.name}
                       </Badge>
                       <CardAction>
-                        <ArrowUpRightIcon className="size-4 text-muted-foreground" />
+                        <ArrowRightIcon className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground" />
                       </CardAction>
-                      <CardTitle className="text-base">{s.name}</CardTitle>
+                      <CardTitle className="text-base leading-snug">
+                        <Link
+                          to="/services/$serviceId"
+                          params={{ serviceId: s.id }}
+                          className="outline-none after:absolute after:inset-0 after:rounded-xl focus-visible:after:ring-[3px] focus-visible:after:ring-ring/50"
+                        >
+                          {s.name}
+                        </Link>
+                      </CardTitle>
                       <CardDescription className="flex items-center gap-1.5">
                         <BuildingOfficeIcon className="size-3.5" />
                         {s.office}
                       </CardDescription>
                     </CardHeader>
-                    <CardFooter className="mt-auto justify-between border-t [.border-t]:pt-4">
-                      <SourceLink href={links.citizensCharter} label="Citizen’s Charter" />
+                    <CardFooter className="relative z-10 mt-auto justify-between border-t [.border-t]:pt-4">
+                      <SourceLink href={charterPage(s.page)} label="Citizen’s Charter" />
                     </CardFooter>
                   </Card>
                 )
               })}
             </div>
           )}
+        </Container>
+      </Section>
+
+      <Section tone="muted" id="service-standards">
+        <Container>
+          <SectionHeading
+            eyebrow={serviceStandards.eyebrow}
+            title={serviceStandards.title}
+            description={serviceStandards.description}
+          />
+          <div className="grid gap-4 lg:grid-cols-2">
+            <Card className="gap-4">
+              <CardHeader className="grid-cols-[auto_1fr] gap-x-3">
+                <span className="row-span-2 flex size-10 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+                  <HandshakeIcon className="size-5" aria-hidden />
+                </span>
+                <h3 className="text-lg leading-none font-semibold">{serviceStandards.pledgeTitle}</h3>
+                <CardDescription>{pledge.intro}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="grid gap-x-8 gap-y-2 text-sm leading-relaxed text-pretty sm:grid-cols-2">
+                  {pledge.items.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
+                      <span className="min-w-0 [overflow-wrap:anywhere]">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+              <CardFooter className="border-t [.border-t]:pt-4">
+                <SourceLink href={charterPage(pledge.page)} label={serviceStandards.pledgeSource} />
+              </CardFooter>
+            </Card>
+
+            <Card className="gap-4">
+              <CardHeader className="grid-cols-[auto_1fr] gap-x-3">
+                <span className="row-span-2 flex size-10 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+                  <ChatCenteredTextIcon className="size-5" aria-hidden />
+                </span>
+                <h3 className="text-lg leading-none font-semibold">{serviceStandards.feedbackTitle}</h3>
+                <CardDescription>{feedbackMechanism.summary}</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm leading-relaxed text-pretty">
+                <p className="font-semibold">{serviceStandards.slipLabel}</p>
+                <ul className="list-disc space-y-1.5 pl-5">
+                  {feedbackMechanism.slipAsks.map((a) => (
+                    <li key={a}>{a}</li>
+                  ))}
+                </ul>
+                <p className="text-muted-foreground">{feedbackMechanism.confidentiality}</p>
+              </CardContent>
+              <CardFooter className="mt-auto border-t [.border-t]:pt-4">
+                <SourceLink href={charterPage(feedbackMechanism.page)} label={serviceStandards.feedbackSource} />
+              </CardFooter>
+            </Card>
+          </div>
         </Container>
       </Section>
     </>

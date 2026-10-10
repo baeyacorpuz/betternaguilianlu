@@ -83,10 +83,12 @@ export function SourceLink({
   label?: string
   className?: string
 }) {
+  // external sites and documents (like the charter PDF) open in a new tab
+  const newTab = href.startsWith("http") || /\.pdf(#.*)?$/.test(href)
   return (
     <a
       href={href}
-      target={href.startsWith("http") ? "_blank" : undefined}
+      target={newTab ? "_blank" : undefined}
       rel="noreferrer"
       className={cn(
         "inline-flex items-center gap-1 text-xs font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline",

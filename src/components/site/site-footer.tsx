@@ -22,6 +22,7 @@ export function SiteFooter() {
           <ul className="space-y-2">
             <li><Link to="/" className="hover:underline">Home</Link></li>
             <li><Link to="/services" className="hover:underline">Services</Link></li>
+            <li><Link to="/about" className="hover:underline">About</Link></li>
             <li><Link to="/" hash="history" className="hover:underline">Naguilian information</Link></li>
             <li><a href={links.citizensCharter} className="hover:underline">Citizen’s Charter</a></li>
           </ul>
@@ -34,7 +35,12 @@ export function SiteFooter() {
       </Container>
       <Separator className="bg-white/10" />
       <Container className="flex flex-col gap-2 py-6 text-xs text-brand-foreground/60 sm:flex-row sm:justify-between">
-        <p>© {new Date().getFullYear()} Better Naguilian · Community-built, not an official government website.</p>
+        <p>
+          © {new Date().getFullYear()} Better Naguilian ·{" "}
+          <Link to="/about" className="underline-offset-4 hover:text-brand-foreground hover:underline">
+            Community-built, not an official government website.
+          </Link>
+        </p>
         <p>Information links to official municipal sources.</p>
       </Container>
     </footer>
