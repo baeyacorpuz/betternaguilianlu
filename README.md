@@ -16,7 +16,7 @@ pnpm lint      # oxlint
 - `src/components/ui/` – shadcn/ui primitives (button, card, badge, input, navigation-menu, sheet, dialog, command, toggle-group, radio-group, progress, alert, avatar, tooltip, accordion, separator, label)
 - `src/components/site/` – layout pieces: top bar, header, footer, ⌘K service search, section helpers
 - `src/components/home/` – homepage sections
-- `src/pages/` – route components (`/`, `/services`, `/services/$serviceId`, and `/about`)
+- `src/pages/` – route components (`/`, `/services`, `/services/$serviceId`, `/about`, and `/government/leadership`, `/government/history`, `/government/officials` and `/government/barangays`)
 - `src/data/site.ts` – all page content and external links
 - `src/data/charter.ts` – services, offices, pledge and feedback transcribed from the 2023 Citizen's Charter
 - `public/docs/citizens-charter-2023.pdf` – self-hosted copy of the charter, so per-service source links can open the exact page

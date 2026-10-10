@@ -58,9 +58,10 @@ const navGroups: NavGroup[] = [
   {
     title: "Government",
     items: [
-      { title: "Municipal Leadership", description: "The current mayor and vice mayor.", to: "/", hash: "leadership" },
-      { title: "Brief History", description: "Key moments from the official history.", to: "/", hash: "history" },
-      { title: "Officials directory", description: "Full listing on the official site.", href: links.officials },
+      { title: "Municipal Leadership", description: "The mayor, vice mayor and Sangguniang Bayan.", to: "/government/leadership" },
+      { title: "Brief History", description: "Key moments, vision and mission.", to: "/government/history" },
+      { title: "Officials directory", description: "Department heads and how to reach their offices.", to: "/government/officials" },
+      { title: "Barangays", description: "All 37 barangays, their population and officials.", to: "/government/barangays" },
     ],
   },
   {

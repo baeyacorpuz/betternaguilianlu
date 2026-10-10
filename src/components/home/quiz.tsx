@@ -15,7 +15,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Label } from "@/components/ui/label"
 import { Progress } from "@/components/ui/progress"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Container, Section, SectionHeading, SourceLink } from "@/components/site/section"
+import { Container, Section, SectionHeading } from "@/components/site/section"
 import { quiz } from "@/data/site"
 
 export function Quiz() {
@@ -135,8 +135,7 @@ export function Quiz() {
                   </Alert>
                 )}
               </CardContent>
-              <CardFooter className="justify-between border-t [.border-t]:pt-4">
-                <SourceLink href={q.source} label="Question source" />
+              <CardFooter className="justify-end border-t [.border-t]:pt-4">
                 {checked ? (
                   <Button onClick={next}>
                     {index === quiz.length - 1 ? "See results" : "Next question"}

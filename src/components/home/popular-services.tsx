@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router"
 import { ArrowRightIcon, ArrowUpRightIcon, SquaresFourIcon } from "@phosphor-icons/react"
 
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Container, Section, SectionHeading, SourceLink } from "@/components/site/section"
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Container, Section, SectionHeading } from "@/components/site/section"
 import { charterMeta } from "@/data/charter"
-import { links, serviceCategories, serviceLoading } from "@/data/site"
+import { serviceCategories, serviceLoading } from "@/data/site"
 import { useServices } from "@/hooks/use-services"
 
 export function PopularServices() {
@@ -54,9 +54,6 @@ export function PopularServices() {
                     </a>
                   )}
                 </CardContent>
-                <CardFooter className="relative z-10 border-t pt-4 [.border-t]:pt-4">
-                  <SourceLink href={links.citizensCharter} />
-                </CardFooter>
               </Card>
             )
           })}

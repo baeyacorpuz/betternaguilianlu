@@ -5,9 +5,9 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
-import { Container, Section, SectionHeading, SourceLink } from "@/components/site/section"
+import { Container, Section, SectionHeading } from "@/components/site/section"
 import { WeatherToday } from "@/components/home/weather-today"
-import { climate, climateCopy as copy, contact, links, mapLinks, municipality } from "@/data/site"
+import { climate, climateCopy as copy, contact, mapLinks, municipality } from "@/data/site"
 
 const monthFormat = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Manila", month: "numeric" })
 
@@ -104,9 +104,6 @@ function ClimateCard() {
           ))}
         </dl>
       </CardContent>
-      <CardFooter className="mt-auto border-t [.border-t]:pt-4">
-        <SourceLink href={links.climate} label={copy.sourceLabel} />
-      </CardFooter>
     </Card>
   )
 }
@@ -145,8 +142,7 @@ function MapCard() {
           <span>{copy.mapNote}</span>
         </div>
       </CardContent>
-      <CardFooter className="flex-wrap justify-between gap-3 border-t [.border-t]:pt-4">
-        <SourceLink href={links.officialSite} />
+      <CardFooter className="flex-wrap justify-end gap-3 border-t [.border-t]:pt-4">
         <div className="flex flex-wrap gap-2">
           <Button asChild variant="outline" size="sm">
             <a href={urls.openStreetMap} target="_blank" rel="noreferrer">

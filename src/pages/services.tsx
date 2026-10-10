@@ -3,11 +3,11 @@ import { ArrowRightIcon, BuildingOfficeIcon, ChatCenteredTextIcon, HandshakeIcon
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { Container, Section, SectionHeading, SourceLink } from "@/components/site/section"
-import { charterPage, feedbackMechanism, pledge } from "@/data/charter"
+import { Container, Section, SectionHeading } from "@/components/site/section"
+import { feedbackMechanism, pledge } from "@/data/charter"
 import { serviceCategories, serviceStandards, type ServiceCategoryId } from "@/data/site"
 import { searchServices } from "@/lib/service-search"
 
@@ -121,9 +121,6 @@ export function ServicesPage() {
                         {s.office}
                       </CardDescription>
                     </CardHeader>
-                    <CardFooter className="relative z-10 mt-auto justify-between border-t [.border-t]:pt-4">
-                      <SourceLink href={charterPage(s.page)} label="Citizen’s Charter" />
-                    </CardFooter>
                   </Card>
                 )
               })}
@@ -158,9 +155,6 @@ export function ServicesPage() {
                   ))}
                 </ul>
               </CardContent>
-              <CardFooter className="border-t [.border-t]:pt-4">
-                <SourceLink href={charterPage(pledge.page)} label={serviceStandards.pledgeSource} />
-              </CardFooter>
             </Card>
 
             <Card className="gap-4">
@@ -180,9 +174,6 @@ export function ServicesPage() {
                 </ul>
                 <p className="text-muted-foreground">{feedbackMechanism.confidentiality}</p>
               </CardContent>
-              <CardFooter className="mt-auto border-t [.border-t]:pt-4">
-                <SourceLink href={charterPage(feedbackMechanism.page)} label={serviceStandards.feedbackSource} />
-              </CardFooter>
             </Card>
           </div>
         </Container>

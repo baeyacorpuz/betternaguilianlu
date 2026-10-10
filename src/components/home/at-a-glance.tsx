@@ -1,7 +1,7 @@
 import { BuildingsIcon, MapTrifoldIcon, MedalIcon, UsersThreeIcon } from "@phosphor-icons/react"
 
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Container, Section, SectionHeading, SourceLink } from "@/components/site/section"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { Container, Section, SectionHeading } from "@/components/site/section"
 import { stats } from "@/data/site"
 
 const icons = [UsersThreeIcon, BuildingsIcon, MedalIcon, MapTrifoldIcon]
@@ -28,9 +28,6 @@ export function AtAGlance() {
                   <p className="text-3xl font-extrabold tracking-tight tabular-nums">{stat.value}</p>
                   <p className="text-xs text-muted-foreground">{stat.note}</p>
                 </CardContent>
-                <CardFooter className="mt-auto">
-                  <SourceLink href={stat.source} />
-                </CardFooter>
               </Card>
             )
           })}
