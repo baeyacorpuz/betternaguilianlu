@@ -8,7 +8,7 @@ import { links, serviceCategories, serviceLoading } from "@/data/site"
 import { useServices } from "@/hooks/use-services"
 
 export function PopularServices() {
-  const services = useServices()
+  const { services } = useServices()
   return (
     <Section id="services">
       <Container>

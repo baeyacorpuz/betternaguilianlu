@@ -152,7 +152,11 @@ let servicesPromise: Promise<Service[]> | undefined
 
 /** Loads the service records on demand; they live in their own chunk. The promise is cached. */
 export function loadServices(): Promise<Service[]> {
-  servicesPromise ??= import("@/data/charter-services").then((m) => m.services).catch((error) => {
+  servicesPromise ??= import("@/data/charter-services").then((m) => {
+    // the chunk loaded, so a later failure may reload the page again (see main.tsx)
+    sessionStorage.removeItem("bn-chunk-reload")
+    return m.services
+  }).catch((error) => {
     servicesPromise = undefined
     throw error
   })

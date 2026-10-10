@@ -21,7 +21,7 @@ export function ServiceSearchProvider({ children }: { children: React.ReactNode 
   const [query, setQuery] = React.useState("")
   const navigate = useNavigate()
   const [idle, setIdle] = React.useState(false)
-  const services = useServices(open || idle)
+  const { services, failed } = useServices(open || idle)
 
   // Prefetch the service records once the app is idle so the dialog is usually instant.
   React.useEffect(() => {
@@ -87,7 +87,7 @@ export function ServiceSearchProvider({ children }: { children: React.ReactNode 
         <CommandList>
           {!services ? (
             <p className="py-6 text-center text-sm text-muted-foreground" role="status">
-              {serviceLoading.search}
+              {failed ? serviceLoading.failed : serviceLoading.search}
             </p>
           ) : searching ? (
             matches.length > 0 ? (

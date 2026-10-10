@@ -159,6 +159,7 @@ export const serviceCategories: ServiceCategory[] = [
 /** Copy shown while the service records are still loading. */
 export const serviceLoading = {
   search: "Loading services…",
+  failed: "Couldn’t load the services. Check your connection and reload the page to try again.",
   count: "Browse services",
 }
 
@@ -311,7 +312,7 @@ export const about = {
   sources: {
     eyebrow: "Sources",
     title: "Where our information comes from",
-    description: "Every factual item on this portal points back to an official municipal source.",
+    description: "Factual items link back to the official municipal source they came from. A few source links are still being confirmed and will be added as they are.",
     steps: [
       {
         icon: FilesIcon,
@@ -325,7 +326,7 @@ export const about = {
       },
       {
         icon: LinkSimpleIcon,
-        title: "Every fact is cited",
+        title: "Facts are cited",
         description: "Factual content carries a Source link, so you can open the original and check it yourself.",
       },
       {
@@ -342,7 +343,7 @@ export const about = {
       {
         icon: SealCheckIcon,
         title: "Cite official sources",
-        description: "Every fact links back to the municipal source it came from.",
+        description: "Facts link back to the municipal source they came from, and we add missing links as sources are confirmed.",
       },
       {
         icon: PersonArmsSpreadIcon,
