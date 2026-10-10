@@ -44,7 +44,7 @@ export default defineConfig({
       workbox: {
         skipWaiting: true,
         clientsClaim: true,
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest,woff2}'],
         navigateFallback: '/index.html',
         navigateFallbackAllowlist: [/^\/.*$/],
         // let /docs (the charter PDF) load from the network instead of the SPA shell
