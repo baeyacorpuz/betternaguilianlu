@@ -43,6 +43,7 @@ export const links = {
   businessPermit: "#",
   legislativeRequest: "#",
   climate: "#",
+  pagasa: "#",
   feedback: mailto(
     "Report: wrong information on Better Naguilian",
     "Page or service:\n\nWhat's wrong:\n\nCorrect information and source (if known):\n"
@@ -181,6 +182,52 @@ export const climate = {
     "The dry season is November to April, while the wet season covers the rest of the year. Rainfall is highest from July to September.",
   // 0 = dry, 1 = wet, 2 = peak rainfall
   months: [0, 0, 0, 0, 1, 1, 2, 2, 2, 1, 0, 0] as const,
+}
+
+export const sunTimes = {
+  eyebrow: "Today",
+  title: "Sun and moon in Naguilian",
+  description: "Sunrise, sunset, twilight and moon phase for today, shown in Philippine time and updated every minute.",
+  sunTitle: "Sun",
+  sunDescription: "Daylight for today at the Municipal Hall.",
+  moonTitle: "Moon",
+  moonDescription: "Phase and rise and set times for today.",
+  timesTitle: "Twilight and golden hour",
+  progressLabel: "Daylight progress",
+  progressSuffix: "between sunrise and sunset",
+  progressDay: "Sun is up",
+  progressBefore: "Before sunrise",
+  progressAfter: "After sunset",
+  aboveHorizon: "Above the horizon",
+  belowHorizon: "Below the horizon",
+  altitude: "Altitude",
+  azimuth: "Azimuth",
+  illumination: "Illuminated",
+  phase: "Phase",
+  moonArt: "Moon phase illustration",
+  morning: "Morning",
+  evening: "Evening",
+  moonPhases: ["New moon", "Waxing crescent", "First quarter", "Waxing gibbous", "Full moon", "Waning gibbous", "Last quarter", "Waning crescent"],
+  compass: ["N", "NE", "E", "SE", "S", "SW", "W", "NW"],
+  empty: "—",
+  items: {
+    sunrise: "Sunrise",
+    solarNoon: "Solar noon",
+    sunset: "Sunset",
+    dayLength: "Day length",
+    dawn: "Dawn (civil twilight)",
+    dusk: "Dusk (civil twilight)",
+    goldenHourEnd: "Morning golden hour ends",
+    goldenHour: "Evening golden hour starts",
+    nauticalDawn: "Nautical dawn",
+    nauticalDusk: "Nautical dusk",
+    nightEnd: "Astronomical dawn",
+    night: "Astronomical dusk",
+    moonrise: "Moonrise",
+    moonset: "Moonset",
+  },
+  note: "Times are calculated astronomically for the Municipal Hall coordinates and are not an official PAGASA forecast. Use PAGASA for official almanac data.",
+  sourceLabel: "PAGASA",
 }
 
 export const history = [

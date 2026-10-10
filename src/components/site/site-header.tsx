@@ -75,6 +75,7 @@ const navGroups: NavGroup[] = [
     items: [
       { title: "Naguilian at a glance", description: "Population, barangays, class, and land area.", to: "/", hash: "glance" },
       { title: "Climate and map", description: "Climate type and Municipal Hall location.", to: "/", hash: "climate" },
+      { title: "Sun and moon", description: "Today’s sunrise, sunset and moon phase.", to: "/", hash: "sun" },
     ],
   },
 ]
