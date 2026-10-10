@@ -8,6 +8,7 @@ import {
 import { loadServices } from '@/data/charter'
 import { serviceCategories, type ServiceCategoryId } from '@/data/site'
 import { AboutPage } from '@/pages/about'
+import { ContactPage } from '@/pages/contact'
 import { BarangaysPage } from '@/pages/government/barangays'
 import { HistoryPage } from '@/pages/government/history'
 import { GovernmentLayout } from '@/pages/government/layout'
@@ -62,6 +63,12 @@ const aboutRoute = createRoute({
   component: AboutPage,
 })
 
+const contactRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/contact',
+  component: ContactPage,
+})
+
 const governmentRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/government',
@@ -105,6 +112,7 @@ const routeTree = rootRoute.addChildren([
   servicesRoute,
   serviceRoute,
   aboutRoute,
+  contactRoute,
   governmentRoute.addChildren([governmentIndexRoute, leadershipRoute, historyRoute, officialsRoute, barangaysRoute]),
 ])
 

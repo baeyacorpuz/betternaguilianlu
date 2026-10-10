@@ -206,9 +206,7 @@ export function SiteHeader() {
             ))}
             <NavigationMenuItem>
               <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link to="/" hash="contact">
-                  Contact
-                </Link>
+                <Link to="/contact">Contact</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
@@ -253,7 +251,7 @@ export function SiteHeader() {
                 <div className="flex gap-2">
                   <SheetClose asChild>
                     <Button asChild variant="secondary" size="sm" className="flex-1">
-                      <Link to="/" hash="contact">Contact</Link>
+                      <Link to="/contact">Contact</Link>
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>
