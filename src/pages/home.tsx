@@ -7,6 +7,7 @@ import { LatestUpdates } from "@/components/home/latest-updates"
 import { Leadership } from "@/components/home/leadership"
 import { PopularServices } from "@/components/home/popular-services"
 import { Quiz } from "@/components/home/quiz"
+import { SunTimes } from "@/components/home/sun-times"
 import { VisitPlan } from "@/components/home/visit-plan"
 
 export function HomePage() {
@@ -17,6 +18,7 @@ export function HomePage() {
       <PopularServices />
       <AtAGlance />
       <ClimateMap />
+      <SunTimes />
       <History />
       <LatestUpdates />
       <Leadership />

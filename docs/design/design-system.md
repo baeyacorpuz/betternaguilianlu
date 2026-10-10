@@ -188,7 +188,15 @@ Sizes are `sm` (32px), `default` (36px), `lg` (40px), `icon` (36px) and `icon-sm
 
 ### Other primitives
 
-Accordion, Alert, Avatar, Command, Dialog, Input, Label, NavigationMenu, Progress, RadioGroup, Separator, Sheet, Toggle/ToggleGroup and Tooltip come from shadcn and are used as is. Change their look through tokens or a new CVA variant, not per-call-site overrides.
+Accordion, Alert, Avatar, Command, Dialog, Input, Label, NavigationMenu, Progress, RadioGroup, Separator, Sheet, Skeleton, Toggle/ToggleGroup and Tooltip come from shadcn and are used as is. Change their look through tokens or a new CVA variant, not per-call-site overrides.
+
+### Live data cards (weather, sun and moon)
+
+- Built with `GlanceCard` ([`site/glance-card.tsx`](../../src/components/site/glance-card.tsx)): one compact row that fills its container; the sun and moon cards sit side by side from `lg` (`1.4fr_1fr`). Anatomy: a `size-11` `rounded-lg bg-accent` icon tile (decorative, `aria-hidden`), a `text-2xl font-bold` value over a `text-base text-muted-foreground` label (`GlanceLead`), a 1px divider, then a `text-base` facts line separated by middle dots (`GlanceFacts`) over a `text-xs` note (`GlanceNote`). Below `sm` the card stacks and the divider turns horizontal.
+- Sections that hold only these compact cards (`#climate`, `#sun`) use tighter rhythm: `py-10 sm:py-12` and a `mb-6` heading, instead of the default `py-16 sm:py-20` and `mb-10`.
+- Source links inside the note use `GlanceLink` (bold, primary, underlined, visible focus ring). Open-Meteo is attributed this way (CC BY 4.0), and the Sun and Moon card names SunCalc. The weather card keeps its "not an official PAGASA advisory" notice as visually hidden text.
+- Keep a loading state with the same footprint (`Skeleton`, `role="status"`, `motion-reduce:animate-none`) and an inline error state with a "Try again" link button. A stale forecast is flagged in the "As of" line.
+- Night is intentional: the sun card swaps `SunIcon` for `MoonStarsIcon` and states the next sunrise.
 
 ### Data visualization
 

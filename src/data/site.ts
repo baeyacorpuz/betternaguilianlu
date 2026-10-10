@@ -43,6 +43,9 @@ export const links = {
   businessPermit: "#",
   legislativeRequest: "#",
   climate: "#",
+  pagasa: "#",
+  openMeteo: "https://open-meteo.com/",
+  sunCalc: "https://github.com/mourner/suncalc",
   feedback: mailto(
     "Report: wrong information on Better Naguilian",
     "Page or service:\n\nWhat's wrong:\n\nCorrect information and source (if known):\n"
@@ -182,6 +185,144 @@ export const climate = {
     "The dry season is November to April, while the wet season covers the rest of the year. Rainfall is highest from July to September.",
   // 0 = dry, 1 = wet, 2 = peak rainfall
   months: [0, 0, 0, 0, 1, 1, 2, 2, 2, 1, 0, 0] as const,
+}
+
+export const climateCopy = {
+  eyebrow: "Place",
+  title: "Weather, climate and map",
+  description: "Check today’s forecast, see how the seasons run through the year, and find the Municipal Hall.",
+  cardKicker: "Climate through the year",
+  today: "Right now",
+  seasons: [
+    { label: "Dry season", short: "Dry" },
+    { label: "Wet season", short: "Wet" },
+    { label: "Peak rainfall", short: "Peak rain" },
+  ],
+  monthsLong: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  stripLabel: "Typical season for each month",
+  allYear: "All year",
+  sourceLabel: "Climate source",
+  mapKicker: "Municipal Hall",
+  mapTitle: "Find the Municipal Hall",
+  mapDescription: "The map is centered on the published Municipal Hall location.",
+  mapFrameTitle: "Map of Naguilian Municipal Hall",
+  mapNote: "Coordinates are approximate. Verify the destination before traveling.",
+  openMap: "Open in OpenStreetMap",
+  directions: "Get directions",
+}
+
+/** Map destinations built from the municipality coordinates. */
+export function mapLinks({ lat, lng }: { lat: number; lng: number }) {
+  const d = 0.012
+  return {
+    embed: `https://www.openstreetmap.org/export/embed.html?bbox=${lng - d * 1.6},${lat - d},${lng + d * 1.6},${lat + d}&layer=mapnik&marker=${lat},${lng}`,
+    openStreetMap: `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`,
+    directions: `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`,
+  }
+}
+
+/** Open-Meteo forecast request. The key is not needed for non-commercial use. */
+export const weatherApi = {
+  endpoint: "https://api.open-meteo.com/v1/forecast",
+  timezone: "Asia/Manila",
+  current: [
+    "temperature_2m",
+    "apparent_temperature",
+    "relative_humidity_2m",
+    "precipitation",
+    "weather_code",
+    "wind_speed_10m",
+    "wind_direction_10m",
+    "is_day",
+    "uv_index",
+  ],
+  daily: ["temperature_2m_max", "temperature_2m_min", "precipitation_probability_max", "precipitation_sum", "uv_index_max"],
+  forecastDays: 1,
+  /** Refresh interval and the minimum gap before a tab refocus refetches. */
+  refreshMs: 15 * 60_000,
+  staleAfterMs: 5 * 60_000,
+  /** A forecast observed longer ago than this is flagged as out of date. */
+  staleDataMs: 60 * 60_000,
+  timeoutMs: 12_000,
+}
+
+export type WeatherKind = "clear" | "partly" | "cloudy" | "fog" | "drizzle" | "rain" | "storm" | "snow"
+
+export const weatherCopy = {
+  title: "Today’s weather",
+  loading: "Loading today’s weather",
+  errorTitle: "Weather is not available right now",
+  retry: "Try again",
+  feelsLike: "Feels like",
+  humidity: "humidity",
+  high: "High",
+  low: "Low",
+  highShort: "H",
+  lowShort: "L",
+  asOf: "As of",
+  timeZone: "PHT",
+  staleNote: "may be out of date",
+  empty: "—",
+  unknownCondition: "Weather conditions",
+  sourceLabel: "Open-Meteo",
+  sourceTitle: "Weather data by Open-Meteo.com (CC BY 4.0)",
+  disclaimer: "Model forecast for the Municipal Hall, not an official PAGASA advisory.",
+}
+
+/** WMO weather interpretation codes (WW) used by Open-Meteo. */
+export const weatherConditions: Record<number, { label: string; kind: WeatherKind }> = {
+  0: { label: "Clear sky", kind: "clear" },
+  1: { label: "Mostly clear", kind: "clear" },
+  2: { label: "Partly cloudy", kind: "partly" },
+  3: { label: "Overcast", kind: "cloudy" },
+  45: { label: "Fog", kind: "fog" },
+  48: { label: "Freezing fog", kind: "fog" },
+  51: { label: "Light drizzle", kind: "drizzle" },
+  53: { label: "Drizzle", kind: "drizzle" },
+  55: { label: "Heavy drizzle", kind: "drizzle" },
+  56: { label: "Freezing drizzle", kind: "drizzle" },
+  57: { label: "Heavy freezing drizzle", kind: "drizzle" },
+  61: { label: "Light rain", kind: "rain" },
+  63: { label: "Rain", kind: "rain" },
+  65: { label: "Heavy rain", kind: "rain" },
+  66: { label: "Freezing rain", kind: "rain" },
+  67: { label: "Heavy freezing rain", kind: "rain" },
+  71: { label: "Light snow", kind: "snow" },
+  73: { label: "Snow", kind: "snow" },
+  75: { label: "Heavy snow", kind: "snow" },
+  77: { label: "Snow grains", kind: "snow" },
+  80: { label: "Light showers", kind: "rain" },
+  81: { label: "Showers", kind: "rain" },
+  82: { label: "Heavy showers", kind: "rain" },
+  85: { label: "Snow showers", kind: "snow" },
+  86: { label: "Heavy snow showers", kind: "snow" },
+  95: { label: "Thunderstorm", kind: "storm" },
+  96: { label: "Thunderstorm with hail", kind: "storm" },
+  99: { label: "Severe thunderstorm with hail", kind: "storm" },
+}
+
+export const sunTimes = {
+  eyebrow: "Today",
+  title: "Sun and moon in Naguilian",
+  description: "Sunrise, sunset and moon phase for today, shown in Philippine time and updated every minute.",
+  sunTitle: "Sun",
+  moonTitle: "Moon",
+  illuminated: "illuminated",
+  daylight: "daylight",
+  solarNoon: "Solar noon",
+  goldenHourFrom: "Golden hour from",
+  sunrise: "Sunrise",
+  sunset: "Sunset",
+  moonrise: "Moonrise",
+  moonset: "Moonset",
+  nextSunrise: "Sunrise in",
+  nextSunset: "Sunset in",
+  moonPhases: ["New moon", "Waxing crescent", "First quarter", "Waxing gibbous", "Full moon", "Waning gibbous", "Last quarter", "Waning crescent"],
+  empty: "—",
+  calculatedWith: "Calculated with",
+  calculatorName: "SunCalc",
+  notForecast: "Not a PAGASA forecast",
 }
 
 export const history = [
