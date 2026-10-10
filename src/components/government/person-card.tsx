@@ -7,7 +7,7 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import type { Person } from "@/data/government"
 
 const honorific = /^(Hon|Atty|Engr|Dr|EnP)\.?\s+/
-const suffix = /\s+(Jr\.|Sr\.|II|III|IV)$/
+const suffix = /(,\s*[A-Z]{2,4}|\s+(Jr\.|Sr\.|II|III|IV))$/
 
 /** "Hon. Rupert Paolo M. Rillera III" → "RR" */
 function initials(name: string) {

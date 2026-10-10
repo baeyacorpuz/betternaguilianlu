@@ -39,8 +39,8 @@ export const links = {
   officialSite: "https://naguilianlu.gov.ph/",
   citizensCharter: "https://naguilianlu.gov.ph/citizenscharter",
   history: "#",
-  demographics: "#",
-  officials: "#",
+  demographics: "https://naguilianlu.gov.ph/demographics",
+  officials: "https://naguilianlu.gov.ph/officials",
   facebook: "#",
   businessPermit: "#",
   legislativeRequest: "#",
@@ -379,17 +379,29 @@ export const government = {
       { to: "/government/leadership", label: "Leadership" },
       { to: "/government/history", label: "History" },
       { to: "/government/officials", label: "Officials directory" },
+      { to: "/government/barangays", label: "Barangays" },
     ],
   },
-  currency: {
-    title: "As printed in the 2023 Citizen’s Charter",
-    body: "This listing comes from the charter’s organizational structure and Office Order No. 2023-1-B. Officials may have changed since then.",
-    linkLabel: "Check the official officials listing",
+  notices: {
+    leadership: {
+      title: "From the official municipal website",
+      body: "This roster follows the Municipal Officials page on naguilianlu.gov.ph.",
+      linkLabel: "Open the official officials page",
+    },
+    officials: {
+      title: "As printed in the 2023 Citizen’s Charter",
+      body: "This listing comes from the charter’s organizational structure and Office Order No. 2023-1-B. Department heads may have changed since then.",
+    },
+    barangays: {
+      title: "Barangay officials not yet published",
+      body: "The municipality hasn’t published its barangay officials page yet. Names will be added here once it does. Population figures come from the official Demographics page (PSA CBMS Census, July 2025).",
+      linkLabel: "Open the official Demographics page",
+    },
   },
   leadership: {
     title: "Municipal Leadership",
     description:
-      "The elected officials who lead Naguilian’s executive and legislative branches, as listed in the 2023 Citizen’s Charter.",
+      "The elected officials who lead Naguilian’s executive and legislative branches, as listed on the official municipal website.",
     executive: "Mayor and Vice Mayor",
     sb: {
       eyebrow: "Legislative",
@@ -421,6 +433,23 @@ export const government = {
     oic: "Officer-in-charge in the head’s absence",
     services: "Services from this office",
     contact: "Office contact",
+  },
+  barangays: {
+    title: "Barangays",
+    description: "Naguilian’s 37 barangays, their population and households, and their elected officials.",
+    summary: { barangays: "Barangays", population: "Total population", households: "Households" },
+    poblacion: "Poblacion",
+    population: "Population",
+    households: "Households",
+    families: "Families",
+    officials: {
+      punongBarangay: "Punong Barangay",
+      kagawads: "Barangay Kagawad",
+      skChairperson: "SK Chairperson",
+      secretary: "Barangay Secretary",
+      treasurer: "Barangay Treasurer",
+      pending: "Officials not yet published",
+    },
   },
   teasers: {
     leadership: "Meet the full leadership",

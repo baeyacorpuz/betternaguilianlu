@@ -1,4 +1,4 @@
-import { CurrencyNotice } from "@/components/government/currency-notice"
+import { SourceNotice } from "@/components/government/source-notice"
 import { UnitHeadCard } from "@/components/government/unit-head-card"
 import { Container, Section } from "@/components/site/section"
 import { unitHeads } from "@/data/government"
@@ -13,7 +13,7 @@ export function OfficialsPage() {
   return (
     <>
       <GovernmentIntro title={copy.title} description={copy.description}>
-        <CurrencyNotice />
+        <SourceNotice page="officials" />
       </GovernmentIntro>
 
       <Section className="pt-10 sm:pt-12">

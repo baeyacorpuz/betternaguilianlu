@@ -13,7 +13,7 @@ export function Leadership() {
         <SectionHeading
           eyebrow="Municipal leadership"
           title="Municipal Leadership"
-          description="The mayor and vice mayor as listed in the 2023 Citizen’s Charter. The full page also lists the Sangguniang Bayan."
+          description="The mayor and vice mayor as listed on the official municipal website. The full page also lists the Sangguniang Bayan."
         />
         <div className="grid gap-4 md:grid-cols-2">
           {leadership.map(({ role, person }, i) => (

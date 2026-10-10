@@ -1,7 +1,7 @@
 import { CrownSimpleIcon, QuotesIcon, ShieldStarIcon } from "@phosphor-icons/react"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CurrencyNotice } from "@/components/government/currency-notice"
+import { SourceNotice } from "@/components/government/source-notice"
 import { PersonCard } from "@/components/government/person-card"
 import { Container, Section, SectionHeading } from "@/components/site/section"
 import { executive, messages, sangguniang } from "@/data/government"
@@ -14,7 +14,7 @@ export function LeadershipPage() {
   return (
     <>
       <GovernmentIntro title={copy.title} description={copy.description}>
-        <CurrencyNotice />
+        <SourceNotice page="leadership" />
       </GovernmentIntro>
 
       <Section className="pt-10 sm:pt-12">

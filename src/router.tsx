@@ -8,6 +8,7 @@ import {
 import { loadServices } from '@/data/charter'
 import { serviceCategories, type ServiceCategoryId } from '@/data/site'
 import { AboutPage } from '@/pages/about'
+import { BarangaysPage } from '@/pages/government/barangays'
 import { HistoryPage } from '@/pages/government/history'
 import { GovernmentLayout } from '@/pages/government/layout'
 import { LeadershipPage } from '@/pages/government/leadership'
@@ -93,12 +94,18 @@ const officialsRoute = createRoute({
   component: OfficialsPage,
 })
 
+const barangaysRoute = createRoute({
+  getParentRoute: () => governmentRoute,
+  path: '/barangays',
+  component: BarangaysPage,
+})
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   servicesRoute,
   serviceRoute,
   aboutRoute,
-  governmentRoute.addChildren([governmentIndexRoute, leadershipRoute, historyRoute, officialsRoute]),
+  governmentRoute.addChildren([governmentIndexRoute, leadershipRoute, historyRoute, officialsRoute, barangaysRoute]),
 ])
 
 export const router = createRouter({ routeTree })

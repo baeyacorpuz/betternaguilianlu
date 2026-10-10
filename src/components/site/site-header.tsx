@@ -61,6 +61,7 @@ const navGroups: NavGroup[] = [
       { title: "Municipal Leadership", description: "The mayor, vice mayor and Sangguniang Bayan.", to: "/government/leadership" },
       { title: "Brief History", description: "Key moments, vision and mission.", to: "/government/history" },
       { title: "Officials directory", description: "Department heads and how to reach their offices.", to: "/government/officials" },
+      { title: "Barangays", description: "All 37 barangays, their population and officials.", to: "/government/barangays" },
     ],
   },
   {

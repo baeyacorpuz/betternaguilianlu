@@ -1,18 +1,20 @@
 import { loadServices, type OfficeId } from "@/data/charter"
 
 /**
- * Naguilian's officials as printed in the 2023 Citizen's Charter: the
- * organizational structure (PDF p.11) and Office Order No. 2023-1-B, which
- * names an authorized signatory for each department or unit head (pp.9–10).
- * Names drop the charter's ALL CAPS and "Mr./Ms." but keep professional
- * honorifics (Hon., Atty., Dr., Engr., EnP) and spellings as printed. `page`
- * is the 1-based PDF page for `charterPage()` links.
+ * Naguilian's government. Elected officials come from the official
+ * website's Municipal Officials page. Department heads and their signatories
+ * are as printed in the 2023 Citizen's Charter: the organizational structure
+ * (PDF p.11) and Office Order No. 2023-1-B (pp.9–10). Barangays come from the
+ * official Demographics page (PSA CBMS Census, July 2025).
+ * Names drop ALL CAPS and "Mr./Ms." but keep honorifics (Hon., Atty., Dr.,
+ * Engr., EnP) and spellings as printed. `page` is the 1-based charter PDF page.
  */
 
 export type Person = {
   name: string
   position: string
-  page: number
+  /** Charter PDF page, for people transcribed from the charter. */
+  page?: number
 }
 
 export type UnitHead = {
@@ -34,34 +36,29 @@ export type UnitHead = {
 
 const ORG_CHART = 11
 
-export const rosterMeta = {
-  source: "2023 Citizen’s Charter",
-  order: "Office Order No. 2023-1-B, 2 January 2023",
-  orgChartPage: ORG_CHART,
-}
 
+// Elected officials in the order the official Municipal Officials page lists them.
 export const executive = {
-  mayor: { name: "Hon. Nieri T. Flores", position: "Municipal Mayor", page: ORG_CHART },
-  viceMayor: { name: "Hon. Reynaldo J. Flores", position: "Municipal Vice Mayor", page: ORG_CHART },
+  mayor: { name: "Hon. Nieri T. Flores", position: "Municipal Mayor" },
+  viceMayor: { name: "Hon. Reynaldo J. Flores", position: "Municipal Vice Mayor" },
 } satisfies Record<string, Person>
 
-const sbMember = (name: string): Person => ({ name, position: "Sangguniang Bayan Member", page: ORG_CHART })
+const sbMember = (name: string): Person => ({ name, position: "Sangguniang Bayan Member" })
 
 export const sangguniang = {
   members: [
     sbMember("Hon. Diomedes F. Hipol"),
-    sbMember("Hon. Rupert Paolo M. Rillera III"),
-    sbMember("Hon. Helen Casuga-Obispo"),
-    sbMember("Hon. Georgina Estepa-Flores"),
+    sbMember("Hon. Geraldine S. Garcia"),
     sbMember("Hon. Erick E. Soriano"),
-    sbMember("Hon. Jonathan P. Molina"),
+    sbMember("Hon. Rupert Paolo M. Rillera III"),
+    sbMember("Hon. Johnatan P. Molina, DMD"),
     sbMember("Hon. Aurelio F. Flora"),
     sbMember("Hon. Lennie M. Mercado"),
+    sbMember("Hon. Julio A. Subala"),
   ],
-  // Printed as "Liga ng mga Brgy" and "SK Pres" on the org chart.
   exOfficio: [
-    { name: "Hon. Jofre F. Hipol", position: "Liga ng mga Barangay President", page: ORG_CHART },
-    { name: "Hon. Jeremy E. Garce", position: "SK Federation President", page: ORG_CHART },
+    { name: "Hon. Jofre F. Hipol", position: "Liga ng mga Barangay President" },
+    { name: "Hon. John Rod B. Estira", position: "SK Pederasyon President" },
   ],
 } satisfies Record<string, Person[]>
 
@@ -275,3 +272,70 @@ if (import.meta.env.DEV) {
     }
   })
 }
+
+/**
+ * Elected barangay officials. The official Barangay Officials page is not
+ * published yet, so every barangay's `officials` is empty until it is.
+ */
+export type BarangayOfficials = {
+  punongBarangay?: string
+  kagawads?: string[]
+  skChairperson?: string
+  secretary?: string
+  treasurer?: string
+}
+
+export type Barangay = {
+  id: string
+  name: string
+  poblacion?: true
+  population: number
+  households: number
+  families: number
+  male: number
+  female: number
+  officials?: BarangayOfficials
+}
+
+export const barangayMeta = { census: "PSA CBMS Census, July 2025" }
+
+/** All 37 barangays as listed on the official Demographics page; they sum to the municipal totals. */
+export const barangays: Barangay[] = [
+  { id: "aguioas", name: "Aguioas", population: 1011, households: 286, families: 329, male: 502, female: 509 },
+  { id: "al-alinao-norte", name: "Al-Alinao Norte", population: 1544, households: 363, families: 459, male: 798, female: 746 },
+  { id: "al-alinao-sur", name: "Al-Alinao Sur", population: 807, households: 241, families: 271, male: 423, female: 384 },
+  { id: "ambaracao-norte", name: "Ambaracao Norte", population: 1758, households: 478, families: 551, male: 892, female: 866 },
+  { id: "ambaracao-sur", name: "Ambaracao Sur", population: 861, households: 248, families: 271, male: 454, female: 407 },
+  { id: "angin", name: "Angin", population: 783, households: 192, families: 253, male: 375, female: 408 },
+  { id: "balecbec", name: "Balecbec", population: 934, households: 235, families: 287, male: 481, female: 453 },
+  { id: "bancagan", name: "Bancagan", population: 1374, households: 334, families: 391, male: 720, female: 654 },
+  { id: "baraoas-norte", name: "Baraoas Norte", population: 915, households: 238, families: 251, male: 469, female: 446 },
+  { id: "baraoas-sur", name: "Baraoas Sur", population: 3965, households: 1102, families: 1221, male: 1997, female: 1968 },
+  { id: "bariquir", name: "Bariquir", population: 2117, households: 575, families: 608, male: 1094, female: 1023 },
+  { id: "bato", name: "Bato", population: 1409, households: 412, families: 422, male: 697, female: 712 },
+  { id: "bimmotobot", name: "Bimmotobot", population: 1105, households: 281, families: 333, male: 555, female: 550 },
+  { id: "cabaritan-norte", name: "Cabaritan Norte", population: 652, households: 135, families: 187, male: 314, female: 338 },
+  { id: "cabaritan-sur", name: "Cabaritan Sur", population: 2111, households: 540, families: 643, male: 1060, female: 1051 },
+  { id: "casilagan", name: "Casilagan", population: 2151, households: 533, families: 587, male: 1128, female: 1023 },
+  { id: "dal-lipaoen", name: "Dal-Lipaoen", population: 2105, households: 528, families: 617, male: 1037, female: 1068 },
+  { id: "daramuangan", name: "Daramuangan", population: 1055, households: 284, families: 287, male: 516, female: 539 },
+  { id: "guesset", name: "Guesset", population: 1155, households: 298, families: 361, male: 574, female: 581 },
+  { id: "gusing-norte", name: "Gusing Norte", population: 1673, households: 440, families: 540, male: 861, female: 812 },
+  { id: "gusing-sur", name: "Gusing Sur", population: 1547, households: 377, families: 460, male: 797, female: 750 },
+  { id: "imelda", name: "Imelda", population: 1282, households: 326, families: 379, male: 647, female: 635 },
+  { id: "lioac-norte", name: "Lioac Norte", population: 1623, households: 395, families: 508, male: 823, female: 800 },
+  { id: "lioac-sur", name: "Lioac Sur", population: 1309, households: 345, families: 360, male: 624, female: 685 },
+  { id: "magungunay", name: "Magungunay", population: 787, households: 186, families: 224, male: 411, female: 376 },
+  { id: "mamat-ing-norte", name: "Mamat-Ing Norte", population: 789, households: 202, families: 206, male: 407, female: 382 },
+  { id: "mamat-ing-sur", name: "Mamat-Ing Sur", population: 1304, households: 307, families: 429, male: 668, female: 636 },
+  { id: "nagsidorisan", name: "Nagsidorisan", population: 914, households: 229, families: 278, male: 441, female: 473 },
+  { id: "natividad-poblacion", name: "Natividad", poblacion: true, population: 2646, households: 689, families: 748, male: 1305, female: 1341 },
+  { id: "ortiz-poblacion", name: "Ortiz", poblacion: true, population: 2548, households: 682, families: 765, male: 1203, female: 1345 },
+  { id: "ribsuan", name: "Ribsuan", population: 1130, households: 250, families: 286, male: 555, female: 575 },
+  { id: "san-antonio", name: "San Antonio", population: 767, households: 207, families: 227, male: 384, female: 383 },
+  { id: "san-isidro", name: "San Isidro", population: 838, households: 240, families: 258, male: 423, female: 415 },
+  { id: "sili", name: "Sili", population: 1269, households: 319, families: 372, male: 650, female: 619 },
+  { id: "suguidan-norte", name: "Suguidan Norte", population: 987, households: 233, families: 274, male: 502, female: 485 },
+  { id: "suguidan-sur", name: "Suguidan Sur", population: 924, households: 232, families: 268, male: 480, female: 444 },
+  { id: "tuddingan", name: "Tuddingan", population: 1938, households: 464, families: 617, male: 992, female: 946 },
+]
