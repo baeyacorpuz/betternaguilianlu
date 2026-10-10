@@ -27,16 +27,18 @@ export function ServiceDetailPage() {
       <section className="bg-muted/60">
         <Container className="space-y-5 py-10 sm:py-14">
           <Button asChild variant="ghost" size="sm" className="-ml-3">
-            <Link to="/services" search={category ? { category: category.id } : undefined}>
+            <Link to="/services">
               <ArrowLeftIcon />
               {serviceDetail.back}
             </Link>
           </Button>
           <div className="space-y-3">
             {category && (
-              <Badge variant="secondary" className="gap-1 rounded-full px-2.5 text-[11px] font-semibold tracking-wider uppercase">
-                <category.icon />
-                {category.name}
+              <Badge asChild variant="secondary" className="gap-1 rounded-full px-2.5 text-[11px] font-semibold tracking-wider uppercase">
+                <Link to="/services" search={{ category: category.id }} aria-label={`${serviceDetail.moreIn} ${category.name}`}>
+                  <category.icon aria-hidden />
+                  {category.name}
+                </Link>
               </Badge>
             )}
             <h1 className="text-3xl font-extrabold tracking-tight text-balance [overflow-wrap:anywhere] sm:text-5xl">

@@ -387,6 +387,7 @@ export const about = {
 /** Copy for the service detail page and the /services standards section. */
 export const serviceDetail = {
   back: "All services",
+  moreIn: "More services in",
   sidebarLabel: "Service summary and contact",
   facts: {
     classification: "Classification",
