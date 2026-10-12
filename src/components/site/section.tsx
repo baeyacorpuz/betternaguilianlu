@@ -100,3 +100,58 @@ export function SourceLink({
     </a>
   )
 }
+
+/** Top band for inner pages: eyebrow, h1, lead paragraph and optional actions. */
+export function PageHero({
+  eyebrow,
+  title,
+  description,
+  children,
+  className,
+}: {
+  eyebrow: string
+  title: string
+  description: React.ReactNode
+  children?: React.ReactNode
+  className?: string
+}) {
+  return (
+    <section className={cn("bg-muted/60", className)}>
+      <Container className="space-y-5 py-12 sm:py-16">
+        <Badge variant="secondary" className="rounded-full px-2.5 text-[11px] font-semibold tracking-wider uppercase">
+          {eyebrow}
+        </Badge>
+        <h1 className="max-w-3xl text-3xl font-extrabold tracking-tight text-balance sm:text-5xl">{title}</h1>
+        <p className="max-w-2xl text-base leading-relaxed text-pretty text-muted-foreground sm:text-lg">{description}</p>
+        {children}
+      </Container>
+    </section>
+  )
+}
+
+/** "How we checked this" note plus the list of sources behind a page. */
+export function SourcesNote({
+  note,
+  sources,
+  title = "Where these facts come from",
+}: {
+  note: string
+  sources: { label: string; href: string }[]
+  title?: string
+}) {
+  return (
+    <aside aria-labelledby="sources-title" className="space-y-3 rounded-xl border bg-card p-6 text-sm">
+      <h2 id="sources-title" className="font-semibold">
+        {title}
+      </h2>
+      <p className="text-pretty text-muted-foreground">{note}</p>
+      <ul className="space-y-1.5">
+        {sources.map((s) => (
+          <li key={s.href}>
+            <SourceLink href={s.href} label={s.label} className="text-left text-sm" />
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )
+}

@@ -98,7 +98,7 @@ export function Quiz() {
                   </Badge>
                   <span className="text-xs text-muted-foreground tabular-nums">Score {score}</span>
                 </div>
-                <Progress value={((index + (checked ? 1 : 0)) / quiz.length) * 100} className="h-1.5" />
+                <Progress value={((index + (checked ? 1 : 0)) / quiz.length) * 100} className="h-1.5" aria-label="Quiz progress" />
                 <CardTitle className="pt-2 text-lg leading-snug">{q.question}</CardTitle>
                 <CardDescription>Choose one answer</CardDescription>
               </CardHeader>

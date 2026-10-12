@@ -9,6 +9,8 @@ pnpm install
 pnpm dev       # start the dev server
 pnpm build     # typecheck + production build (PWA included)
 pnpm lint      # oxlint
+pnpm test:e2e  # Playwright end-to-end and accessibility tests (after pnpm build)
+pnpm lighthouse  # Lighthouse CI against the built site
 ```
 
 ## Structure

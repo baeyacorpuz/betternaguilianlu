@@ -18,28 +18,28 @@ export function ServiceSidebar({ service }: { service: Service }) {
         </CardHeader>
         <CardContent>
           <dl className="space-y-3 text-sm">
-            <div className="flex items-start gap-2">
-              <ClockIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-              <div className="min-w-0">
-                <dt className="text-xs font-medium text-muted-foreground">{summary.totalTime}</dt>
-                <dd className="[overflow-wrap:anywhere]">{service.totalTime ?? summary.notStated}</dd>
-              </div>
+            <div className="grid grid-cols-[1rem_minmax(0,1fr)] gap-x-2">
+              <dt className="col-span-2 flex items-start gap-2 text-xs font-medium text-muted-foreground">
+                <ClockIcon className="mt-px size-4 shrink-0" aria-hidden />
+                {summary.totalTime}
+              </dt>
+              <dd className="col-start-2 [overflow-wrap:anywhere]">{service.totalTime ?? summary.notStated}</dd>
             </div>
             {service.totalFees && (
-              <div className="flex items-start gap-2">
-                <ReceiptIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-                <div className="min-w-0">
-                  <dt className="text-xs font-medium text-muted-foreground">{summary.totalFees}</dt>
-                  <dd className="[overflow-wrap:anywhere]">{service.totalFees}</dd>
-                </div>
+              <div className="grid grid-cols-[1rem_minmax(0,1fr)] gap-x-2">
+                <dt className="col-span-2 flex items-start gap-2 text-xs font-medium text-muted-foreground">
+                  <ReceiptIcon className="mt-px size-4 shrink-0" aria-hidden />
+                  {summary.totalFees}
+                </dt>
+                <dd className="col-start-2 [overflow-wrap:anywhere]">{service.totalFees}</dd>
               </div>
             )}
-            <div className="flex items-start gap-2">
-              <BuildingOfficeIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-              <div className="min-w-0">
-                <dt className="text-xs font-medium text-muted-foreground">{summary.office}</dt>
-                <dd className="[overflow-wrap:anywhere]">{service.office}</dd>
-              </div>
+            <div className="grid grid-cols-[1rem_minmax(0,1fr)] gap-x-2">
+              <dt className="col-span-2 flex items-start gap-2 text-xs font-medium text-muted-foreground">
+                <BuildingOfficeIcon className="mt-px size-4 shrink-0" aria-hidden />
+                {summary.office}
+              </dt>
+              <dd className="col-start-2 [overflow-wrap:anywhere]">{service.office}</dd>
             </div>
           </dl>
         </CardContent>
@@ -53,38 +53,38 @@ export function ServiceSidebar({ service }: { service: Service }) {
           </CardHeader>
           <CardContent>
             <dl className="space-y-3 text-sm">
-              <div className="flex items-start gap-2">
-                <MapPinIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-                <div className="min-w-0">
-                  <dt className="sr-only">{contact.location}</dt>
-                  <dd className="[overflow-wrap:anywhere]">{department.address}</dd>
-                </div>
+              <div className="grid grid-cols-[1rem_minmax(0,1fr)] gap-x-2">
+                <dt className="col-start-1 row-start-1 pt-0.5 text-muted-foreground">
+                  <MapPinIcon className="size-4" aria-hidden />
+                  <span className="sr-only">{contact.location}</span>
+                </dt>
+              <dd className="col-start-2 [overflow-wrap:anywhere]">{department.address}</dd>
               </div>
-              <div className="flex items-start gap-2">
-                <PhoneIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-                <div className="min-w-0">
-                  <dt className="sr-only">{contact.phone}</dt>
-                  {phones.map((p) => (
-                    <dd key={p} className="[overflow-wrap:anywhere]">
-                      {p}
-                    </dd>
-                  ))}
-                </div>
+              <div className="grid grid-cols-[1rem_minmax(0,1fr)] gap-x-2">
+                <dt className="col-start-1 row-start-1 pt-0.5 text-muted-foreground">
+                  <PhoneIcon className="size-4" aria-hidden />
+                  <span className="sr-only">{contact.phone}</span>
+                </dt>
+              {phones.map((p) => (
+                  <dd key={p} className="col-start-2 [overflow-wrap:anywhere]">
+                    {p}
+                  </dd>
+                ))}
               </div>
               {department.email && (
-                <div className="flex items-start gap-2">
-                  <EnvelopeSimpleIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-                  <div className="min-w-0">
-                    <dt className="sr-only">{contact.email}</dt>
-                    <dd className="[overflow-wrap:anywhere]">
-                      <a
-                        href={`mailto:${department.email}`}
-                        className="rounded-sm text-primary underline-offset-4 outline-none hover:underline focus-visible:ring-[3px] focus-visible:ring-ring/50"
-                      >
-                        {department.email}
-                      </a>
-                    </dd>
-                  </div>
+                <div className="grid grid-cols-[1rem_minmax(0,1fr)] gap-x-2">
+                  <dt className="col-start-1 row-start-1 pt-0.5 text-muted-foreground">
+                    <EnvelopeSimpleIcon className="size-4" aria-hidden />
+                    <span className="sr-only">{contact.email}</span>
+                  </dt>
+                <dd className="col-start-2 [overflow-wrap:anywhere]">
+                    <a
+                      href={`mailto:${department.email}`}
+                      className="rounded-sm text-primary underline-offset-4 outline-none hover:underline focus-visible:ring-[3px] focus-visible:ring-ring/50"
+                    >
+                      {department.email}
+                    </a>
+                  </dd>
                 </div>
               )}
             </dl>

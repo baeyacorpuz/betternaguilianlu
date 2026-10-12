@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Link } from "@tanstack/react-router"
 import {
+  ArrowRightIcon,
   ClockIcon,
   ListIcon,
   MagnifyingGlassIcon,
@@ -34,6 +35,7 @@ import {
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { Container } from "@/components/site/section"
+import { emergencyPage, hotlines } from "@/data/civic"
 import { links, serviceCategories } from "@/data/site"
 import { useManilaTime } from "@/hooks/use-manila-time"
 import { useServiceSearch } from "@/hooks/use-service-search"
@@ -58,14 +60,16 @@ const navGroups: NavGroup[] = [
   {
     title: "Government",
     items: [
-      { title: "Municipal Leadership", description: "The current mayor and vice mayor.", to: "/", hash: "leadership" },
+      { title: "Officials and offices", description: "Mayor, vice mayor, council members and office contacts.", to: "/government" },
+      { title: "Legislation", description: "Ordinances, resolutions and how local laws are made.", to: "/legislative" },
+      { title: "Emergency hotlines", description: "911 and Naguilian’s police, fire, MDRRMO and hospital.", to: "/emergency" },
       { title: "Brief History", description: "Key moments from the official history.", to: "/", hash: "history" },
-      { title: "Officials directory", description: "Full listing on the official site.", href: links.officials },
     ],
   },
   {
     title: "Transparency",
     items: [
+      { title: "Public money", description: "Budget, procurement and audit records in one place.", to: "/transparency" },
       { title: "Citizen’s Charter", description: "Published service steps, fees, and timelines.", href: links.citizensCharter },
       { title: "Official website", description: "The municipality’s own website.", href: links.officialSite },
     ],
@@ -100,17 +104,38 @@ function NavChildLink({ item, className, onNavigate }: { item: NavChild; classNa
   )
 }
 
+const pinned = hotlines.filter((h) => h.pinned)
+
 export function TopBar() {
   const time = useManilaTime()
   return (
     <div className="bg-brand text-brand-foreground">
-      <div className="bg-destructive/90 text-white">
-        <Container className="flex h-8 items-center justify-between gap-4 text-xs">
+      <div className="bg-emergency text-emergency-foreground">
+        <Container className="flex min-h-8 items-center gap-x-4 gap-y-1 py-1 text-xs">
           <span className="inline-flex shrink-0 items-center gap-1.5 font-semibold whitespace-nowrap">
-            <SirenIcon weight="fill" className="size-3.5" />
-            Emergency information
+            <SirenIcon weight="fill" className="size-3.5" aria-hidden />
+            {emergencyPage.topBar.label}
           </span>
-          <span className="truncate opacity-90">No verified emergency contacts are published yet.</span>
+          <ul className="flex min-w-0 flex-1 items-center gap-x-4 overflow-hidden" aria-label={emergencyPage.title}>
+            {pinned.map((h, i) => (
+              <li key={h.id} className={cn("shrink-0 whitespace-nowrap", i > 0 && "hidden", i === 1 && "sm:block", i === 2 && "md:block")}>
+                {h.shortName && <span className="font-medium">{h.shortName} </span>}
+                <a
+                  href={`tel:${h.numbers[0].dial}`}
+                  className="rounded-sm font-bold tabular-nums underline-offset-2 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-emergency-foreground"
+                >
+                  {h.numbers[0].display}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <Link
+            to="/emergency"
+            className="inline-flex shrink-0 items-center gap-1 rounded-sm font-semibold whitespace-nowrap underline-offset-2 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-emergency-foreground"
+          >
+            {emergencyPage.topBar.all}
+            <ArrowRightIcon className="size-3" aria-hidden />
+          </Link>
         </Container>
       </div>
       <Container className="flex h-8 items-center justify-between gap-4 text-xs">

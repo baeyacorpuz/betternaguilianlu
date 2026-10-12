@@ -7,13 +7,19 @@ import {
 import { loadServices } from '@/data/charter'
 import { serviceCategories, type ServiceCategoryId } from '@/data/site'
 import { AboutPage } from '@/pages/about'
+import { EmergencyPage } from '@/pages/emergency'
+import { GovernmentPage } from '@/pages/government'
 import { HomePage } from '@/pages/home'
+import { LegislativePage } from '@/pages/legislative'
+import { NotFoundPage } from '@/pages/not-found'
 import { ServiceDetailPage, ServiceNotFound } from '@/pages/service-detail'
 import { ServicesPage } from '@/pages/services'
+import { TransparencyPage } from '@/pages/transparency'
 import RootLayout from './root-layout'
 
 const rootRoute = createRootRoute({
   component: RootLayout,
+  notFoundComponent: NotFoundPage,
 })
 
 const indexRoute = createRoute({
@@ -56,11 +62,20 @@ const aboutRoute = createRoute({
   component: AboutPage,
 })
 
+const emergencyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/emergency', component: EmergencyPage })
+const governmentRoute = createRoute({ getParentRoute: () => rootRoute, path: '/government', component: GovernmentPage })
+const legislativeRoute = createRoute({ getParentRoute: () => rootRoute, path: '/legislative', component: LegislativePage })
+const transparencyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/transparency', component: TransparencyPage })
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   servicesRoute,
   serviceRoute,
   aboutRoute,
+  emergencyRoute,
+  governmentRoute,
+  legislativeRoute,
+  transparencyRoute,
 ])
 
 export const router = createRouter({ routeTree })

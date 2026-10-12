@@ -8,8 +8,10 @@ import { Leadership } from "@/components/home/leadership"
 import { PopularServices } from "@/components/home/popular-services"
 import { Quiz } from "@/components/home/quiz"
 import { VisitPlan } from "@/components/home/visit-plan"
+import { useDocumentTitle } from "@/hooks/use-document-title"
 
 export function HomePage() {
+  useDocumentTitle()
   return (
     <>
       <Hero />

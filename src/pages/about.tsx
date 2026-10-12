@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Container, Section, SectionHeading, SourceLink } from "@/components/site/section"
 import { about, links, volunteerEmail } from "@/data/site"
+import { useDocumentTitle } from "@/hooks/use-document-title"
 
 export function AboutPage() {
+  useDocumentTitle("About")
   const { intro, independence, sources, principles, involve } = about
 
   return (

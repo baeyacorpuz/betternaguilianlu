@@ -23,7 +23,7 @@ export default defineConfig({
         start_url: '/',
         scope: '/',
         display: 'standalone',
-        theme_color: '#6aae7a',
+        theme_color: '#1b4332',
         background_color: '#ffffff',
         lang: 'en',
         icons: [
@@ -49,6 +49,19 @@ export default defineConfig({
         navigateFallbackAllowlist: [/^\/.*$/],
         // let /docs (the charter PDF) load from the network instead of the SPA shell
         navigateFallbackDenylist: [/^\/docs\//, /\.pdf$/],
+        // the charter PDF (3 MB) is too big to precache; keep a copy once someone opens it
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.startsWith('/docs/'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'charter-docs',
+              expiration: { maxEntries: 4 },
+              cacheableResponse: { statuses: [0, 200] },
+              rangeRequests: true,
+            },
+          },
+        ],
       },
     }),
   ],
