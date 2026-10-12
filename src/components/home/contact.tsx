@@ -1,8 +1,8 @@
 import { ArrowRightIcon, EnvelopeSimpleIcon, MapPinIcon, PhoneIcon } from "@phosphor-icons/react"
 
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Container, Section, SectionHeading, SourceLink } from "@/components/site/section"
-import { contact, links, moreWays } from "@/data/site"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Container, Section, SectionHeading } from "@/components/site/section"
+import { contact, moreWays } from "@/data/site"
 
 const iconBox = "mb-2 flex size-11 items-center justify-center rounded-lg bg-accent text-accent-foreground"
 
@@ -26,7 +26,6 @@ export function Contact() {
                 {contact.phone}
               </a>
             </CardContent>
-            <CardFooter className="mt-auto border-t [.border-t]:pt-4"><SourceLink href={links.officialSite} label="Contact source" /></CardFooter>
           </Card>
           <Card>
             <CardHeader>
@@ -40,7 +39,6 @@ export function Contact() {
                 </a>
               ))}
             </CardContent>
-            <CardFooter className="mt-auto border-t [.border-t]:pt-4"><SourceLink href={links.officialSite} label="Contact source" /></CardFooter>
           </Card>
           <Card>
             <CardHeader>
@@ -50,7 +48,6 @@ export function Contact() {
             <CardContent>
               <address className="text-sm leading-relaxed text-muted-foreground not-italic">{contact.address}</address>
             </CardContent>
-            <CardFooter className="mt-auto border-t [.border-t]:pt-4"><SourceLink href={links.officialSite} label="Contact source" /></CardFooter>
           </Card>
         </div>
 

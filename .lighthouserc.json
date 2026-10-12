@@ -8,7 +8,7 @@
         "http://localhost:4173/services",
         "http://localhost:4173/services/issuance-of-mayors-clearance",
         "http://localhost:4173/emergency",
-        "http://localhost:4173/government",
+        "http://localhost:4173/government/leadership",
         "http://localhost:4173/transparency"
       ],
       "numberOfRuns": 1,

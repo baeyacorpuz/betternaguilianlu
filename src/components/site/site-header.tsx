@@ -60,10 +60,12 @@ const navGroups: NavGroup[] = [
   {
     title: "Government",
     items: [
-      { title: "Officials and offices", description: "Mayor, vice mayor, council members and office contacts.", to: "/government" },
+      { title: "Municipal Leadership", description: "The mayor, vice mayor and Sangguniang Bayan.", to: "/government/leadership" },
+      { title: "Brief History", description: "Key moments, vision and mission.", to: "/government/history" },
+      { title: "Officials directory", description: "Department heads and how to reach their offices.", to: "/government/officials" },
+      { title: "Barangays", description: "All 37 barangays, their population and officials.", to: "/government/barangays" },
       { title: "Legislation", description: "Ordinances, resolutions and how local laws are made.", to: "/legislative" },
       { title: "Emergency hotlines", description: "911 and Naguilian’s police, fire, MDRRMO and hospital.", to: "/emergency" },
-      { title: "Brief History", description: "Key moments from the official history.", to: "/", hash: "history" },
     ],
   },
   {
@@ -78,7 +80,9 @@ const navGroups: NavGroup[] = [
     title: "Statistics",
     items: [
       { title: "Naguilian at a glance", description: "Population, barangays, class, and land area.", to: "/", hash: "glance" },
+      { title: "Today’s weather", description: "Current conditions in Naguilian.", to: "/", hash: "weather" },
       { title: "Climate and map", description: "Climate type and Municipal Hall location.", to: "/", hash: "climate" },
+      { title: "Sun and moon", description: "Today’s sunrise, sunset and moon phase.", to: "/", hash: "sun" },
     ],
   },
 ]
@@ -228,9 +232,7 @@ export function SiteHeader() {
             ))}
             <NavigationMenuItem>
               <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link to="/" hash="contact">
-                  Contact
-                </Link>
+                <Link to="/contact">Contact</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
@@ -275,7 +277,7 @@ export function SiteHeader() {
                 <div className="flex gap-2">
                   <SheetClose asChild>
                     <Button asChild variant="secondary" size="sm" className="flex-1">
-                      <Link to="/" hash="contact">Contact</Link>
+                      <Link to="/contact">Contact</Link>
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>

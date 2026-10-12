@@ -44,13 +44,24 @@ export default defineConfig({
       workbox: {
         skipWaiting: true,
         clientsClaim: true,
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest,woff2}'],
         navigateFallback: '/index.html',
         navigateFallbackAllowlist: [/^\/.*$/],
         // let /docs (the charter PDF) load from the network instead of the SPA shell
         navigateFallbackDenylist: [/^\/docs\//, /\.pdf$/],
-        // the charter PDF (3 MB) is too big to precache; keep a copy once someone opens it
+        // keep the last forecast available offline, but never serve it for long
         runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/api\.open-meteo\.com\/.*/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'weather-forecast',
+              networkTimeoutSeconds: 5,
+              expiration: { maxEntries: 4, maxAgeSeconds: 3 * 60 * 60 },
+              cacheableResponse: { statuses: [200] },
+            },
+          },
+          // the charter PDF (3 MB) is too big to precache; keep a copy once someone opens it
           {
             urlPattern: ({ url }) => url.pathname.startsWith('/docs/'),
             handler: 'CacheFirst',

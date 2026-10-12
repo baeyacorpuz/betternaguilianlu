@@ -1,14 +1,17 @@
 import type { Icon } from "@phosphor-icons/react"
 import {
+  BookOpenTextIcon,
+  BugIcon,
   BriefcaseIcon,
   CertificateIcon,
   DeviceMobileIcon,
+  EnvelopeSimpleIcon,
+  GitBranchIcon,
   FilesIcon,
   FirstAidKitIcon,
   FlagIcon,
   HandHeartIcon,
   HouseLineIcon,
-  LinkSimpleIcon,
   LockKeyIcon,
   MapTrifoldIcon,
   MotorcycleIcon,
@@ -22,9 +25,11 @@ import {
   UsersThreeIcon,
 } from "@phosphor-icons/react"
 
+import { executive } from "@/data/government"
+
 export type { Service } from "@/data/charter"
 
-export const volunteerEmail = "volunteer@betternaguilian.org"
+export const volunteerEmail = "volunteer@betternaguilianlu.org"
 
 export const mailto = (subject: string, body: string) =>
   `mailto:${volunteerEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
@@ -37,17 +42,22 @@ export const links = {
   officialSite: "https://naguilianlu.gov.ph/",
   citizensCharter: "https://naguilianlu.gov.ph/citizenscharter",
   history: "#",
-  demographics: "#",
+  demographics: "https://naguilianlu.gov.ph/demographics",
   officials: "https://naguilianlu.gov.ph/officials",
   facebook: "#",
   businessPermit: "#",
   legislativeRequest: "#",
   climate: "#",
+  pagasa: "#",
+  openMeteo: "https://open-meteo.com/",
+  sunCalc: "https://github.com/mourner/suncalc",
   feedback: mailto(
     "Report: wrong information on Better Naguilian",
     "Page or service:\n\nWhat's wrong:\n\nCorrect information and source (if known):\n"
   ),
   contribute: "https://github.com/baeyacorpuz/betternaguilianlu",
+  issues: "https://github.com/baeyacorpuz/betternaguilianlu/issues",
+  email: mailto("Hello from a Better Naguilian visitor", ""),
 } as const
 
 export const municipality = {
@@ -184,6 +194,144 @@ export const climate = {
   months: [0, 0, 0, 0, 1, 1, 2, 2, 2, 1, 0, 0] as const,
 }
 
+export const climateCopy = {
+  eyebrow: "Place",
+  title: "Weather, climate and map",
+  description: "Check today’s forecast, see how the seasons run through the year, and find the Municipal Hall.",
+  cardKicker: "Climate through the year",
+  today: "Right now",
+  seasons: [
+    { label: "Dry season", short: "Dry" },
+    { label: "Wet season", short: "Wet" },
+    { label: "Peak rainfall", short: "Peak rain" },
+  ],
+  monthsLong: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  stripLabel: "Typical season for each month",
+  allYear: "All year",
+  sourceLabel: "Climate source",
+  mapKicker: "Municipal Hall",
+  mapTitle: "Find the Municipal Hall",
+  mapDescription: "The map is centered on the published Municipal Hall location.",
+  mapFrameTitle: "Map of Naguilian Municipal Hall",
+  mapNote: "Coordinates are approximate. Verify the destination before traveling.",
+  openMap: "Open in OpenStreetMap",
+  directions: "Get directions",
+}
+
+/** Map destinations built from the municipality coordinates. */
+export function mapLinks({ lat, lng }: { lat: number; lng: number }) {
+  const d = 0.012
+  return {
+    embed: `https://www.openstreetmap.org/export/embed.html?bbox=${lng - d * 1.6},${lat - d},${lng + d * 1.6},${lat + d}&layer=mapnik&marker=${lat},${lng}`,
+    openStreetMap: `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`,
+    directions: `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`,
+  }
+}
+
+/** Open-Meteo forecast request. The key is not needed for non-commercial use. */
+export const weatherApi = {
+  endpoint: "https://api.open-meteo.com/v1/forecast",
+  timezone: "Asia/Manila",
+  current: [
+    "temperature_2m",
+    "apparent_temperature",
+    "relative_humidity_2m",
+    "precipitation",
+    "weather_code",
+    "wind_speed_10m",
+    "wind_direction_10m",
+    "is_day",
+    "uv_index",
+  ],
+  daily: ["temperature_2m_max", "temperature_2m_min", "precipitation_probability_max", "precipitation_sum", "uv_index_max"],
+  forecastDays: 1,
+  /** Refresh interval and the minimum gap before a tab refocus refetches. */
+  refreshMs: 15 * 60_000,
+  staleAfterMs: 5 * 60_000,
+  /** A forecast observed longer ago than this is flagged as out of date. */
+  staleDataMs: 60 * 60_000,
+  timeoutMs: 12_000,
+}
+
+export type WeatherKind = "clear" | "partly" | "cloudy" | "fog" | "drizzle" | "rain" | "storm" | "snow"
+
+export const weatherCopy = {
+  title: "Today’s weather",
+  loading: "Loading today’s weather",
+  errorTitle: "Weather is not available right now",
+  retry: "Try again",
+  feelsLike: "Feels like",
+  humidity: "humidity",
+  high: "High",
+  low: "Low",
+  highShort: "H",
+  lowShort: "L",
+  asOf: "As of",
+  timeZone: "PHT",
+  staleNote: "may be out of date",
+  empty: "—",
+  unknownCondition: "Weather conditions",
+  sourceLabel: "Open-Meteo",
+  sourceTitle: "Weather data by Open-Meteo.com (CC BY 4.0)",
+  disclaimer: "Model forecast for the Municipal Hall, not an official PAGASA advisory.",
+}
+
+/** WMO weather interpretation codes (WW) used by Open-Meteo. */
+export const weatherConditions: Record<number, { label: string; kind: WeatherKind }> = {
+  0: { label: "Clear sky", kind: "clear" },
+  1: { label: "Mostly clear", kind: "clear" },
+  2: { label: "Partly cloudy", kind: "partly" },
+  3: { label: "Overcast", kind: "cloudy" },
+  45: { label: "Fog", kind: "fog" },
+  48: { label: "Freezing fog", kind: "fog" },
+  51: { label: "Light drizzle", kind: "drizzle" },
+  53: { label: "Drizzle", kind: "drizzle" },
+  55: { label: "Heavy drizzle", kind: "drizzle" },
+  56: { label: "Freezing drizzle", kind: "drizzle" },
+  57: { label: "Heavy freezing drizzle", kind: "drizzle" },
+  61: { label: "Light rain", kind: "rain" },
+  63: { label: "Rain", kind: "rain" },
+  65: { label: "Heavy rain", kind: "rain" },
+  66: { label: "Freezing rain", kind: "rain" },
+  67: { label: "Heavy freezing rain", kind: "rain" },
+  71: { label: "Light snow", kind: "snow" },
+  73: { label: "Snow", kind: "snow" },
+  75: { label: "Heavy snow", kind: "snow" },
+  77: { label: "Snow grains", kind: "snow" },
+  80: { label: "Light showers", kind: "rain" },
+  81: { label: "Showers", kind: "rain" },
+  82: { label: "Heavy showers", kind: "rain" },
+  85: { label: "Snow showers", kind: "snow" },
+  86: { label: "Heavy snow showers", kind: "snow" },
+  95: { label: "Thunderstorm", kind: "storm" },
+  96: { label: "Thunderstorm with hail", kind: "storm" },
+  99: { label: "Severe thunderstorm with hail", kind: "storm" },
+}
+
+export const sunTimes = {
+  eyebrow: "Today",
+  title: "Sun and moon in Naguilian",
+  description: "Sunrise, sunset and moon phase for today, shown in Philippine time and updated every minute.",
+  sunTitle: "Sun",
+  moonTitle: "Moon",
+  illuminated: "illuminated",
+  daylight: "daylight",
+  solarNoon: "Solar noon",
+  goldenHourFrom: "Golden hour from",
+  sunrise: "Sunrise",
+  sunset: "Sunset",
+  moonrise: "Moonrise",
+  moonset: "Moonset",
+  nextSunrise: "Sunrise in",
+  nextSunset: "Sunset in",
+  moonPhases: ["New moon", "Waxing crescent", "First quarter", "Waxing gibbous", "Full moon", "Waning gibbous", "Last quarter", "Waning crescent"],
+  empty: "—",
+  calculatedWith: "Calculated with",
+  calculatorName: "SunCalc",
+  notForecast: "Not a PAGASA forecast",
+}
+
 export const history = [
   {
     period: "Early settlement",
@@ -224,9 +372,95 @@ export const history = [
 ]
 
 export const leadership = [
-  { role: "Mayor", name: "Hon. Nieri T. Flores", title: "Municipal Mayor" },
-  { role: "Vice Mayor", name: "Hon. Reynaldo J. Flores", title: "Municipal Vice Mayor" },
+  { role: "Mayor", person: executive.mayor },
+  { role: "Vice Mayor", person: executive.viceMayor },
 ]
+
+export const government = {
+  eyebrow: "Government",
+  nav: {
+    label: "Government",
+    items: [
+      { to: "/government/leadership", label: "Leadership" },
+      { to: "/government/history", label: "History" },
+      { to: "/government/officials", label: "Officials directory" },
+      { to: "/government/barangays", label: "Barangays" },
+    ],
+  },
+  notices: {
+    leadership: {
+      title: "From the official municipal website",
+      body: "This roster follows the Municipal Officials page on naguilianlu.gov.ph.",
+      linkLabel: "Open the official officials page",
+    },
+    officials: {
+      title: "As printed in the 2023 Citizen’s Charter",
+      body: "This listing comes from the charter’s organizational structure and Office Order No. 2023-1-B. Department heads may have changed since then.",
+    },
+    barangays: {
+      title: "Barangay officials not yet published",
+      body: "The municipality hasn’t published its barangay officials page yet. Names will be added here once it does. Population figures come from the official Demographics page (PSA CBMS Census, July 2025).",
+      linkLabel: "Open the official Demographics page",
+    },
+  },
+  leadership: {
+    title: "Municipal Leadership",
+    description:
+      "The elected officials who lead Naguilian’s executive and legislative branches, as listed on the official municipal website.",
+    executive: "Mayor and Vice Mayor",
+    sb: {
+      eyebrow: "Legislative",
+      title: "Sangguniang Bayan",
+      description: "The municipal council. The Vice Mayor presides over its sessions.",
+      exOfficio: "Ex-officio members",
+    },
+    messages: {
+      eyebrow: "In their words",
+      title: "Messages from the Mayor and Vice Mayor",
+      description: "Printed at the front of the 2023 Citizen’s Charter.",
+    },
+  },
+  history: {
+    title: "Brief History",
+    description: "Key moments in Naguilian’s history, from the municipality’s official history account.",
+    timeline: "Timeline",
+    visionMission: {
+      eyebrow: "Direction",
+      title: "Vision and mission",
+      vision: "Vision",
+      mission: "Mission",
+    },
+  },
+  officials: {
+    title: "Officials Directory",
+    description:
+      "Who heads each municipal office and unit, who signs in their absence, and how to reach the office.",
+    oic: "Officer-in-charge in the head’s absence",
+    services: "Services from this office",
+    contact: "Office contact",
+  },
+  barangays: {
+    title: "Barangays",
+    description: "Naguilian’s 37 barangays, their population and households, and their elected officials.",
+    summary: { barangays: "Barangays", population: "Total population", households: "Households" },
+    poblacion: "Poblacion",
+    population: "Population",
+    households: "Households",
+    families: "Families",
+    officials: {
+      punongBarangay: "Punong Barangay",
+      kagawads: "Barangay Kagawad",
+      skChairperson: "SK Chairperson",
+      secretary: "Barangay Secretary",
+      treasurer: "Barangay Treasurer",
+      pending: "Officials not yet published",
+    },
+  },
+  teasers: {
+    leadership: "Meet the full leadership",
+    history: "Read the full history",
+  },
+}
 
 export const contact = {
   phone: "+63 (072) 619 4917",
@@ -312,22 +546,18 @@ export const about = {
   sources: {
     eyebrow: "Sources",
     title: "Where our information comes from",
-    description: "Factual items link back to the official municipal source they came from. A few source links are still being confirmed and will be added as they are.",
+    description: "Everything here comes from published official municipal sources. Confirm with the municipality before you transact.",
     steps: [
       {
         icon: FilesIcon,
         title: "Gathered from official sources",
         description:
           "Service steps, offices, and requirements come from the published Citizen’s Charter. Population, history, and leadership come from the official municipal website.",
-        sources: [
-          { label: "Citizen’s Charter", href: links.citizensCharter },
-          { label: "Official website", href: links.officialSite },
-        ],
       },
       {
-        icon: LinkSimpleIcon,
-        title: "Facts are cited",
-        description: "Factual content carries a Source link, so you can open the original and check it yourself.",
+        icon: BookOpenTextIcon,
+        title: "Sources are named",
+        description: "Each section says where its information comes from, such as the 2023 Citizen’s Charter or the official municipal website, so you know where to check.",
       },
       {
         icon: ScalesIcon,
@@ -342,8 +572,8 @@ export const about = {
     items: [
       {
         icon: SealCheckIcon,
-        title: "Cite official sources",
-        description: "Facts link back to the municipal source they came from, and we add missing links as sources are confirmed.",
+        title: "Stick to official sources",
+        description: "We publish only what official municipal sources have published, and say where it comes from.",
       },
       {
         icon: PersonArmsSpreadIcon,
@@ -384,6 +614,89 @@ export const about = {
   },
 }
 
+/** Copy for the /contact page. */
+export const contactPage = {
+  intro: {
+    eyebrow: "Contact",
+    title: "Get in touch",
+    body: "Better Naguilian is a community-built project. It’s made and maintained by volunteers from and for Naguilian, not by the municipal government. Write to us about anything: a mistake, an idea, or a question about the project.",
+  },
+  municipalHall: {
+    title: "Looking for the Municipal Hall?",
+    body: "We can’t process permits, payments or requests. For official transactions, contact the municipality directly.",
+    linkLabel: "Municipal Hall contacts",
+  },
+  ways: {
+    eyebrow: "Reach the team",
+    title: "How to reach us",
+    description: "Email works for everything. If you use GitHub, you can file issues or send changes there too.",
+    items: [
+      {
+        icon: EnvelopeSimpleIcon,
+        title: "Email us",
+        description: "Questions, ideas, partnerships, or anything else. We read every message.",
+        cta: volunteerEmail,
+        href: links.email,
+      },
+      {
+        icon: FlagIcon,
+        title: "Report an issue",
+        description: "Wrong fee, outdated step, broken link? Tell us the page and what to fix.",
+        cta: "Send a report",
+        href: links.feedback,
+      },
+      {
+        icon: BugIcon,
+        title: "Open a GitHub issue",
+        description: "Track bugs and feature requests in public, where anyone can follow along.",
+        cta: "View issues",
+        href: links.issues,
+      },
+      {
+        icon: GitBranchIcon,
+        title: "Contribute",
+        description: "The code is open source. Write, check sources, design or build. Every skill helps.",
+        cta: "Start on GitHub",
+        href: links.contribute,
+      },
+    ],
+  },
+  community: {
+    eyebrow: "Community-built",
+    title: "Other community-built government sites",
+    description: "Better Naguilian is part of a wider volunteer movement, started by BetterGov.ph, to make government information easier to use.",
+    sites: [
+      {
+        name: "BetterGov.ph",
+        place: "Philippines",
+        description: "The national volunteer-built portal for government services and information that inspired this project.",
+        href: "https://bettergov.ph",
+      },
+      {
+        name: "Better Los Baños",
+        place: "Los Baños, Laguna",
+        description: "An LGU-focused fork of BetterGov.ph for the municipality of Los Baños.",
+        href: "https://betterlb.org",
+      },
+      {
+        name: "BetterKabankalan",
+        place: "Kabankalan City, Negros Occidental",
+        description: "A citizen-driven portal for Kabankalan City, inspired by BetterGov.ph.",
+        href: "https://betterkabankalan.org",
+      },
+      {
+        name: "Better GenSan",
+        place: "General Santos City, South Cotabato",
+        description: "A community-powered portal for city services, news and government information.",
+        href: "https://bettergensan.org",
+      },
+    ],
+    suggest: "Know another community-built LGU site?",
+    suggestLabel: "Let us know",
+    suggestHref: mailto("Community site suggestion", "Site name:\n\nLink:\n\nLGU it covers:\n"),
+  },
+}
+
 /** Copy for the service detail page and the /services standards section. */
 export const serviceDetail = {
   back: "All services",
@@ -418,11 +731,6 @@ export const serviceDetail = {
     notStated: "Not stated in the charter",
   },
   contact: { title: "Office contact", phone: "Phone", email: "Email", location: "Location" },
-  source: {
-    title: "Verify in the charter",
-    description: "Details are copied from the 2023 Citizen’s Charter. Check the printed page before you go.",
-    linkPrefix: "Citizen’s Charter, p.",
-  },
   accuracy: {
     title: "Was this information accurate?",
     description: "Tell us after your visit. Fees and requirements change, and residents are often the first to notice.",
@@ -448,7 +756,6 @@ export const serviceDetail = {
   },
   feedback: {
     title: "Feedback and complaints",
-    linkLabel: "Citizen’s Charter feedback page",
   },
   notFound: {
     title: "Service not found",
@@ -462,10 +769,8 @@ export const serviceStandards = {
   title: "Our pledge and your feedback",
   description: "What the Municipal Government of Naguilian pledges, and how to give feedback.",
   pledgeTitle: "Performance pledge",
-  pledgeSource: "Citizen’s Charter, performance pledge",
   feedbackTitle: "Complaints, grievances and feedback",
   slipLabel: "A feedback slip asks for",
-  feedbackSource: "Citizen’s Charter, feedback mechanism",
 }
 
 export const offline = {

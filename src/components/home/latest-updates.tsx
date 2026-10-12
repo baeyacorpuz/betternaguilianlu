@@ -1,7 +1,7 @@
 import { ArrowUpRightIcon, FacebookLogoIcon, MegaphoneIcon } from "@phosphor-icons/react"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Container, Section, SectionHeading } from "@/components/site/section"
 import { links } from "@/data/site"
 
@@ -41,11 +41,6 @@ export function LatestUpdates() {
               The official homepage points residents to this Facebook page for updates.
             </CardDescription>
           </CardContent>
-          <CardFooter className="border-t border-white/10 [.border-t]:pt-4">
-            <a href={links.officialSite} className="inline-flex items-center gap-1 text-xs font-medium text-brand-foreground/70 hover:text-brand-foreground hover:underline">
-              Updates source <ArrowUpRightIcon className="size-3" />
-            </a>
-          </CardFooter>
         </Card>
       </Container>
     </Section>

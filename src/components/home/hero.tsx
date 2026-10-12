@@ -51,7 +51,7 @@ export function Hero() {
           </div>
           <p className="inline-flex items-center gap-2 text-xs text-brand-foreground/70">
             <ShieldCheckIcon weight="fill" className="size-4 text-brand-muted" />
-            Every record links back to its official source.
+            Drawn from official municipal sources.
           </p>
         </div>
 
