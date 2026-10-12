@@ -28,3 +28,8 @@ dist-ssr
 .opencode
 
 openspec
+# Playwright and Lighthouse output
+/test-results/
+/playwright-report/
+/blob-report/
+/.lighthouseci/
