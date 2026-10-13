@@ -19,16 +19,19 @@ import { useWelcome } from "@/hooks/use-welcome"
 
 export function WelcomeDialog() {
   const { open, dismiss, dontShowAgain, setDontShowAgain } = useWelcome()
-  const exploreRef = React.useRef<HTMLButtonElement>(null)
+  const contentRef = React.useRef<HTMLDivElement>(null)
 
   return (
     <Dialog open={open} onOpenChange={(next) => !next && dismiss()}>
       <DialogContent
+        ref={contentRef}
+        tabIndex={-1}
+        // focus the dialog itself so a scrollable dialog opens at its title, not scrolled to the footer
         onOpenAutoFocus={(event) => {
           event.preventDefault()
-          exploreRef.current?.focus()
+          contentRef.current?.focus({ preventScroll: true })
         }}
-        className="max-h-[calc(100dvh-2rem)] gap-6 overflow-y-auto rounded-xl p-6 sm:max-w-xl sm:p-8">
+        className="max-h-[calc(100dvh-2rem)] gap-6 overflow-y-auto rounded-xl outline-none p-6 sm:max-w-xl sm:p-8">
         <DialogHeader className="items-start gap-4 pr-6 text-left sm:flex-row">
           <img src="/naguilian-icon.svg" alt="" className="size-10 shrink-0 rounded-lg sm:size-12" />
           <div className="flex flex-col gap-1.5">
@@ -86,7 +89,7 @@ export function WelcomeDialog() {
             </Label>
           </div>
           <div className="flex flex-col gap-2 sm:flex-row">
-            <Button ref={exploreRef} variant="outline" size="lg" onClick={dismiss}>
+            <Button variant="outline" size="lg" onClick={dismiss}>
               {welcome.exploreLabel}
             </Button>
             <Button asChild size="lg">
