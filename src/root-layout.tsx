@@ -6,6 +6,7 @@ import { OfflineBanner } from "@/components/site/offline-banner"
 import { ServiceSearchProvider } from "@/components/site/service-search"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader, TopBar } from "@/components/site/site-header"
+import { WelcomeDialog } from "@/components/site/welcome-dialog"
 
 function ScrollToHash() {
   const { hash, pathname } = useLocation()
@@ -39,6 +40,7 @@ function RootLayout() {
           <SiteFooter />
         </div>
         <ScrollToHash />
+        <WelcomeDialog />
       </ServiceSearchProvider>
     </TooltipProvider>
   )
