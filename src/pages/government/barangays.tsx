@@ -1,6 +1,6 @@
 import { SourceNotice } from "@/components/government/source-notice"
 import { BarangayCard } from "@/components/government/barangay-card"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Container, Section } from "@/components/site/section"
 import { barangayMeta, barangays } from "@/data/government"
 import { government } from "@/data/site"
@@ -26,11 +26,10 @@ export function BarangaysPage() {
         <Container>
           <dl className="mb-8 grid gap-4 sm:grid-cols-3">
             {summary.map((item) => (
-              <Card key={item.label} className="py-5">
-                <CardContent className="px-5">
-                  <dt className="text-xs font-medium text-muted-foreground">{item.label}</dt>
-                  <dd className="mt-1 text-3xl font-extrabold tracking-tight tabular-nums">{item.value.toLocaleString("en-PH")}</dd>
-                </CardContent>
+              // dt/dd must be direct children of the grouping div, so the card holds them without CardContent
+              <Card key={item.label} className="gap-1 px-5 py-5">
+                <dt className="text-xs font-medium text-muted-foreground">{item.label}</dt>
+                <dd className="text-3xl font-extrabold tracking-tight tabular-nums">{item.value.toLocaleString("en-PH")}</dd>
               </Card>
             ))}
           </dl>

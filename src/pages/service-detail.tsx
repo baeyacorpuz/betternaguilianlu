@@ -1,6 +1,7 @@
 import { getRouteApi, Link } from "@tanstack/react-router"
 import { ArrowLeftIcon, ArrowRightIcon, BuildingOfficeIcon, ClockIcon, MagnifyingGlassIcon } from "@phosphor-icons/react"
 
+import { AccuracyFeedback } from "@/components/services/accuracy-feedback"
 import { RequirementsCard, StepsCard } from "@/components/services/service-process"
 import { ServiceSidebar } from "@/components/services/service-sidebar"
 import { Container, Section } from "@/components/site/section"
@@ -8,11 +9,13 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card"
 import { serviceCategories, serviceDetail } from "@/data/site"
+import { useDocumentTitle } from "@/hooks/use-document-title"
 
 const route = getRouteApi("/services/$serviceId")
 
 export function ServiceDetailPage() {
   const service = route.useLoaderData()
+  useDocumentTitle(service.name)
   const category = serviceCategories.find((c) => c.id === service.category)
   const { facts, notes } = serviceDetail
 
@@ -90,6 +93,8 @@ export function ServiceDetailPage() {
                 </CardContent>
               </Card>
             )}
+            {/* keyed so a half-written report never carries over to another service */}
+            <AccuracyFeedback key={service.id} service={service} />
           </div>
           <ServiceSidebar service={service} />
         </Container>

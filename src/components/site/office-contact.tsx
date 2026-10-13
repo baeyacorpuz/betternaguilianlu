@@ -3,8 +3,11 @@ import { EnvelopeSimpleIcon, MapPinIcon, PhoneIcon } from "@phosphor-icons/react
 import type { Office } from "@/data/charter"
 import { serviceDetail } from "@/data/site"
 
+const rowClass = "grid grid-cols-[1rem_minmax(0,1fr)] gap-x-2"
+const labelClass = "col-start-1 row-start-1 pt-0.5 text-muted-foreground"
+const valueClass = "col-start-2 [overflow-wrap:anywhere]"
 const linkClass =
-  "rounded-sm text-primary underline-offset-4 outline-none hover:underline focus-visible:ring-[3px] focus-visible:ring-ring/50"
+  "inline-flex min-h-6 items-center rounded-sm text-primary underline-offset-4 outline-none hover:underline focus-visible:ring-[3px] focus-visible:ring-ring/50"
 
 /**
  * The first number in a charter phone line as a `tel:` href:
@@ -22,37 +25,38 @@ export function OfficeContact({ office }: { office: Office }) {
 
   return (
     <dl className="space-y-3 text-sm">
-      <div className="flex items-start gap-2">
-        <MapPinIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-        <div className="min-w-0">
-          <dt className="sr-only">{contact.location}</dt>
-          <dd className="[overflow-wrap:anywhere]">{office.address}</dd>
-        </div>
+      {/* each row is dt (icon + screen-reader label) beside its dd values; dt/dd stay direct children of the row */}
+      <div className={rowClass}>
+        <dt className={labelClass}>
+          <MapPinIcon className="size-4" aria-hidden />
+          <span className="sr-only">{contact.location}</span>
+        </dt>
+        <dd className={valueClass}>{office.address}</dd>
       </div>
-      <div className="flex items-start gap-2">
-        <PhoneIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-        <div className="min-w-0">
-          <dt className="sr-only">{contact.phone}</dt>
-          {phones.map((p) => (
-            <dd key={p} className="[overflow-wrap:anywhere]">
-              <a href={telHref(p)} className={linkClass}>
-                {p}
-              </a>
-            </dd>
-          ))}
-        </div>
+      <div className={rowClass}>
+        <dt className={labelClass}>
+          <PhoneIcon className="size-4" aria-hidden />
+          <span className="sr-only">{contact.phone}</span>
+        </dt>
+        {phones.map((p) => (
+          <dd key={p} className={valueClass}>
+            <a href={telHref(p)} className={linkClass}>
+              {p}
+            </a>
+          </dd>
+        ))}
       </div>
       {office.email && (
-        <div className="flex items-start gap-2">
-          <EnvelopeSimpleIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-          <div className="min-w-0">
-            <dt className="sr-only">{contact.email}</dt>
-            <dd className="[overflow-wrap:anywhere]">
-              <a href={`mailto:${office.email}`} className={linkClass}>
-                {office.email}
-              </a>
-            </dd>
-          </div>
+        <div className={rowClass}>
+          <dt className={labelClass}>
+            <EnvelopeSimpleIcon className="size-4" aria-hidden />
+            <span className="sr-only">{contact.email}</span>
+          </dt>
+          <dd className={valueClass}>
+            <a href={`mailto:${office.email}`} className={linkClass}>
+              {office.email}
+            </a>
+          </dd>
         </div>
       )}
     </dl>

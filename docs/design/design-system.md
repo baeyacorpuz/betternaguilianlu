@@ -10,14 +10,14 @@ This is the project's design guide. It describes the visual language the portal 
 ## Principles
 
 1. **Service first, not a brochure.** Every screen helps a resident finish a task: find a service, reach an office, check a source. Decoration can't push actions below the fold or out of reach.
-2. **Verified and sourced.** Factual content has a `SourceLink`. Don't add data that can't be traced, and show placeholders honestly ("No verified emergency contacts are published yet").
+2. **Verified and sourced.** Factual content has a `SourceLink` (or a `SourcesNote` with the date it was checked). Don't add data that can't be traced, and say honestly when something isn't verified yet.
 3. **Restrained Naguilian green.** Use the deep forest green for meaningful actions, selection, focus and the brand bands. Elsewhere, neutral warm surfaces carry the page.
 4. **Accessible by default.** Keyboard focus stays visible, there's a skip link, labels are real, states never rely on color alone, and long English/Filipino/Ilocano labels must fit.
 5. **Reuse before you invent.** Extend a CVA variant or a `site/` helper. Don't copy long class strings across components or add one-off hex colors.
 
 ## Color
 
-All colors are semantic CSS variables in OKLCH, exposed to Tailwind through `@theme inline` (`bg-primary`, `text-muted-foreground`, `border-border`, …). Components consume **only semantic utilities**. Raw `oklch()`/hex values in components are not allowed. The two existing exceptions are documented below.
+All colors are semantic CSS variables in OKLCH, exposed to Tailwind through `@theme inline` (`bg-primary`, `text-muted-foreground`, `border-border`, …). Components consume **only semantic utilities**. Raw `oklch()`/hex values in components are not allowed. The one existing exception (translucent white on brand surfaces) is documented below.
 
 ### Light (`:root`)
 
@@ -35,10 +35,11 @@ All colors are semantic CSS variables in OKLCH, exposed to Tailwind through `@th
 | `--muted-foreground` | `oklch(0.5 0.02 160)` | Metadata, descriptions, captions |
 | `--accent` | `oklch(0.945 0.02 152)` | Hover/selected surfaces, icon tiles |
 | `--accent-foreground` | `oklch(0.3 0.07 158)` | Text/icons on accent |
-| `--destructive` | `oklch(0.55 0.2 25)` | Errors and the emergency strip |
+| `--destructive` | `oklch(0.55 0.2 25)` | Errors and destructive actions |
 | `--border` | `oklch(0.91 0.01 140)` | Dividers, card outlines |
 | `--input` | `oklch(0.89 0.012 140)` | Input/control borders |
 | `--ring` | `oklch(0.55 0.09 158)` | Focus ring (used at `/50`) |
+| `--emergency` / `--emergency-foreground` | `oklch(0.5 0.19 25)` / `oklch(0.99 0.005 25)` | Emergency strip and hotline call buttons. Stays a deep red in dark mode (`oklch(0.47 0.17 25)`) so white text keeps 4.5:1 contrast |
 | `--brand` | `oklch(0.29 0.06 160)` | Deep forest: hero, top bar, `Section tone="brand"` |
 | `--brand-foreground` | `oklch(0.97 0.01 140)` | Text on brand |
 | `--brand-muted` | `oklch(0.78 0.06 155)` | Highlight text/icons on brand ("La Union", pins) |
@@ -53,7 +54,7 @@ Dark mode works. [`useTheme`](../../src/hooks/use-theme.ts) toggles `.dark` on `
 ### Usage rules
 
 - **Inverse surfaces** (`bg-brand`, `bg-primary` cards): use `text-brand-foreground`/`text-primary-foreground` and their opacity steps (`/80` body, `/70` captions). Translucent white (`bg-white/10`, `border-white/15`, `border-white/30`) is the approved way to layer chips and outline buttons on brand. This is exception #1.
-- **Emergency strip:** `bg-destructive/90 text-white`. Destructive red is for emergencies and errors only, never decoration. This is exception #2 (`text-white` on destructive).
+- **Emergency:** the top strip uses `bg-emergency text-emergency-foreground`, and call buttons use the `emergency` Button variant. Emergency and destructive red are for emergencies and errors only, never decoration.
 - **Opacity steps** in use: `/90` hover on solid fills, `/60` muted band, `/50` ring and subtle accent, `/15` decorative brand-muted line art. Keep to these.
 - Never encode meaning in color alone. Pair it with an icon, label, weight or underline.
 
@@ -151,6 +152,7 @@ Motion is short and functional. Use `transition-colors`/`transition-all` at defa
 | `ghost` | Toolbar/nav/icon actions |
 | `link` | Inline text actions |
 | `destructive` | Irreversible or error actions |
+| `emergency` | Tap-to-call emergency hotlines (911) |
 | `inverse` | Primary action **on brand surfaces** |
 | `inverse-outline` | Secondary action **on brand surfaces** |
 
@@ -176,7 +178,7 @@ Sizes are `sm` (32px), `default` (36px), `lg` (40px), `icon` (36px) and `icon-sm
 
 ### Navigation and shell
 
-- **Top bar:** an emergency strip (`bg-destructive/90`, `SirenIcon`), then a brand row with location and Manila time.
+- **Top bar:** an emergency strip (`bg-emergency`, `SirenIcon`) with tap-to-call 911, MDRRMO and police numbers (the pinned `hotlines` in `data/civic.ts`) and a link to `/emergency`, then a brand row with location and Manila time.
 - **Header:** sticky and translucent, with the `Logo` (36px icon + two-line wordmark), `NavigationMenu` at `xl`, and below that a `Sheet` menu.
 - Nav dropdown items are a `text-sm font-semibold` title over a `text-xs` muted, `line-clamp-2` description.
 - Language toggle: a `ToggleGroup` with `text-xs font-semibold` items. Unavailable locales are disabled, wrapped in a focusable span with a tooltip that explains why.

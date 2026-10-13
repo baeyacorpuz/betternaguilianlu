@@ -9,8 +9,10 @@ import { PopularServices } from "@/components/home/popular-services"
 import { Quiz } from "@/components/home/quiz"
 import { SunTimes } from "@/components/home/sun-times"
 import { VisitPlan } from "@/components/home/visit-plan"
+import { useDocumentTitle } from "@/hooks/use-document-title"
 
 export function HomePage() {
+  useDocumentTitle()
   return (
     <>
       <Hero />

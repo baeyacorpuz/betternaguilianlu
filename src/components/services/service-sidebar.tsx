@@ -17,28 +17,28 @@ export function ServiceSidebar({ service }: { service: Service }) {
         </CardHeader>
         <CardContent>
           <dl className="space-y-3 text-sm">
-            <div className="flex items-start gap-2">
-              <ClockIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-              <div className="min-w-0">
-                <dt className="text-xs font-medium text-muted-foreground">{summary.totalTime}</dt>
-                <dd className="[overflow-wrap:anywhere]">{service.totalTime ?? summary.notStated}</dd>
-              </div>
+            <div className="grid grid-cols-[1rem_minmax(0,1fr)] gap-x-2">
+              <dt className="col-span-2 flex items-start gap-2 text-xs font-medium text-muted-foreground">
+                <ClockIcon className="mt-px size-4 shrink-0" aria-hidden />
+                {summary.totalTime}
+              </dt>
+              <dd className="col-start-2 [overflow-wrap:anywhere]">{service.totalTime ?? summary.notStated}</dd>
             </div>
             {service.totalFees && (
-              <div className="flex items-start gap-2">
-                <ReceiptIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-                <div className="min-w-0">
-                  <dt className="text-xs font-medium text-muted-foreground">{summary.totalFees}</dt>
-                  <dd className="[overflow-wrap:anywhere]">{service.totalFees}</dd>
-                </div>
+              <div className="grid grid-cols-[1rem_minmax(0,1fr)] gap-x-2">
+                <dt className="col-span-2 flex items-start gap-2 text-xs font-medium text-muted-foreground">
+                  <ReceiptIcon className="mt-px size-4 shrink-0" aria-hidden />
+                  {summary.totalFees}
+                </dt>
+                <dd className="col-start-2 [overflow-wrap:anywhere]">{service.totalFees}</dd>
               </div>
             )}
-            <div className="flex items-start gap-2">
-              <BuildingOfficeIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-              <div className="min-w-0">
-                <dt className="text-xs font-medium text-muted-foreground">{summary.office}</dt>
-                <dd className="[overflow-wrap:anywhere]">{service.office}</dd>
-              </div>
+            <div className="grid grid-cols-[1rem_minmax(0,1fr)] gap-x-2">
+              <dt className="col-span-2 flex items-start gap-2 text-xs font-medium text-muted-foreground">
+                <BuildingOfficeIcon className="mt-px size-4 shrink-0" aria-hidden />
+                {summary.office}
+              </dt>
+              <dd className="col-start-2 [overflow-wrap:anywhere]">{service.office}</dd>
             </div>
           </dl>
         </CardContent>

@@ -31,7 +31,7 @@ export type { Service } from "@/data/charter"
 
 export const volunteerEmail = "volunteer@betternaguilianlu.org"
 
-const mailto = (subject: string, body: string) =>
+export const mailto = (subject: string, body: string) =>
   `mailto:${volunteerEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 
 /**
@@ -731,6 +731,29 @@ export const serviceDetail = {
     notStated: "Not stated in the charter",
   },
   contact: { title: "Office contact", phone: "Phone", email: "Email", location: "Location" },
+  accuracy: {
+    title: "Was this information accurate?",
+    description: "Tell us after your visit. Fees and requirements change, and residents are often the first to notice.",
+    yes: "Yes, it matched",
+    no: "No, something changed",
+    thanks: "Thanks for checking. Your answer is saved on this device.",
+    change: "Change my answer",
+    issueLabel: "What was different?",
+    issues: [
+      "The fee was different",
+      "The requirements were different",
+      "The steps or processing time were different",
+      "The office, phone or location was different",
+      "Something else",
+    ],
+    detailsLabel: "What did you see? (optional)",
+    detailsPlaceholder: "For example: the fee is now PHP 150.00, as posted at the Treasury window.",
+    visitLabel: "When did you visit? (optional)",
+    email: "Send by email",
+    github: "Report on GitHub",
+    privacy: "This opens your email app or GitHub with the report filled in. Nothing is sent until you press send.",
+    composerOpened: "Your report is ready in your email app or GitHub. Send it from there and a volunteer will check it against the charter and the office.",
+  },
   feedback: {
     title: "Feedback and complaints",
   },
@@ -748,4 +771,10 @@ export const serviceStandards = {
   pledgeTitle: "Performance pledge",
   feedbackTitle: "Complaints, grievances and feedback",
   slipLabel: "A feedback slip asks for",
+}
+
+export const offline = {
+  title: "You’re offline.",
+  body: "Every service page, hotline and office contact still works. The map and outside links need a connection.",
+  emergency: "Emergency hotlines",
 }

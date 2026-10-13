@@ -10,10 +10,12 @@ import { Container, Section, SectionHeading } from "@/components/site/section"
 import { feedbackMechanism, pledge } from "@/data/charter"
 import { serviceCategories, serviceStandards, type ServiceCategoryId } from "@/data/site"
 import { searchServices } from "@/lib/service-search"
+import { useDocumentTitle } from "@/hooks/use-document-title"
 
 const route = getRouteApi("/services")
 
 export function ServicesPage() {
+  useDocumentTitle("Services")
   const services = route.useLoaderData()
   const { category, q = "" } = route.useSearch()
   const navigate = route.useNavigate()

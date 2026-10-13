@@ -9,18 +9,23 @@ import { loadServices } from '@/data/charter'
 import { serviceCategories, type ServiceCategoryId } from '@/data/site'
 import { AboutPage } from '@/pages/about'
 import { ContactPage } from '@/pages/contact'
+import { EmergencyPage } from '@/pages/emergency'
 import { BarangaysPage } from '@/pages/government/barangays'
 import { HistoryPage } from '@/pages/government/history'
 import { GovernmentLayout } from '@/pages/government/layout'
 import { LeadershipPage } from '@/pages/government/leadership'
 import { OfficialsPage } from '@/pages/government/officials'
 import { HomePage } from '@/pages/home'
+import { LegislativePage } from '@/pages/legislative'
+import { NotFoundPage } from '@/pages/not-found'
 import { ServiceDetailPage, ServiceNotFound } from '@/pages/service-detail'
 import { ServicesPage } from '@/pages/services'
+import { TransparencyPage } from '@/pages/transparency'
 import RootLayout from './root-layout'
 
 const rootRoute = createRootRoute({
   component: RootLayout,
+  notFoundComponent: NotFoundPage,
 })
 
 const indexRoute = createRoute({
@@ -107,6 +112,10 @@ const barangaysRoute = createRoute({
   component: BarangaysPage,
 })
 
+const emergencyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/emergency', component: EmergencyPage })
+const legislativeRoute = createRoute({ getParentRoute: () => rootRoute, path: '/legislative', component: LegislativePage })
+const transparencyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/transparency', component: TransparencyPage })
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   servicesRoute,
@@ -114,6 +123,9 @@ const routeTree = rootRoute.addChildren([
   aboutRoute,
   contactRoute,
   governmentRoute.addChildren([governmentIndexRoute, leadershipRoute, historyRoute, officialsRoute, barangaysRoute]),
+  emergencyRoute,
+  legislativeRoute,
+  transparencyRoute,
 ])
 
 export const router = createRouter({ routeTree })

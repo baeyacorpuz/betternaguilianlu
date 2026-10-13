@@ -23,7 +23,7 @@ export default defineConfig({
         start_url: '/',
         scope: '/',
         display: 'standalone',
-        theme_color: '#6aae7a',
+        theme_color: '#1b4332',
         background_color: '#ffffff',
         lang: 'en',
         icons: [
@@ -59,6 +59,29 @@ export default defineConfig({
               networkTimeoutSeconds: 5,
               expiration: { maxEntries: 4, maxAgeSeconds: 3 * 60 * 60 },
               cacheableResponse: { statuses: [200] },
+            },
+          },
+          // the charter PDF (3 MB) is too big to precache; keep a copy once someone opens it
+          {
+            urlPattern: ({ url }) => url.pathname.startsWith('/docs/'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'charter-docs',
+              expiration: { maxEntries: 4 },
+              cacheableResponse: { statuses: [0, 200] },
+              rangeRequests: true,
+              plugins: [
+                {
+                  // a ranged miss would come back as a 206, which can't be cached; fetch the
+                  // whole PDF instead so later range requests are served from the cache
+                  requestWillFetch: async ({ request }) => {
+                    if (!request.headers.has('range')) return request
+                    const headers = new Headers(request.headers)
+                    headers.delete('range')
+                    return new Request(request.url, { headers, credentials: request.credentials })
+                  },
+                },
+              ],
             },
           },
         ],

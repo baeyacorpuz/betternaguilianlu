@@ -2,6 +2,7 @@ import * as React from "react"
 import { Outlet, useLocation } from "@tanstack/react-router"
 
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { OfflineBanner } from "@/components/site/offline-banner"
 import { ServiceSearchProvider } from "@/components/site/service-search"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader, TopBar } from "@/components/site/site-header"
@@ -31,6 +32,7 @@ function RootLayout() {
           </a>
           <TopBar />
           <SiteHeader />
+          <OfflineBanner />
           <main id="main" className="flex-1">
             <Outlet />
           </main>

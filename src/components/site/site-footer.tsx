@@ -22,6 +22,9 @@ export function SiteFooter() {
           <ul className="space-y-2">
             <li><Link to="/" className="hover:underline">Home</Link></li>
             <li><Link to="/services" className="hover:underline">Services</Link></li>
+            <li><Link to="/legislative" className="hover:underline">Legislation</Link></li>
+            <li><Link to="/transparency" className="hover:underline">Transparency</Link></li>
+            <li><Link to="/emergency" className="hover:underline">Emergency hotlines</Link></li>
             <li><Link to="/about" className="hover:underline">About</Link></li>
             <li><Link to="/contact" className="hover:underline">Contact</Link></li>
             <li><Link to="/government/leadership" className="hover:underline">Government</Link></li>
