@@ -93,7 +93,8 @@ export function ServiceDetailPage() {
                 </CardContent>
               </Card>
             )}
-            <AccuracyFeedback service={service} />
+            {/* keyed so a half-written report never carries over to another service */}
+            <AccuracyFeedback key={service.id} service={service} />
           </div>
           <ServiceSidebar service={service} />
         </Container>
