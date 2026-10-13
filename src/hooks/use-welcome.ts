@@ -19,9 +19,16 @@ export function useWelcome() {
   const [dontShowAgain, setDontShowAgain] = React.useState(false)
 
   const dismiss = React.useCallback(() => {
+    // Written separately so a failing sessionStorage can't skip the permanent dismissal
+    if (dontShowAgain) {
+      try {
+        localStorage.setItem(DISMISSED_KEY, "1")
+      } catch {
+        // ignore
+      }
+    }
     try {
       sessionStorage.setItem(SEEN_KEY, "1")
-      if (dontShowAgain) localStorage.setItem(DISMISSED_KEY, "1")
     } catch {
       // ignore
     }

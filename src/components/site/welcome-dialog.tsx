@@ -85,7 +85,7 @@ export function WelcomeDialog() {
               {welcome.dontShowAgain}
             </Label>
           </div>
-          <div className="flex flex-col-reverse gap-2 sm:flex-row">
+          <div className="flex flex-col gap-2 sm:flex-row">
             <Button ref={exploreRef} variant="outline" size="lg" onClick={dismiss}>
               {welcome.exploreLabel}
             </Button>
