@@ -614,6 +614,29 @@ export const about = {
   },
 }
 
+/** Copy for the welcome dialog shown on a visitor's first visit. */
+export const welcome = {
+  title: "Welcome to Better Naguilian",
+  description: "An independent, community-built guide to Naguilian’s services, officials, and public records.",
+  find: {
+    title: "What you’ll find",
+    body: "Government services and their requirements, your officials and barangays, and facts about the town. Every figure names its source so you can check it.",
+  },
+  beta: {
+    title: "We’re just getting started",
+    badge: "Beta",
+    body: "Better Naguilian is new, and we’re adding features and data as we go. Check back often: more records, tools, and pages are on the way.",
+  },
+  missing: {
+    title: "Know something we’re missing?",
+    body: "Share a correction or a public document, or lend a hand building the portal. Every contribution makes it more useful for Naguilian.",
+    linkLabel: "See how to reach us",
+  },
+  dontShowAgain: "Don’t show again",
+  exploreLabel: "Explore the site",
+  contributeLabel: "Contribute here",
+}
+
 /** Copy for the /contact page. */
 export const contactPage = {
   intro: {

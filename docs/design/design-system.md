@@ -188,7 +188,7 @@ Sizes are `sm` (32px), `default` (36px), `lg` (40px), `icon` (36px) and `icon-sm
 
 ### Other primitives
 
-Accordion, Alert, Avatar, Command, Dialog, Input, Label, NavigationMenu, Progress, RadioGroup, Separator, Sheet, Skeleton, Toggle/ToggleGroup and Tooltip come from shadcn and are used as is. Change their look through tokens or a new CVA variant, not per-call-site overrides.
+Accordion, Alert, Avatar, Checkbox, Command, Dialog, Input, Label, NavigationMenu, Progress, RadioGroup, Separator, Sheet, Skeleton, Toggle/ToggleGroup and Tooltip come from shadcn and are used as is. Change their look through tokens or a new CVA variant, not per-call-site overrides.
 
 ### Live data cards (weather, sun and moon)
 
