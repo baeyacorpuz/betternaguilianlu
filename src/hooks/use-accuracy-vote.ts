@@ -1,13 +1,13 @@
 import * as React from "react"
 
-export type AccuracyVote = "up" | "down" | "reported"
+export type AccuracyVote = "up" | "down"
 
 const key = (serviceId: string) => `bn-accuracy:${serviceId}`
 
 function read(serviceId: string): AccuracyVote | undefined {
   try {
     const v = localStorage.getItem(key(serviceId))
-    return v === "up" || v === "down" || v === "reported" ? v : undefined
+    return v === "up" || v === "down" ? v : undefined
   } catch {
     return undefined
   }

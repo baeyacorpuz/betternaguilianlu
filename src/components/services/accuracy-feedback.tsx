@@ -34,6 +34,8 @@ export function AccuracyFeedback({ service }: { service: Service }) {
   const [issue, setIssue] = React.useState("")
   const [details, setDetails] = React.useState("")
   const [visited, setVisited] = React.useState("")
+  // the links only open a composer, so this is never stored as a submitted report
+  const [composerOpened, setComposerOpened] = React.useState(false)
   const id = React.useId()
 
   const report = reportText(service, issue, details, visited)
@@ -50,11 +52,11 @@ export function AccuracyFeedback({ service }: { service: Service }) {
       </CardHeader>
 
       <CardContent className="space-y-5">
-        {vote === "up" || vote === "reported" ? (
+        {vote === "up" ? (
           <div role="status" className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <p className="flex items-center gap-2 text-sm font-medium">
               <CheckCircleIcon weight="fill" className="size-5 shrink-0 text-primary" aria-hidden />
-              {vote === "up" ? copy.thanks : copy.reportedThanks}
+              {copy.thanks}
             </p>
             <Button variant="link" size="sm" className="h-auto px-0" onClick={() => setVote(undefined)}>
               {copy.change}
@@ -124,13 +126,13 @@ export function AccuracyFeedback({ service }: { service: Service }) {
             {issue ? (
               <>
                 <Button asChild>
-                  <a href={emailHref} onClick={() => setVote("reported")}>
+                  <a href={emailHref} onClick={() => setComposerOpened(true)}>
                     <EnvelopeSimpleIcon aria-hidden />
                     {copy.email}
                   </a>
                 </Button>
                 <Button asChild variant="outline">
-                  <a href={githubHref} target="_blank" rel="noreferrer" onClick={() => setVote("reported")}>
+                  <a href={githubHref} target="_blank" rel="noreferrer" onClick={() => setComposerOpened(true)}>
                     <GithubLogoIcon aria-hidden />
                     {copy.github}
                   </a>
@@ -150,6 +152,12 @@ export function AccuracyFeedback({ service }: { service: Service }) {
             )}
           </div>
           <p className="text-xs text-pretty text-muted-foreground">{copy.privacy}</p>
+          {composerOpened && (
+            <p role="status" className="flex items-center gap-2 text-sm font-medium">
+              <CheckCircleIcon weight="fill" className="size-5 shrink-0 text-primary" aria-hidden />
+              {copy.composerOpened}
+            </p>
+          )}
         </CardFooter>
       )}
     </Card>

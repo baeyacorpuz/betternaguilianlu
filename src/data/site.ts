@@ -737,7 +737,6 @@ export const serviceDetail = {
     yes: "Yes, it matched",
     no: "No, something changed",
     thanks: "Thanks for checking. Your answer is saved on this device.",
-    reportedThanks: "Thanks for the report. A volunteer will check it against the charter and the office.",
     change: "Change my answer",
     issueLabel: "What was different?",
     issues: [
@@ -753,6 +752,7 @@ export const serviceDetail = {
     email: "Send by email",
     github: "Report on GitHub",
     privacy: "This opens your email app or GitHub with the report filled in. Nothing is sent until you press send.",
+    composerOpened: "Your report is ready in your email app or GitHub. Send it from there and a volunteer will check it against the charter and the office.",
   },
   feedback: {
     title: "Feedback and complaints",

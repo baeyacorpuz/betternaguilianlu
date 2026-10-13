@@ -27,4 +27,14 @@ test('reporting outdated info builds a pre-filled email and GitHub issue', async
 
   const github = page.getByRole('link', { name: 'Report on GitHub' })
   expect(await github.getAttribute('href')).toMatch(/github\.com\/.+\/issues\/new\?title=/)
+
+  // opening the composer isn't a sent report: the form stays available, also after a reload
+  await page.context().route('https://github.com/**', (route) => route.abort())
+  const popup = page.waitForEvent('popup')
+  await github.click()
+  await (await popup).close()
+  await expect(page.getByRole('status').filter({ hasText: 'Send it from there' })).toBeVisible()
+  await page.reload()
+  await expect(page.getByRole('button', { name: 'No, something changed' })).toHaveAttribute('aria-pressed', 'true')
+  await expect(page.getByLabel('The fee was different')).toBeVisible()
 })

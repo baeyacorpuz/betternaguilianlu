@@ -70,6 +70,18 @@ export default defineConfig({
               expiration: { maxEntries: 4 },
               cacheableResponse: { statuses: [0, 200] },
               rangeRequests: true,
+              plugins: [
+                {
+                  // a ranged miss would come back as a 206, which can't be cached; fetch the
+                  // whole PDF instead so later range requests are served from the cache
+                  requestWillFetch: async ({ request }) => {
+                    if (!request.headers.has('range')) return request
+                    const headers = new Headers(request.headers)
+                    headers.delete('range')
+                    return new Request(request.url, { headers, credentials: request.credentials })
+                  },
+                },
+              ],
             },
           },
         ],
