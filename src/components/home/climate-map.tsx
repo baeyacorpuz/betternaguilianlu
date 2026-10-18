@@ -1,12 +1,10 @@
-import { ArrowUpRightIcon, CalendarBlankIcon, CloudRainIcon, MapPinIcon, MapTrifoldIcon, NavigationArrowIcon, SunIcon } from "@phosphor-icons/react"
+import { CalendarBlankIcon, CloudRainIcon, MapPinIcon, MapTrifoldIcon, SunIcon } from "@phosphor-icons/react"
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { Container, Section, SectionHeading } from "@/components/site/section"
-import { WeatherToday } from "@/components/home/weather-today"
 import { climate, climateCopy as copy, contact, mapLinks, municipality } from "@/data/site"
 
 const monthFormat = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Manila", month: "numeric" })
