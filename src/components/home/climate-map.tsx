@@ -142,23 +142,6 @@ function MapCard() {
           <span>{copy.mapNote}</span>
         </div>
       </CardContent>
-      <CardFooter className="flex-wrap justify-end gap-3 border-t [.border-t]:pt-4">
-        <div className="flex flex-wrap gap-2">
-          <Button asChild variant="outline" size="sm">
-            <a href={urls.openStreetMap} target="_blank" rel="noreferrer">
-              {copy.openMap}
-              <ArrowUpRightIcon />
-            </a>
-          </Button>
-          <Button asChild size="sm">
-            <a href={urls.directions} target="_blank" rel="noreferrer">
-              <NavigationArrowIcon weight="fill" />
-              {copy.directions}
-              <ArrowUpRightIcon />
-            </a>
-          </Button>
-        </div>
-      </CardFooter>
     </Card>
   )
 }
@@ -169,7 +152,7 @@ export function ClimateMap() {
       <Container>
         <SectionHeading eyebrow={copy.eyebrow} title={copy.title} description={copy.description} className="mb-6" />
         <div className="space-y-3">
-          <WeatherToday />
+          {/* <WeatherToday /> */}
           <div className="grid gap-4 lg:grid-cols-[1fr_1.7fr]">
             <ClimateCard />
             <MapCard />

@@ -139,9 +139,9 @@ export function SunTimes() {
             }
           >
             <GlanceFacts facts={sunFacts} />
-            <GlanceNote>
+            {/* <GlanceNote>
               {copy.solarNoon} {formatTime(times.solarNoon)} · {copy.goldenHourFrom} {formatTime(times.goldenHour)}
-            </GlanceNote>
+            </GlanceNote> */}
           </GlanceCard>
 
           <GlanceCard
@@ -161,10 +161,10 @@ export function SunTimes() {
             }
           >
             <GlanceFacts facts={[`${copy.moonrise} ${formatTime(moonrise)}`, `${copy.moonset} ${formatTime(moonset)}`]} />
-            <GlanceNote>
+            {/* <GlanceNote>
               {copy.calculatedWith}{" "}
               <GlanceLink href={links.sunCalc}>{copy.calculatorName}</GlanceLink> · {copy.notForecast}
-            </GlanceNote>
+            </GlanceNote> */}
           </GlanceCard>
         </div>
       </Container>
