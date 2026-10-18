@@ -150,8 +150,7 @@ export function ClimateMap() {
       <Container>
         <SectionHeading eyebrow={copy.eyebrow} title={copy.title} description={copy.description} className="mb-6" />
         <div className="space-y-3">
-          {/* <WeatherToday /> */}
-          <div className="grid gap-4 lg:grid-cols-[1fr_1.7fr]">
+          <div className="grid gap-4 lg:grid-cols-[1fr_1.7fr]"  id="weather">
             <ClimateCard />
             <MapCard />
           </div>
