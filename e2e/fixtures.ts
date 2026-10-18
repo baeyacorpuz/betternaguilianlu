@@ -41,6 +41,14 @@ export const test = base.extend<{ failOnErrors: void; showWelcome: boolean; skip
   ],
   failOnErrors: [
     async ({ page }, use) => {
+      // Dismiss the welcome dialog on all pages by setting localStorage before page load
+      await page.addInitScript(() => {
+        try {
+          localStorage.setItem('bn-welcome-dismissed', '1')
+        } catch {
+          // storage unavailable
+        }
+      })
       const errors: string[] = []
       page.on('pageerror', (e) => errors.push(e.message))
       page.on('console', (m) => {
