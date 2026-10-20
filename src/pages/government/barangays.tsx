@@ -1,8 +1,9 @@
 import { SourceNotice } from "@/components/government/source-notice"
 import { BarangayCard } from "@/components/government/barangay-card"
+import { BarangayHouseholdChartLazy } from "@/components/government/barangay-household-chart-lazy"
 import { Card } from "@/components/ui/card"
 import { Container, Section } from "@/components/site/section"
-import { barangayMeta, barangays } from "@/data/government"
+import { barangays } from "@/data/government"
 import { government } from "@/data/site"
 import { GovernmentIntro } from "@/pages/government/layout"
 
@@ -33,10 +34,12 @@ export function BarangaysPage() {
               </Card>
             ))}
           </dl>
-          <p className="mb-4 text-xs text-muted-foreground">{barangayMeta.census}</p>
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+          <BarangayHouseholdChartLazy />
+
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {barangays.map((barangay) => (
-              <li key={barangay.id}>
+              <li key={barangay.id} id={barangay.id}>
                 <BarangayCard barangay={barangay} />
               </li>
             ))}
