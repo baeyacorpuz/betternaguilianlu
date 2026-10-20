@@ -77,23 +77,35 @@ function roundCoord(value) {
 }
 
 // Simplify coordinates in lon/lat space
+// Preserves polygon/ring nesting structure
 function simplifyCoordinates(coords, tolerance) {
-  const parts = []
+  // Detect if this is a MultiPolygon (array of polygons) or Polygon (array of rings)
+  const isMultiPolygon = Array.isArray(coords[0][0]) && Array.isArray(coords[0][0][0])
+  const polygons = isMultiPolygon ? coords : [coords]
 
-  // Handle both Polygon and MultiPolygon formats
-  const polygons = Array.isArray(coords[0][0]) && Array.isArray(coords[0][0][0]) ? coords : [coords]
+  const simplifiedPolygons = []
 
   for (const polygon of polygons) {
+    const simplifiedRings = []
     for (const ring of polygon) {
       if (ring.length < 2) continue
       const simplified = simplifyPath(ring, tolerance)
       if (simplified.length >= 2) {
-        parts.push(simplified)
+        // Ensure ring closure
+        if (simplified[0][0] !== simplified[simplified.length - 1][0] ||
+            simplified[0][1] !== simplified[simplified.length - 1][1]) {
+          simplified.push(simplified[0])
+        }
+        simplifiedRings.push(simplified)
       }
+    }
+    if (simplifiedRings.length > 0) {
+      simplifiedPolygons.push(simplifiedRings)
     }
   }
 
-  return parts
+  // Return in the same format as input
+  return isMultiPolygon ? simplifiedPolygons : simplifiedPolygons[0] || []
 }
 
 // Main function
@@ -141,23 +153,26 @@ async function main() {
     // Simplify and round coordinates
     const simplifiedCoords = simplifyCoordinates(feature.geometry.coordinates, SIMPLIFY_TOLERANCE)
 
-    // Round all coordinates to 5 decimals
-    const roundedCoords = simplifiedCoords.map(ring =>
-      ring.map(([lon, lat]) => [roundCoord(lon), roundCoord(lat)])
-    )
+    // Round all coordinates to 5 decimals, preserving polygon/ring structure
+    let roundedCoords
+    if (feature.geometry.type === 'Polygon') {
+      // For Polygon: simplifiedCoords is [ring, ring, ...]
+      roundedCoords = simplifiedCoords.map(ring =>
+        ring.map(([lon, lat]) => [roundCoord(lon), roundCoord(lat)])
+      )
+    } else {
+      // For MultiPolygon: simplifiedCoords is [[ring, ring, ...], [ring, ring, ...], ...]
+      roundedCoords = simplifiedCoords.map(polygon =>
+        polygon.map(ring =>
+          ring.map(([lon, lat]) => [roundCoord(lon), roundCoord(lat)])
+        )
+      )
+    }
 
     // Build output geometry
-    let outGeometry
-    if (feature.geometry.type === 'Polygon') {
-      outGeometry = {
-        type: 'Polygon',
-        coordinates: roundedCoords,
-      }
-    } else {
-      outGeometry = {
-        type: 'MultiPolygon',
-        coordinates: [roundedCoords],
-      }
+    const outGeometry = {
+      type: feature.geometry.type,
+      coordinates: roundedCoords,
     }
 
     outputFeatures.push({

@@ -39,7 +39,7 @@ export function BarangaysPage() {
 
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {barangays.map((barangay) => (
-              <li key={barangay.id} id={barangay.id}>
+              <li key={barangay.id} id={barangay.id} tabIndex={-1} className="scroll-mt-16">
                 <BarangayCard barangay={barangay} />
               </li>
             ))}

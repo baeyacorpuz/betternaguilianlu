@@ -453,6 +453,7 @@ export const government = {
       title: "Population and household size",
       caption: "Each dot is a barangay. Dots above the line have smaller households than the town average; dots below have larger ones. Select a dot to jump to its entry.",
       ariaLabel: "Scatter plot of barangay population vs households",
+      navAriaLabel: "Jump to a barangay from the chart",
       loading: "Loading chart…",
       xAxisName: "Population",
       yAxisName: "Households",

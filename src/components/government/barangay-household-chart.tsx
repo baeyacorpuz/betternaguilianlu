@@ -6,6 +6,15 @@ import { government } from "@/data/site"
 import { SourceLink } from "@/components/site/section"
 import { links } from "@/data/site"
 
+// Helper to navigate to a barangay with proper focus management
+function navigateToBarangay(barangayId: string) {
+  const element = document.getElementById(barangayId)
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "center" })
+    element.focus({ preventScroll: true })
+  }
+}
+
 // Dynamic import of echarts to keep it out of the main bundle
 async function loadEcharts() {
   const ec = await import("echarts/core")
@@ -24,7 +33,7 @@ function getCSSVariable(name: string): string {
   return value || "#000000"
 }
 
-// Convert OKLCH string to RGB for ECharts
+// Convert OKLCH string to RGB(A) for ECharts, preserving alpha
 function oklchToRgb(oklchStr: string): string {
   const canvas = document.createElement("canvas")
   const ctx = canvas.getContext("2d")
@@ -34,8 +43,10 @@ function oklchToRgb(oklchStr: string): string {
   ctx.fillRect(0, 0, 1, 1)
 
   const imageData = ctx.getImageData(0, 0, 1, 1)
-  const [r, g, b] = imageData.data
-  return `rgb(${r}, ${g}, ${b})`
+  const [r, g, b, a] = imageData.data
+  // Preserve alpha: return rgba when alpha < 255, rgb otherwise
+  const alpha = a / 255
+  return alpha === 1 ? `rgb(${r}, ${g}, ${b})` : `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
 
 function getChartColors() {
@@ -285,6 +296,7 @@ export function BarangayHouseholdChart() {
     if (!containerRef.current) return
 
     let mounted = true
+    let resizeObserver: ResizeObserver | null = null
 
     const initChart = async () => {
       try {
@@ -306,17 +318,13 @@ export function BarangayHouseholdChart() {
         // Handle clicks on dots
         chart.on("click", (params: any) => {
           if (!params.data) return
-          const barangayId = params.data.id
-          const element = document.getElementById(barangayId)
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "center" })
-          }
+          navigateToBarangay(params.data.id)
         })
 
         chartRef.current = chart
 
         // Combined ResizeObserver: resize chart and check width
-        const resizeObserver = new ResizeObserver(() => {
+        resizeObserver = new ResizeObserver(() => {
           if (chartRef.current && mounted) {
             chartRef.current.resize()
 
@@ -337,10 +345,6 @@ export function BarangayHouseholdChart() {
         resizeObserver.observe(containerRef.current!)
 
         setIsLoading(false)
-
-        return () => {
-          resizeObserver.disconnect()
-        }
       } catch (error) {
         console.error("Failed to initialize barangay household chart:", error)
         if (mounted) {
@@ -369,6 +373,7 @@ export function BarangayHouseholdChart() {
     return () => {
       mounted = false
       observer.disconnect()
+      resizeObserver?.disconnect()
       chartRef.current?.dispose()
     }
   }, [])
@@ -392,6 +397,24 @@ export function BarangayHouseholdChart() {
           </div>
         )}
       </div>
+      <nav className="sr-only focus-within:not-sr-only" aria-label={copy.navAriaLabel}>
+        <ul className="flex flex-col gap-1">
+          {barangays.map((barangay) => (
+            <li key={barangay.id}>
+              <a
+                href={`#${barangay.id}`}
+                onClick={(e) => {
+                  e.preventDefault()
+                  navigateToBarangay(barangay.id)
+                }}
+                className="text-sm underline hover:text-primary focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:border-ring"
+              >
+                {barangay.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <p className="text-xs text-muted-foreground">
         <SourceLink href={links.demographics} label={barangayMeta.census} />
       </p>

@@ -106,9 +106,11 @@ out geom;
   // Step 2: Fetch barangays within the municipality
   console.log('Fetching barangay boundaries...')
 
+  // Derive area ID from municipality relation ID (area id = 3600000000 + relation id)
+  const areaId = 3600000000 + municipality.id
+
   const barangayQuery = `[out:json];
-[bbox:16.40,120.28,16.65,120.55];
-relation["boundary"="administrative"]["admin_level"="10"];
+rel(area:${areaId})["boundary"="administrative"]["admin_level"="10"];
 out geom;
 `
 
@@ -119,7 +121,7 @@ out geom;
 
     const expandedQuery = `[out:json];
 [bbox:16.30,120.15,16.75,120.65];
-relation["boundary"="administrative"]["admin_level"="10"];
+rel(area:${areaId})["boundary"="administrative"]["admin_level"="10"];
 out geom;
 `
 
