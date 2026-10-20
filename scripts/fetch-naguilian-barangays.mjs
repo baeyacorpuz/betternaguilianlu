@@ -20,7 +20,7 @@ async function fetchFromOverpass(query) {
 // Stitch together ways into a closed ring
 function stitchWays(ways) {
   if (!ways || ways.length === 0) return []
-  if (ways.length === 1) return ways[0]
+  if (ways.length === 1) return [ways[0]]
 
   const rings = []
   const remaining = [...ways]

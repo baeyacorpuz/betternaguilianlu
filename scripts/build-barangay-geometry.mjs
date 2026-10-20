@@ -139,7 +139,7 @@ async function main() {
 
     let barangay = barangayMap.get(normalized)
     if (!barangay && ALIASES[normalized]) {
-      barangay = barangayMap.get(ALIASES[normalized])
+      barangay = barangayMap.get(normalizeName(ALIASES[normalized]))
     }
 
     if (!barangay) {
