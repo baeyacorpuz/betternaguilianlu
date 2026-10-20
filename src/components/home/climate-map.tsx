@@ -1,12 +1,10 @@
-import { ArrowUpRightIcon, CalendarBlankIcon, CloudRainIcon, MapPinIcon, MapTrifoldIcon, NavigationArrowIcon, SunIcon } from "@phosphor-icons/react"
+import { CalendarBlankIcon, CloudRainIcon, MapPinIcon, MapTrifoldIcon, SunIcon } from "@phosphor-icons/react"
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { Container, Section, SectionHeading } from "@/components/site/section"
-import { WeatherToday } from "@/components/home/weather-today"
 import { climate, climateCopy as copy, contact, mapLinks, municipality } from "@/data/site"
 
 const monthFormat = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Manila", month: "numeric" })
@@ -142,23 +140,6 @@ function MapCard() {
           <span>{copy.mapNote}</span>
         </div>
       </CardContent>
-      <CardFooter className="flex-wrap justify-end gap-3 border-t [.border-t]:pt-4">
-        <div className="flex flex-wrap gap-2">
-          <Button asChild variant="outline" size="sm">
-            <a href={urls.openStreetMap} target="_blank" rel="noreferrer">
-              {copy.openMap}
-              <ArrowUpRightIcon />
-            </a>
-          </Button>
-          <Button asChild size="sm">
-            <a href={urls.directions} target="_blank" rel="noreferrer">
-              <NavigationArrowIcon weight="fill" />
-              {copy.directions}
-              <ArrowUpRightIcon />
-            </a>
-          </Button>
-        </div>
-      </CardFooter>
     </Card>
   )
 }
@@ -169,7 +150,6 @@ export function ClimateMap() {
       <Container>
         <SectionHeading eyebrow={copy.eyebrow} title={copy.title} description={copy.description} className="mb-6" />
         <div className="space-y-3">
-          <WeatherToday />
           <div className="grid gap-4 lg:grid-cols-[1fr_1.7fr]">
             <ClimateCard />
             <MapCard />

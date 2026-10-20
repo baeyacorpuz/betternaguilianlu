@@ -2,9 +2,9 @@ import * as React from "react"
 import { MoonStarsIcon, SunIcon } from "@phosphor-icons/react"
 import * as SunCalc from "suncalc"
 
-import { GlanceCard, GlanceFacts, GlanceLead, GlanceLink, GlanceNote } from "@/components/site/glance-card"
+import { GlanceCard, GlanceFacts, GlanceLead } from "@/components/site/glance-card"
 import { Container, Section, SectionHeading } from "@/components/site/section"
-import { links, municipality, sunTimes as copy } from "@/data/site"
+import { municipality, sunTimes as copy } from "@/data/site"
 
 const TIME_ZONE = "Asia/Manila"
 const UTC_OFFSET_MINUTES = 480 // Asia/Manila is UTC+8 with no daylight saving
@@ -139,9 +139,9 @@ export function SunTimes() {
             }
           >
             <GlanceFacts facts={sunFacts} />
-            <GlanceNote>
+            {/* <GlanceNote>
               {copy.solarNoon} {formatTime(times.solarNoon)} · {copy.goldenHourFrom} {formatTime(times.goldenHour)}
-            </GlanceNote>
+            </GlanceNote> */}
           </GlanceCard>
 
           <GlanceCard
@@ -161,10 +161,10 @@ export function SunTimes() {
             }
           >
             <GlanceFacts facts={[`${copy.moonrise} ${formatTime(moonrise)}`, `${copy.moonset} ${formatTime(moonset)}`]} />
-            <GlanceNote>
+            {/* <GlanceNote>
               {copy.calculatedWith}{" "}
               <GlanceLink href={links.sunCalc}>{copy.calculatorName}</GlanceLink> · {copy.notForecast}
-            </GlanceNote>
+            </GlanceNote> */}
           </GlanceCard>
         </div>
       </Container>

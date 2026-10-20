@@ -196,8 +196,8 @@ export const climate = {
 
 export const climateCopy = {
   eyebrow: "Place",
-  title: "Weather, climate and map",
-  description: "Check today’s forecast, see how the seasons run through the year, and find the Municipal Hall.",
+  title: "Climate and map",
+  description: "See how the seasons run through the year and find the Municipal Hall.",
   cardKicker: "Climate through the year",
   today: "Right now",
   seasons: [
