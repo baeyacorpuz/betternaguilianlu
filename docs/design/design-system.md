@@ -6,6 +6,7 @@ This is the project's design guide. It describes the visual language the portal 
 - **Primitives:** [`src/components/ui/`](../../src/components/ui/) (shadcn/ui, `radix-mira` style, Radix underneath, Phosphor icons).
 - **Layout helpers:** [`src/components/site/section.tsx`](../../src/components/site/section.tsx): `Container`, `Section`, `SectionHeading`, `SourceLink`.
 - **Content:** [`src/data/site.ts`](../../src/data/site.ts). Components never hardcode copy or URLs.
+- **Shared version:** the [civic-portal-design](https://github.com/baeyacorpuz/civic-portal-design) Claude Code plugin packages this system for other community-built LGU portals. This guide stays the contract for this repo; when a rule or token changes here and applies to every portal, update the plugin too.
 
 ## Principles
 
@@ -17,7 +18,7 @@ This is the project's design guide. It describes the visual language the portal 
 
 ## Color
 
-All colors are semantic CSS variables in OKLCH, exposed to Tailwind through `@theme inline` (`bg-primary`, `text-muted-foreground`, `border-border`, …). Components consume **only semantic utilities**. Raw `oklch()`/hex values in components are not allowed. The one existing exception (translucent white on brand surfaces) is documented below.
+All colors are semantic CSS variables in OKLCH, exposed to Tailwind through `@theme inline` (`bg-primary`, `text-muted-foreground`, `border-border`, …). Components consume **only semantic utilities**. Raw `oklch()`/hex values in components are not allowed. The two exceptions (translucent white on brand surfaces, and third-party brand marks) are documented below.
 
 ### Light (`:root`)
 
@@ -54,6 +55,7 @@ Dark mode works. [`useTheme`](../../src/hooks/use-theme.ts) toggles `.dark` on `
 ### Usage rules
 
 - **Inverse surfaces** (`bg-brand`, `bg-primary` cards): use `text-brand-foreground`/`text-primary-foreground` and their opacity steps (`/80` body, `/70` captions). Translucent white (`bg-white/10`, `border-white/15`, `border-white/30`) is the approved way to layer chips and outline buttons on brand. This is exception #1.
+- **Third-party brand marks:** a third party's own logo color may be used on its logo tile (Facebook blue `#1877F2` in `latest-updates.tsx`). This is exception #2. Mark the line with a `tokens-allow` comment saying why, so the plugin's `check-tokens.mjs` skips it.
 - **Emergency:** the top strip uses `bg-emergency text-emergency-foreground`, and call buttons use the `emergency` Button variant. Emergency and destructive red are for emergencies and errors only, never decoration.
 - **Opacity steps** in use: `/90` hover on solid fills, `/60` muted band, `/50` ring and subtle accent, `/15` decorative brand-muted line art. Keep to these.
 - Never encode meaning in color alone. Pair it with an icon, label, weight or underline.
@@ -216,6 +218,7 @@ Use Recharts with `--chart-1…5` in order (forest first). Charts need a text al
 ## Contribution checklist
 
 - [ ] Use semantic color utilities only. Add no hex/oklch values in components.
+- [ ] If the change applies to every portal (a token role, a component rule, a civic pattern), update [civic-portal-design](https://github.com/baeyacorpuz/civic-portal-design) too.
 - [ ] Define a new token in `:root`, `.dark`, and `@theme inline`, and document it here in the same change.
 - [ ] Check radius and elevation by role: `rounded-xl` cards, `rounded-md` controls, pills for chips, and shadows only from the table above.
 - [ ] Build new homepage blocks from `Section`/`Container`/`SectionHeading`, with a `SourceLink` for factual content.

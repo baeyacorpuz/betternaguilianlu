@@ -30,6 +30,7 @@ export function LatestUpdates() {
         </div>
         <Card className="border-white/10 bg-white/5 text-brand-foreground backdrop-blur">
           <CardHeader className="grid-cols-[auto_1fr] gap-x-4">
+            {/* tokens-allow: Facebook's brand blue on its logo tile (exception #2 in the design doc) */}
             <span className="row-span-2 flex size-12 items-center justify-center rounded-full bg-[#1877F2] text-white">
               <FacebookLogoIcon weight="fill" className="size-6" />
             </span>
