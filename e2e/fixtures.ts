@@ -18,8 +18,27 @@ export const ROUTES = [
   { path: '/about', heading: /./ },
 ] as const
 
-/** Fails a test on uncaught page errors and console errors (outside third-party embeds). */
-export const test = base.extend<{ failOnErrors: void }>({
+/**
+ * Fails a test on uncaught page errors and console errors (outside third-party embeds).
+ * The welcome dialog is pre-dismissed so it doesn't cover the page; set `showWelcome` to test it.
+ */
+export const test = base.extend<{ failOnErrors: void; showWelcome: boolean; skipWelcome: void }>({
+  showWelcome: [false, { option: true }],
+  skipWelcome: [
+    async ({ context, showWelcome }, use) => {
+      if (!showWelcome) {
+        await context.addInitScript(() => {
+          try {
+            localStorage.setItem('bn-welcome-dismissed', '1')
+          } catch {
+            // storage unavailable: the dialog stays closed anyway
+          }
+        })
+      }
+      await use()
+    },
+    { auto: true },
+  ],
   failOnErrors: [
     async ({ page }, use) => {
       const errors: string[] = []
