@@ -1,0 +1,1267 @@
+{
+  "type": "FeatureCollection",
+  "source": "Manually created simplified dataset",
+  "sourceUrl": "Generated for Naguilian, La Union barangay map",
+  "license": "Public domain / Educational use",
+  "retrieved": "2026-10-20",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "aguioas",
+        "name": "Aguioas"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.54,
+              16.51
+            ],
+            [
+              -120.52,
+              16.51
+            ],
+            [
+              -120.52,
+              16.49
+            ],
+            [
+              -120.54,
+              16.49
+            ],
+            [
+              -120.54,
+              16.51
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "al-alinao-norte",
+        "name": "Al-Alinao Norte"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.57,
+              16.53
+            ],
+            [
+              -120.55,
+              16.53
+            ],
+            [
+              -120.55,
+              16.51
+            ],
+            [
+              -120.57,
+              16.51
+            ],
+            [
+              -120.57,
+              16.53
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "al-alinao-sur",
+        "name": "Al-Alinao Sur"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.57,
+              16.51
+            ],
+            [
+              -120.55,
+              16.51
+            ],
+            [
+              -120.55,
+              16.49
+            ],
+            [
+              -120.57,
+              16.49
+            ],
+            [
+              -120.57,
+              16.51
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ambaracao-norte",
+        "name": "Ambaracao Norte"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.59,
+              16.53
+            ],
+            [
+              -120.57,
+              16.53
+            ],
+            [
+              -120.57,
+              16.51
+            ],
+            [
+              -120.59,
+              16.51
+            ],
+            [
+              -120.59,
+              16.53
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ambaracao-sur",
+        "name": "Ambaracao Sur"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.59,
+              16.51
+            ],
+            [
+              -120.57,
+              16.51
+            ],
+            [
+              -120.57,
+              16.49
+            ],
+            [
+              -120.59,
+              16.49
+            ],
+            [
+              -120.59,
+              16.51
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "angin",
+        "name": "Angin"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.61,
+              16.51
+            ],
+            [
+              -120.59,
+              16.51
+            ],
+            [
+              -120.59,
+              16.49
+            ],
+            [
+              -120.61,
+              16.49
+            ],
+            [
+              -120.61,
+              16.51
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "balecbec",
+        "name": "Balecbec"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.52,
+              16.49
+            ],
+            [
+              -120.5,
+              16.49
+            ],
+            [
+              -120.5,
+              16.47
+            ],
+            [
+              -120.52,
+              16.47
+            ],
+            [
+              -120.52,
+              16.49
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bancagan",
+        "name": "Bancagan"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.54,
+              16.47
+            ],
+            [
+              -120.52,
+              16.47
+            ],
+            [
+              -120.52,
+              16.45
+            ],
+            [
+              -120.54,
+              16.45
+            ],
+            [
+              -120.54,
+              16.47
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "baraoas-norte",
+        "name": "Baraoas Norte"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.56,
+              16.47
+            ],
+            [
+              -120.54,
+              16.47
+            ],
+            [
+              -120.54,
+              16.45
+            ],
+            [
+              -120.56,
+              16.45
+            ],
+            [
+              -120.56,
+              16.47
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "baraoas-sur",
+        "name": "Baraoas Sur"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.58,
+              16.47
+            ],
+            [
+              -120.56,
+              16.47
+            ],
+            [
+              -120.56,
+              16.45
+            ],
+            [
+              -120.58,
+              16.45
+            ],
+            [
+              -120.58,
+              16.47
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bariquir",
+        "name": "Bariquir"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.6,
+              16.47
+            ],
+            [
+              -120.58,
+              16.47
+            ],
+            [
+              -120.58,
+              16.45
+            ],
+            [
+              -120.6,
+              16.45
+            ],
+            [
+              -120.6,
+              16.47
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bato",
+        "name": "Bato"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.52,
+              16.45
+            ],
+            [
+              -120.5,
+              16.45
+            ],
+            [
+              -120.5,
+              16.43
+            ],
+            [
+              -120.52,
+              16.43
+            ],
+            [
+              -120.52,
+              16.45
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bimmotobot",
+        "name": "Bimmotobot"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.54,
+              16.43
+            ],
+            [
+              -120.52,
+              16.43
+            ],
+            [
+              -120.52,
+              16.41
+            ],
+            [
+              -120.54,
+              16.41
+            ],
+            [
+              -120.54,
+              16.43
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cabaritan-norte",
+        "name": "Cabaritan Norte"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.56,
+              16.43
+            ],
+            [
+              -120.54,
+              16.43
+            ],
+            [
+              -120.54,
+              16.41
+            ],
+            [
+              -120.56,
+              16.41
+            ],
+            [
+              -120.56,
+              16.43
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cabaritan-sur",
+        "name": "Cabaritan Sur"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.58,
+              16.43
+            ],
+            [
+              -120.56,
+              16.43
+            ],
+            [
+              -120.56,
+              16.41
+            ],
+            [
+              -120.58,
+              16.41
+            ],
+            [
+              -120.58,
+              16.43
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "casilagan",
+        "name": "Casilagan"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.6,
+              16.43
+            ],
+            [
+              -120.58,
+              16.43
+            ],
+            [
+              -120.58,
+              16.41
+            ],
+            [
+              -120.6,
+              16.41
+            ],
+            [
+              -120.6,
+              16.43
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "dal-lipaoen",
+        "name": "Dal-Lipaoen"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.61,
+              16.49
+            ],
+            [
+              -120.59,
+              16.49
+            ],
+            [
+              -120.59,
+              16.47
+            ],
+            [
+              -120.61,
+              16.47
+            ],
+            [
+              -120.61,
+              16.49
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "daramuangan",
+        "name": "Daramuangan"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.62,
+              16.51
+            ],
+            [
+              -120.6,
+              16.51
+            ],
+            [
+              -120.6,
+              16.49
+            ],
+            [
+              -120.62,
+              16.49
+            ],
+            [
+              -120.62,
+              16.51
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "guesset",
+        "name": "Guesset"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.62,
+              16.49
+            ],
+            [
+              -120.6,
+              16.49
+            ],
+            [
+              -120.6,
+              16.47
+            ],
+            [
+              -120.62,
+              16.47
+            ],
+            [
+              -120.62,
+              16.49
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "gusing-norte",
+        "name": "Gusing Norte"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.62,
+              16.47
+            ],
+            [
+              -120.6,
+              16.47
+            ],
+            [
+              -120.6,
+              16.45
+            ],
+            [
+              -120.62,
+              16.45
+            ],
+            [
+              -120.62,
+              16.47
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "gusing-sur",
+        "name": "Gusing Sur"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.62,
+              16.45
+            ],
+            [
+              -120.6,
+              16.45
+            ],
+            [
+              -120.6,
+              16.43
+            ],
+            [
+              -120.62,
+              16.43
+            ],
+            [
+              -120.62,
+              16.45
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "imelda",
+        "name": "Imelda"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.61,
+              16.43
+            ],
+            [
+              -120.59,
+              16.43
+            ],
+            [
+              -120.59,
+              16.41
+            ],
+            [
+              -120.61,
+              16.41
+            ],
+            [
+              -120.61,
+              16.43
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lioac-norte",
+        "name": "Lioac Norte"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.5,
+              16.47
+            ],
+            [
+              -120.48,
+              16.47
+            ],
+            [
+              -120.48,
+              16.45
+            ],
+            [
+              -120.5,
+              16.45
+            ],
+            [
+              -120.5,
+              16.47
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lioac-sur",
+        "name": "Lioac Sur"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.5,
+              16.45
+            ],
+            [
+              -120.48,
+              16.45
+            ],
+            [
+              -120.48,
+              16.43
+            ],
+            [
+              -120.5,
+              16.43
+            ],
+            [
+              -120.5,
+              16.45
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magungunay",
+        "name": "Magungunay"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.5,
+              16.43
+            ],
+            [
+              -120.48,
+              16.43
+            ],
+            [
+              -120.48,
+              16.41
+            ],
+            [
+              -120.5,
+              16.41
+            ],
+            [
+              -120.5,
+              16.43
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mamat-ing-norte",
+        "name": "Mamat-Ing Norte"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.5,
+              16.41
+            ],
+            [
+              -120.48,
+              16.41
+            ],
+            [
+              -120.48,
+              16.39
+            ],
+            [
+              -120.5,
+              16.39
+            ],
+            [
+              -120.5,
+              16.41
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mamat-ing-sur",
+        "name": "Mamat-Ing Sur"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.52,
+              16.41
+            ],
+            [
+              -120.5,
+              16.41
+            ],
+            [
+              -120.5,
+              16.39
+            ],
+            [
+              -120.52,
+              16.39
+            ],
+            [
+              -120.52,
+              16.41
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "nagsidorisan",
+        "name": "Nagsidorisan"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.54,
+              16.41
+            ],
+            [
+              -120.52,
+              16.41
+            ],
+            [
+              -120.52,
+              16.39
+            ],
+            [
+              -120.54,
+              16.39
+            ],
+            [
+              -120.54,
+              16.41
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "natividad-poblacion",
+        "name": "Natividad"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.56,
+              16.41
+            ],
+            [
+              -120.54,
+              16.41
+            ],
+            [
+              -120.54,
+              16.39
+            ],
+            [
+              -120.56,
+              16.39
+            ],
+            [
+              -120.56,
+              16.41
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ortiz-poblacion",
+        "name": "Ortiz"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.58,
+              16.41
+            ],
+            [
+              -120.56,
+              16.41
+            ],
+            [
+              -120.56,
+              16.39
+            ],
+            [
+              -120.58,
+              16.39
+            ],
+            [
+              -120.58,
+              16.41
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ribsuan",
+        "name": "Ribsuan"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.6,
+              16.41
+            ],
+            [
+              -120.58,
+              16.41
+            ],
+            [
+              -120.58,
+              16.39
+            ],
+            [
+              -120.6,
+              16.39
+            ],
+            [
+              -120.6,
+              16.41
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "san-antonio",
+        "name": "San Antonio"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.52,
+              16.53
+            ],
+            [
+              -120.5,
+              16.53
+            ],
+            [
+              -120.5,
+              16.51
+            ],
+            [
+              -120.52,
+              16.51
+            ],
+            [
+              -120.52,
+              16.53
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "san-isidro",
+        "name": "San Isidro"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.5,
+              16.53
+            ],
+            [
+              -120.48,
+              16.53
+            ],
+            [
+              -120.48,
+              16.51
+            ],
+            [
+              -120.5,
+              16.51
+            ],
+            [
+              -120.5,
+              16.53
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sili",
+        "name": "Sili"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.48,
+              16.51
+            ],
+            [
+              -120.46,
+              16.51
+            ],
+            [
+              -120.46,
+              16.49
+            ],
+            [
+              -120.48,
+              16.49
+            ],
+            [
+              -120.48,
+              16.51
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "suguidan-norte",
+        "name": "Suguidan Norte"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.48,
+              16.49
+            ],
+            [
+              -120.46,
+              16.49
+            ],
+            [
+              -120.46,
+              16.47
+            ],
+            [
+              -120.48,
+              16.47
+            ],
+            [
+              -120.48,
+              16.49
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "suguidan-sur",
+        "name": "Suguidan Sur"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.48,
+              16.47
+            ],
+            [
+              -120.46,
+              16.47
+            ],
+            [
+              -120.46,
+              16.45
+            ],
+            [
+              -120.48,
+              16.45
+            ],
+            [
+              -120.48,
+              16.47
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tuddingan",
+        "name": "Tuddingan"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -120.48,
+              16.45
+            ],
+            [
+              -120.46,
+              16.45
+            ],
+            [
+              -120.46,
+              16.43
+            ],
+            [
+              -120.48,
+              16.43
+            ],
+            [
+              -120.48,
+              16.45
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

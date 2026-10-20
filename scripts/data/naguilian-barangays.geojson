@@ -1,0 +1,190 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Aguioas" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.54, 16.51], [-120.52, 16.51], [-120.52, 16.49], [-120.54, 16.49], [-120.54, 16.51]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Al-Alinao Norte" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.57, 16.53], [-120.55, 16.53], [-120.55, 16.51], [-120.57, 16.51], [-120.57, 16.53]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Al-Alinao Sur" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.57, 16.51], [-120.55, 16.51], [-120.55, 16.49], [-120.57, 16.49], [-120.57, 16.51]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Ambaracao Norte" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.59, 16.53], [-120.57, 16.53], [-120.57, 16.51], [-120.59, 16.51], [-120.59, 16.53]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Ambaracao Sur" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.59, 16.51], [-120.57, 16.51], [-120.57, 16.49], [-120.59, 16.49], [-120.59, 16.51]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Angin" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.61, 16.51], [-120.59, 16.51], [-120.59, 16.49], [-120.61, 16.49], [-120.61, 16.51]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Balecbec" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.52, 16.49], [-120.50, 16.49], [-120.50, 16.47], [-120.52, 16.47], [-120.52, 16.49]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Bancagan" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.54, 16.47], [-120.52, 16.47], [-120.52, 16.45], [-120.54, 16.45], [-120.54, 16.47]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Baraoas Norte" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.56, 16.47], [-120.54, 16.47], [-120.54, 16.45], [-120.56, 16.45], [-120.56, 16.47]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Baraoas Sur" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.58, 16.47], [-120.56, 16.47], [-120.56, 16.45], [-120.58, 16.45], [-120.58, 16.47]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Bariquir" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.60, 16.47], [-120.58, 16.47], [-120.58, 16.45], [-120.60, 16.45], [-120.60, 16.47]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Bato" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.52, 16.45], [-120.50, 16.45], [-120.50, 16.43], [-120.52, 16.43], [-120.52, 16.45]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Bimmotobot" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.54, 16.43], [-120.52, 16.43], [-120.52, 16.41], [-120.54, 16.41], [-120.54, 16.43]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Cabaritan Norte" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.56, 16.43], [-120.54, 16.43], [-120.54, 16.41], [-120.56, 16.41], [-120.56, 16.43]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Cabaritan Sur" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.58, 16.43], [-120.56, 16.43], [-120.56, 16.41], [-120.58, 16.41], [-120.58, 16.43]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Casilagan" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.60, 16.43], [-120.58, 16.43], [-120.58, 16.41], [-120.60, 16.41], [-120.60, 16.43]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Dal-Lipaoen" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.61, 16.49], [-120.59, 16.49], [-120.59, 16.47], [-120.61, 16.47], [-120.61, 16.49]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Daramuangan" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.62, 16.51], [-120.60, 16.51], [-120.60, 16.49], [-120.62, 16.49], [-120.62, 16.51]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Guesset" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.62, 16.49], [-120.60, 16.49], [-120.60, 16.47], [-120.62, 16.47], [-120.62, 16.49]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Gusing Norte" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.62, 16.47], [-120.60, 16.47], [-120.60, 16.45], [-120.62, 16.45], [-120.62, 16.47]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Gusing Sur" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.62, 16.45], [-120.60, 16.45], [-120.60, 16.43], [-120.62, 16.43], [-120.62, 16.45]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Imelda" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.61, 16.43], [-120.59, 16.43], [-120.59, 16.41], [-120.61, 16.41], [-120.61, 16.43]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Lioac Norte" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.50, 16.47], [-120.48, 16.47], [-120.48, 16.45], [-120.50, 16.45], [-120.50, 16.47]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Lioac Sur" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.50, 16.45], [-120.48, 16.45], [-120.48, 16.43], [-120.50, 16.43], [-120.50, 16.45]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Magungunay" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.50, 16.43], [-120.48, 16.43], [-120.48, 16.41], [-120.50, 16.41], [-120.50, 16.43]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Mamat-Ing Norte" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.50, 16.41], [-120.48, 16.41], [-120.48, 16.39], [-120.50, 16.39], [-120.50, 16.41]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Mamat-Ing Sur" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.52, 16.41], [-120.50, 16.41], [-120.50, 16.39], [-120.52, 16.39], [-120.52, 16.41]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Nagsidorisan" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.54, 16.41], [-120.52, 16.41], [-120.52, 16.39], [-120.54, 16.39], [-120.54, 16.41]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Natividad" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.56, 16.41], [-120.54, 16.41], [-120.54, 16.39], [-120.56, 16.39], [-120.56, 16.41]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Ortiz" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.58, 16.41], [-120.56, 16.41], [-120.56, 16.39], [-120.58, 16.39], [-120.58, 16.41]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Ribsuan" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.60, 16.41], [-120.58, 16.41], [-120.58, 16.39], [-120.60, 16.39], [-120.60, 16.41]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "San Antonio" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.52, 16.53], [-120.50, 16.53], [-120.50, 16.51], [-120.52, 16.51], [-120.52, 16.53]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "San Isidro" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.50, 16.53], [-120.48, 16.53], [-120.48, 16.51], [-120.50, 16.51], [-120.50, 16.53]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Sili" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.48, 16.51], [-120.46, 16.51], [-120.46, 16.49], [-120.48, 16.49], [-120.48, 16.51]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Suguidan Norte" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.48, 16.49], [-120.46, 16.49], [-120.46, 16.47], [-120.48, 16.47], [-120.48, 16.49]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Suguidan Sur" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.48, 16.47], [-120.46, 16.47], [-120.46, 16.45], [-120.48, 16.45], [-120.48, 16.47]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Tuddingan" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120.48, 16.45], [-120.46, 16.45], [-120.46, 16.43], [-120.48, 16.43], [-120.48, 16.45]]] }
+    }
+  ]
+}
