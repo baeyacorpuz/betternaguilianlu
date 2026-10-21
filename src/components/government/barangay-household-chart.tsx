@@ -46,6 +46,7 @@ function oklchToRgb(oklchStr: string): string {
   const [r, g, b, a] = imageData.data
   // Preserve alpha: return rgba when alpha < 255, rgb otherwise
   const alpha = a / 255
+  // tokens-allow: returns a resolved token as rgb() for ECharts, not a hardcoded color
   return alpha === 1 ? `rgb(${r}, ${g}, ${b})` : `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
 
