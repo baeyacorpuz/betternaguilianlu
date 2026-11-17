@@ -1,8 +1,12 @@
 import { Link } from "@tanstack/react-router"
 
+import { Logo } from "@/components/site/logo"
 import { Separator } from "@/components/ui/separator"
 import { Container } from "@/components/site/section"
 import { contact, links } from "@/data/site"
+import { updatesPage } from "@/data/updates"
+import { appBuild } from "@/lib/app-build"
+import { formatIsoDate } from "@/lib/dates"
 
 export function SiteFooter() {
   return (
@@ -10,7 +14,7 @@ export function SiteFooter() {
       <Container className="grid gap-10 py-12 md:grid-cols-[1.5fr_1fr_1fr]">
         <div className="space-y-3">
           <Link to="/" className="flex items-center gap-2.5">
-            <img src="/naguilian-icon.svg" alt="" className="size-9 rounded-lg" />
+            <Logo variant="mark" className="h-9 text-brand-foreground" />
             <span className="font-bold">Better Naguilian</span>
           </Link>
           <p className="max-w-xs text-sm text-brand-foreground/70">
@@ -27,6 +31,7 @@ export function SiteFooter() {
             <li><Link to="/emergency" className="hover:underline">Emergency hotlines</Link></li>
             <li><Link to="/about" className="hover:underline">About</Link></li>
             <li><Link to="/contact" className="hover:underline">Contact</Link></li>
+            <li><Link to="/updates" className="hover:underline">{updatesPage.footerLink}</Link></li>
             <li><Link to="/government/leadership" className="hover:underline">Government</Link></li>
             <li><a href={links.citizensCharter} className="hover:underline">Citizen’s Charter</a></li>
           </ul>
@@ -38,6 +43,11 @@ export function SiteFooter() {
         </div>
       </Container>
       <Separator className="bg-white/10" />
+      <Container className="pt-6 text-xs text-brand-foreground/60">
+        <Link to="/updates" className="underline-offset-4 hover:text-brand-foreground hover:underline">
+          v{appBuild.version} · {updatesPage.updated} {formatIsoDate(appBuild.date)}
+        </Link>
+      </Container>
       <Container className="flex flex-col gap-2 py-6 text-xs text-brand-foreground/60 sm:flex-row sm:justify-between">
         <p>
           © {new Date().getFullYear()} Better Naguilian ·{" "}

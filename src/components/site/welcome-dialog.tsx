@@ -4,6 +4,7 @@ import { ArrowRightIcon, LightbulbIcon } from "@phosphor-icons/react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Logo } from "@/components/site/logo"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
   Dialog,
@@ -33,7 +34,7 @@ export function WelcomeDialog() {
         }}
         className="max-h-[calc(100dvh-2rem)] gap-6 overflow-y-auto rounded-xl outline-none p-6 sm:max-w-xl sm:p-8">
         <DialogHeader className="items-start gap-4 pr-6 text-left sm:flex-row">
-          <img src="/naguilian-icon.svg" alt="" className="size-10 shrink-0 rounded-lg sm:size-12" />
+          <Logo variant="mark" className="h-10 shrink-0 text-primary sm:h-12" />
           <div className="flex flex-col gap-1.5">
             <DialogTitle className="text-xl leading-tight font-bold tracking-tight sm:text-2xl">
               {welcome.title}

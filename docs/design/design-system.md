@@ -6,6 +6,7 @@ This is the project's design guide. It describes the visual language the portal 
 - **Primitives:** [`src/components/ui/`](../../src/components/ui/) (shadcn/ui, `radix-mira` style, Radix underneath, Phosphor icons).
 - **Layout helpers:** [`src/components/site/section.tsx`](../../src/components/site/section.tsx): `Container`, `Section`, `SectionHeading`, `SourceLink`.
 - **Content:** [`src/data/site.ts`](../../src/data/site.ts). Components never hardcode copy or URLs.
+- **Logo:** [`logo.md`](logo.md). The one-colour `Logo` component, its colour rule and the boundary data credit.
 - **Shared version:** the [civic-portal-design](https://github.com/baeyacorpuz/civic-portal-design) Claude Code plugin packages this system for other community-built LGU portals. This guide stays the contract for this repo; when a rule or token changes here and applies to every portal, update the plugin too.
 
 ## Principles

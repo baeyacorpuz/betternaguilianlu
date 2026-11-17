@@ -38,6 +38,8 @@ Run `pnpm lint && pnpm build && pnpm test:e2e` to verify a change. CI (`.github/
 - `@/` aliases `src/` (vite.config.ts and tsconfig).
 - **Deploy:** Vercel, with `vercel.json` rewriting every path to `/index.html` so client-side routes work on reload.
 - **Specs:** larger features are planned with OpenSpec (`openspec/changes/<name>/` holds proposal, design, specs and tasks; finished changes move to `openspec/changes/archive/`). Use the `openspec-*` skills to propose, apply and archive changes.
+- **Versioning:** `package.json` `version` and the build date are injected by `define` in `vite.config.ts` (`__APP_VERSION__`, `__BUILD_DATE__`, typed in `vite-env.d.ts`, read via `lib/app-build.ts`) and shown in `SiteFooter`. `CHANGELOG.md` records each release; bump both together.
+- **What changed:** `/updates` (`pages/updates.tsx`) lists the entries in `data/updates.ts`, newest first. Add an entry there whenever data in `src/data/` changes or a visible feature ships.
 
 ## Design system
 
