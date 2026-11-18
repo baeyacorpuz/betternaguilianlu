@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/sheet"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { Logo } from "@/components/site/logo"
 import { Container } from "@/components/site/section"
 import { emergencyPage, hotlines } from "@/data/civic"
 import { links, serviceCategories } from "@/data/site"
@@ -154,14 +155,10 @@ export function TopBar() {
   )
 }
 
-export function Logo({ className }: { className?: string }) {
+function SiteBrand({ className }: { className?: string }) {
   return (
-    <Link to="/" className={cn("flex items-center gap-2.5", className)}>
-      <img src="/naguilian-icon.svg" alt="" className="size-9 rounded-lg" />
-      <span className="flex flex-col leading-tight whitespace-nowrap">
-        <span className="text-sm font-bold">Better Naguilian</span>
-        <span className="text-[11px] text-muted-foreground">Community service portal</span>
-      </span>
+    <Link to="/" aria-label="Better Naguilian, home" className={cn("flex shrink-0 items-center", className)}>
+      <Logo variant="full" className="h-9 text-primary" />
     </Link>
   )
 }
@@ -208,7 +205,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       <Container className="flex h-16 items-center justify-between gap-4">
-        <Logo />
+        <SiteBrand />
 
         <NavigationMenu viewport={false} className="hidden xl:flex">
           <NavigationMenuList>

@@ -21,6 +21,7 @@ import { NotFoundPage } from '@/pages/not-found'
 import { ServiceDetailPage, ServiceNotFound } from '@/pages/service-detail'
 import { ServicesPage } from '@/pages/services'
 import { TransparencyPage } from '@/pages/transparency'
+import { UpdatesPage } from '@/pages/updates'
 import RootLayout from './root-layout'
 
 const rootRoute = createRootRoute({
@@ -115,6 +116,7 @@ const barangaysRoute = createRoute({
 const emergencyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/emergency', component: EmergencyPage })
 const legislativeRoute = createRoute({ getParentRoute: () => rootRoute, path: '/legislative', component: LegislativePage })
 const transparencyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/transparency', component: TransparencyPage })
+const updatesRoute = createRoute({ getParentRoute: () => rootRoute, path: '/updates', component: UpdatesPage })
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -126,6 +128,7 @@ const routeTree = rootRoute.addChildren([
   emergencyRoute,
   legislativeRoute,
   transparencyRoute,
+  updatesRoute,
 ])
 
 export const router = createRouter({ routeTree })

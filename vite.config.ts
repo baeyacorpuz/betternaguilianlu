@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -8,8 +9,24 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
+const appVersion: string = JSON.parse(readFileSync(path.resolve(__dirname, 'package.json'), 'utf8')).version
+
+// ISO date (yyyy-mm-dd) of the build, in Philippine time
+function buildDate(): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Manila',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date())
+}
+
 // https://vite.dev/config/
 export default defineConfig({
+  define: {
+    __APP_VERSION__: JSON.stringify(appVersion),
+    __BUILD_DATE__: JSON.stringify(buildDate()),
+  },
   plugins: [
     react(),
     tailwindcss(),
@@ -24,7 +41,7 @@ export default defineConfig({
         scope: '/',
         display: 'standalone',
         theme_color: '#1b4332',
-        background_color: '#ffffff',
+        background_color: '#fafbf8',
         lang: 'en',
         icons: [
           {
