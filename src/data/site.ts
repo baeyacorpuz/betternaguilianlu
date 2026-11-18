@@ -26,6 +26,7 @@ import {
 } from "@phosphor-icons/react"
 
 import { executive } from "@/data/government"
+import { updatesPage } from "@/data/updates"
 
 export type { Service } from "@/data/charter"
 
@@ -730,6 +731,52 @@ export const contactPage = {
     suggest: "Know another community-built LGU site?",
     suggestLabel: "Let us know",
     suggestHref: mailto("Community site suggestion", "Site name:\n\nLink:\n\nLGU it covers:\n"),
+  },
+}
+
+/**
+ * Copy and links for the site footer. Explore items are internal routes. Community
+ * sites come from `contactPage.community`. The Facebook link is left out until a real
+ * page exists (`links.facebook` is still a placeholder). There is no LICENSE file, so
+ * the bottom bar names no licence.
+ */
+export const footer = {
+  homeLabel: "Better Naguilian, home",
+  tagline: "Community service portal",
+  description: "A verified municipal service directory for Naguilian, La Union.",
+  contribute: { label: "Contribute code with us", href: links.contribute },
+  newTab: "opens in a new tab",
+  explore: {
+    title: "Explore",
+    items: [
+      { label: "Home", to: "/" },
+      { label: "Services", to: "/services" },
+      { label: "Legislation", to: "/legislative" },
+      { label: "Transparency", to: "/transparency" },
+      { label: "Emergency hotlines", to: "/emergency" },
+      { label: "About", to: "/about" },
+      { label: "Contact", to: "/contact" },
+      { label: updatesPage.footerLink, to: "/updates" },
+      { label: "Government", to: "/government/leadership" },
+    ] as const,
+    charter: { label: "Citizen’s Charter", href: links.citizensCharter },
+  },
+  community: {
+    title: "Community",
+    description:
+      "Open source and open to contributions. Help improve the code, guides, and public information.",
+    links: [
+      { label: "Source code on GitHub", href: links.contribute },
+      { label: "GitHub issues", href: links.issues },
+    ],
+    sitesTitle: "Other community-built sites",
+    sites: contactPage.community.sites.map((site) => ({ label: site.name, href: site.href })),
+  },
+  hall: { title: "Municipal Hall" },
+  bottom: {
+    name: "Better Naguilian",
+    disclaimer: "Community-built, not an official government website.",
+    credit: "Information comes from official municipal sources.",
   },
 }
 
