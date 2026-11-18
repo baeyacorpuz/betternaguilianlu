@@ -39,6 +39,14 @@ export const updatesPage = {
 
 export const updates: UpdateEntry[] = [
   {
+    date: "2026-11-18",
+    kind: "feature",
+    area: "Site",
+    title: "Privacy-friendly Vercel Web Analytics added",
+    details:
+      "The site now records anonymous page views with Vercel Web Analytics. It sets no cookies and does not identify visitors.",
+  },
+  {
     date: "2026-11-17",
     kind: "feature",
     title: "New logo",
