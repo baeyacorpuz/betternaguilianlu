@@ -601,8 +601,8 @@ export const about = {
       },
       {
         icon: LockKeyIcon,
-        title: "No accounts, no tracking",
-        description: "You never need to sign in, and the portal does not collect personal data.",
+        title: "No accounts, no ad tracking",
+        description: "You never need to sign in, and the portal does not collect personal data. It counts anonymous page views with Vercel Web Analytics, which sets no cookies.",
       },
     ],
   },

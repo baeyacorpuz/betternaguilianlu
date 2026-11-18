@@ -64,8 +64,8 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest,woff2}'],
         navigateFallback: '/index.html',
         navigateFallbackAllowlist: [/^\/.*$/],
-        // let /docs (the charter PDF) load from the network instead of the SPA shell
-        navigateFallbackDenylist: [/^\/docs\//, /\.pdf$/],
+        // let /docs (the charter PDF) and /_vercel (Web Analytics) load from the network instead of the SPA shell
+        navigateFallbackDenylist: [/^\/docs\//, /^\/_vercel\//, /\.pdf$/],
         // keep the last forecast available offline, but never serve it for long
         runtimeCaching: [
           {
