@@ -9,7 +9,7 @@ The logo is version 6, the owner-approved artwork. It is a Naguilian municipal o
 - **River band.** A wave of even width that crosses the outline from left to right and cuts it into an upper and a lower part.
 - **Wordmark.** "Better" on the first line and "Naguilian lu.org" on the second. It is set in Manrope ExtraBold (SIL OFL) and converted to outlined paths, so the logo needs no font at runtime.
 
-The outline and the jar are the mark. The mark alone is used wherever space is tight (header, footer, welcome dialog, favicon, app icons). The full lockup with the wordmark is available in the component but no page uses it yet.
+The outline and the jar are the mark. The site header uses the full lockup with the wordmark. The mark alone is used wherever space is tight (footer, welcome dialog, favicon, app icons).
 
 ## Colourways
 

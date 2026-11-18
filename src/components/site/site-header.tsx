@@ -157,12 +157,8 @@ export function TopBar() {
 
 function SiteBrand({ className }: { className?: string }) {
   return (
-    <Link to="/" className={cn("flex items-center gap-2.5", className)}>
-      <Logo variant="mark" className="h-9 text-primary" />
-      <span className="flex flex-col leading-tight whitespace-nowrap">
-        <span className="text-sm font-bold">Better Naguilian</span>
-        <span className="text-[11px] text-muted-foreground">Community service portal</span>
-      </span>
+    <Link to="/" aria-label="Better Naguilian, home" className={cn("flex shrink-0 items-center", className)}>
+      <Logo variant="full" className="h-9 text-primary" />
     </Link>
   )
 }
